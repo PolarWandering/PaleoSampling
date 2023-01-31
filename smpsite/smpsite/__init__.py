@@ -10,3 +10,4 @@ __all__ = ["estimate", "sampling"]
 
 from .sampling import *
 from .estimate import *
+from .kappa import *
