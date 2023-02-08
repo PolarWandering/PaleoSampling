@@ -62,23 +62,15 @@ def generate_samples(params):
     design = generate_design(params)
     N_sites = len(design)
     
-    # sample secular variations
-    # lat, lon
-    # here is where I can replace by TK03 model  
     
+    # We can sample directions directly from TK03
     directions_tk03 = ipmag.tk03(n=N_sites, dec=0, lat=latitude, rev='no', G1=-18e3, G2=0, G3=0, B_threshold=0)
     declinations_tk03, inclinations_tk03 = np.asarray(directions_tk03)[:,0], np.asarray(directions_tk03)[:,1]
     
     
-    # secular_declinations, secular_inclinations = ipmag.fishrot(k=params.kappa_secular,
-    #                                                            n=N_sites, 
-    #                                                            dec=0, 
-    #                                                            inc=90, 
-    #                                                            di_block=False)
-    
     for i, nk in enumerate(design):
         
-        ''' i represents the site number..
+        ''' i is a counter representing the site number.
             nk is the number of samples in the i_th site
         '''
         outliers = np.random.binomial(1, params.outlier_rate, nk) # probability of outliers 
@@ -86,51 +78,28 @@ def generate_samples(params):
         n_outliers = np.sum(outliers)
         n_samples = nk - n_outliers
         
-        # Transform VGP coordinates to directions (D, I) coordinates 
-        # # inc, dec
-        # dec_vgp, inc_vgp = pmag.vgp_di(plat=secular_inclinations[i], 
-        #                                plong=secular_declinations[i], 
-        #                                slat=params.site_lat, 
-        #                                slong=params.site_long)
-
-    
-        # # Sample real samples (within-site)
-        # declinations, inclinations = ipmag.fishrot(k=params.kappa_within_site, 
-        #                                            n=n_samples,
-        #                                            dec=dec_vgp,
-        #                                            inc=inc_vgp,
-        #                                            di_block=False)
-        
-        
-        
-        
         # add within site-dispersion
-        # Worth exploring the NAM database to see the actual range of this parameter before applying any 'selection criteria'
+        # Note: Worth exploring the NAM database to see the actual range of this parameter before applying any 'selection criteria'
         declinations, inclinations = ipmag.fishrot(k=params.kappa_vgp, 
                                                    n=n_samples,
                                                    dec=declinations_tk03[i],
                                                    inc=inclinations_tk03[i],
                                                    di_block=False)
 
-        # Convert specimenst to geographical space
+        # Convert specimen/sample/directions to VGP space
         for j in range(len(declinations)):
             vgp_lon, vgp_lat, _, _ = pmag.dia_vgp(declinations[j], inclinations[j], 0, params.site_lat, params.site_long)
-            declinations[j] = trans_dec
-            inclinations[j] = trans_inc            
-            
-#             trans_dec, trans_inc, _, _ = pmag.dia_vgp(declinations[j], inclinations[j], 0, params.site_lat, params.site_long)
-#             declinations[j] = trans_dec
-#             inclinations[j] = trans_inc
+
         
-        # Sample outliers 
-        declinations_out, inclinations_out = pmag.get_unf(n_outliers).T
+        # Sample VGP outliers (same as sampling a direction and then transform to VGP)
+        vgp_lon_out, vgp_lat_out = pmag.get_unf(n_outliers).T
         
-        declinations = np.concatenate((declinations, declinations_out))
-        inclinations = np.concatenate((inclinations, inclinations_out))
+        vgp_lon = np.concatenate((vgp_lon, vgp_lon_out))
+        vgp_lat = np.concatenate((vgp_lat, vgp_lat_out))
         
         df_ = pd.DataFrame({'sample_site': i,
-                            'declination': declinations,
-                            'inclination': inclinations,
+                            'vgp_lon': vgp_lon,
+                            'vgp_lat': vgp_lat,
                             'is_outlier': outliers})
         if i==0:
             df = df_
