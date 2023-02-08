@@ -61,7 +61,7 @@ def generate_samples(params):
     
     design = generate_design(params)
     N_sites = len(design)
-    
+    latitude = params.site_lat
     
     # We can sample directions directly from TK03
     directions_tk03 = ipmag.tk03(n=N_sites, dec=0, lat=latitude, rev='no', G1=-18e3, G2=0, G3=0, B_threshold=0)
@@ -80,7 +80,7 @@ def generate_samples(params):
         
         # add within site-dispersion
         # Note: Worth exploring the NAM database to see the actual range of this parameter before applying any 'selection criteria'
-        declinations, inclinations = ipmag.fishrot(k=params.kappa_vgp, 
+        declinations, inclinations = ipmag.fishrot(k=params.kappa_within_site, 
                                                    n=n_samples,
                                                    dec=declinations_tk03[i],
                                                    inc=inclinations_tk03[i],
