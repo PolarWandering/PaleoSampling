@@ -85,17 +85,18 @@ def generate_samples(params):
                                                    dec=declinations_tk03[i],
                                                    inc=inclinations_tk03[i],
                                                    di_block=False)
-
+        
         # Convert specimen/sample/directions to VGP space
+        longs, lats = [], [] 
         for j in range(len(declinations)):
             vgp_lon, vgp_lat, _, _ = pmag.dia_vgp(declinations[j], inclinations[j], 0, params.site_lat, params.site_long)
-
-        
+            longs.append(vgp_lon)
+            lats.append(vgp_lat)
         # Sample VGP outliers (same as sampling a direction and then transform to VGP)
         vgp_lon_out, vgp_lat_out = pmag.get_unf(n_outliers).T
         
-        vgp_lon = np.concatenate((vgp_lon, vgp_lon_out))
-        vgp_lat = np.concatenate((vgp_lat, vgp_lat_out))
+        vgp_lon = np.concatenate((longs, vgp_lon_out))
+        vgp_lat = np.concatenate((lats, vgp_lat_out))
         
         df_ = pd.DataFrame({'sample_site': i,
                             'vgp_lon': vgp_lon,
