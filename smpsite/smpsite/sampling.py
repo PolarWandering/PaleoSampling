@@ -11,17 +11,6 @@ from typing import NamedTuple
 from .estimate import robust_fisher_mean, estimate_pole
 
 
-
-# class Params(NamedTuple):
-    
-#     kappa_vgp : float    
-#     kappa_secular : float 
-#     outlier_rate : float
-#     N_per_site: int
-#     N : int
-#     site_lat : float
-#     site_long : float
-    
 class Params(NamedTuple):
     
     kappa_within_site : float    
@@ -110,25 +99,30 @@ def generate_samples(params):
     return df
 
 
-
 def simulate_estimations(params, n_iters=100, ignore_outliers=False, seed=None):
-
-    poles_dec, poles_inc, all_total_samples = [], [], []
-
+    '''
+    Given a sampling strategy (samples per site and total number of samples)
+    returns a DF with results of n_iters simulated poles.
+    '''
+    
+    poles = {'plon':[], 'plat':[], 'total_samples':[], 'samples_per_sites':[] }
+    
     if seed is not None:
         np.random.seed(seed)
     
     for _ in range(n_iters):
 
         df_sample = generate_samples(params)
-        pole_dec, pole_inc, total_samples = estimate_pole(df_sample, ignore_outliers=ignore_outliers)
-        poles_dec.append(pole_dec)
-        poles_inc.append(pole_inc)
-        all_total_samples.append(total_samples)
+        
+        # estimate_pole() first groups samples by # of site and then computes a fisher mean for the pole (means of means)
+        pole_lon, pole_lat, total_samples, samples_per_site = estimate_pole(df_sample, ignore_outliers=ignore_outliers)
+        
+        poles['plon'].append(pole_lon)
+        poles['plat'].append(pole_lat)
+        poles['total_samples'].append(total_samples)
+        poles['samples_per_sites'].append( samples_per_site)
 
-    df_poles = pd.DataFrame({'declination': poles_dec, 
-                             'inclination': poles_inc, 
-                             'total_samples': all_total_samples})
-    df_poles['error_angle'] = 90.0 - df_poles.inclination
+    df_poles = pd.DataFrame(poles)
+    df_poles['error_angle'] = 90.0 - df_poles.plat
     
     return df_poles
