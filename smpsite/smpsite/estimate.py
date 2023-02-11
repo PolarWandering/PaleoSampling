@@ -17,6 +17,10 @@ def robust_fisher_mean(decs, incs):
 def estimate_pole(df_sample, ignore_outliers=False, method='mean-of-means', kappa0=None, kappa1=None):
     '''
     Function to estimate the Fisher estimate for the paloemagnetic pole
+    Returns:
+     - Pole coordinates
+     - Number of samples (total)
+     - Number of samples per site.
     '''
     if ignore_outliers:
         df = df_sample[df_sample.is_outlier==0]
@@ -24,16 +28,22 @@ def estimate_pole(df_sample, ignore_outliers=False, method='mean-of-means', kapp
         df = df_sample
     
     L = len(np.unique(df.sample_site))
-    df_site = df.groupby('sample_site').apply(lambda row : pd.Series({'declination': robust_fisher_mean(row.declination.values, row.inclination.values)[0],
-                                                                      'inclination': robust_fisher_mean(row.declination.values, row.inclination.values)[1],
-                                                                      'n_samples': len(row.declination.values)}))
 
+    
+    # Note: Add kappa and csd to the output, then we can sample from these distributions and compare with the MLEstimate
+    df_site = df.groupby('sample_site').apply(lambda row : pd.Series({'vgp_lon': robust_fisher_mean(row.vgp_lon.values, row.vgp_lat.values)[0],
+                                                                      'vgp_lat': robust_fisher_mean(row.vgp_lon.values, row.vgp_lat.values)[1],
+                                                                      'n_samples': len(row.vgp_lon.values)}))
+    
+    
     # Final fisher mean
-    pole_estimate = ipmag.fisher_mean(dec=df_site.declination.values, inc=df_site.inclination.values)
+    pole_estimate = ipmag.fisher_mean(dec=df_site.vgp_lon.values, inc=df_site.vgp_lat.values)
  
     if method=='mean-of-means':
-        return pole_estimate['dec'], pole_estimate['inc'], df_site.n_samples.sum()        
+        return pole_estimate['dec'], pole_estimate['inc'], df_site.n_samples.sum(), df_site.n_samples.unique()           
     
+    
+    # this is nice, we solve this in our papaer by 
     elif method=='MLE-known-kappa':
         # we solve iterativelly starting from the estimate based on method='mean-of-means'
         Mu = np.zeros((K+1,3))
