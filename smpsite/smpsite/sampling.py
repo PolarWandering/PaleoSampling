@@ -8,7 +8,7 @@ import pmagpy.ipmag as ipmag
 
 from typing import NamedTuple
 
-from .estimate import robust_fisher_mean, estimate_pole
+# from .estimate import robust_fisher_mean, estimate_pole
 
 
 class Params(NamedTuple):
@@ -16,9 +16,9 @@ class Params(NamedTuple):
     kappa_within_site : float    
     site_lat : float # Governing parameter of the concentration
     outlier_rate : float
-    N_per_site: int
-    N : int    
-    site_long : float
+    n : int # number of sites 
+    k : int # number of samples per site 
+    site_lon : float
 
     
 def generate_design(params): 
@@ -27,12 +27,12 @@ def generate_design(params):
     want per site, returns a list whose lenght is the number of sites and the repeated
     number of samples per site
     '''
-    
-    equal_template = np.array([params.N_per_site] * int(params.N/params.N_per_site))
-    equal_template[:params.N % params.N_per_site] += 1
-    assert np.sum(equal_template) == params.N, 'this happens because there is no way of keeping the right sampling'
-    assert np.min(equal_template) >= params.N_per_site
-    assert np.max(equal_template) <= params.N_per_site+1
+    equal_template = np.repeat(params.k, params.n)
+    # equal_template = np.array([params.N_per_site] * int(params.N/params.N_per_site))
+    # equal_template[:params.N % params.N_per_site] += 1
+    assert np.sum(equal_template) == params.n * params.k
+    assert np.min(equal_template) >= params.k
+    assert np.max(equal_template) <= params.k
     return equal_template
         
     
@@ -75,21 +75,24 @@ def generate_samples(params):
                                                    inc=inclinations_tk03[i],
                                                    di_block=False)
         
+        # Sample VGP outliers in (dec, inc) space
+        vgp_dec_out, vgp_inc_out = pmag.get_unf(n_outliers).T
+        
+        vgp_dec = np.concatenate((declinations, vgp_dec_out))
+        vgp_inc = np.concatenate((inclinations, vgp_inc_out))        
+        
         # Convert specimen/sample/directions to VGP space
-        longs, lats = [], [] 
-        for j in range(len(declinations)):
-            vgp_lon, vgp_lat, _, _ = pmag.dia_vgp(declinations[j], inclinations[j], 0, params.site_lat, params.site_long)
-            longs.append(vgp_lon)
-            lats.append(vgp_lat)
-        # Sample VGP outliers (same as sampling a direction and then transform to VGP)
-        vgp_lon_out, vgp_lat_out = pmag.get_unf(n_outliers).T
-        
-        vgp_lon = np.concatenate((longs, vgp_lon_out))
-        vgp_lat = np.concatenate((lats, vgp_lat_out))
-        
+        vgp_lon, vgp_lat = [], [] 
+        for j in range(len(vgp_dec)):
+            lon, lat, _, _ = pmag.dia_vgp(vgp_dec[j], vgp_inc[j], 0, params.site_lat, params.site_lon)
+            vgp_lon.append(lon)
+            vgp_lat.append(lat)
+                    
         df_ = pd.DataFrame({'sample_site': i,
                             'vgp_lon': vgp_lon,
                             'vgp_lat': vgp_lat,
+                            'vgp_dec': vgp_dec,
+                            'vgp_inc': vgp_inc,
                             'is_outlier': outliers})
         if i==0:
             df = df_
@@ -97,32 +100,3 @@ def generate_samples(params):
             df = pd.concat([df, df_], axis=0, ignore_index=True)
             
     return df
-
-
-def simulate_estimations(params, n_iters=100, ignore_outliers=False, seed=None):
-    '''
-    Given a sampling strategy (samples per site and total number of samples)
-    returns a DF with results of n_iters simulated poles.
-    '''
-    
-    poles = {'plon':[], 'plat':[], 'total_samples':[], 'samples_per_sites':[] }
-    
-    if seed is not None:
-        np.random.seed(seed)
-    
-    for _ in range(n_iters):
-
-        df_sample = generate_samples(params)
-        
-        # estimate_pole() first groups samples by # of site and then computes a fisher mean for the pole (means of means)
-        pole_lon, pole_lat, total_samples, samples_per_site = estimate_pole(df_sample, ignore_outliers=ignore_outliers)
-        
-        poles['plon'].append(pole_lon)
-        poles['plat'].append(pole_lat)
-        poles['total_samples'].append(total_samples)
-        poles['samples_per_sites'].append( samples_per_site)
-
-    df_poles = pd.DataFrame(poles)
-    df_poles['error_angle'] = 90.0 - df_poles.plat
-    
-    return df_poles
