@@ -37,13 +37,18 @@ def estimate_pole(df_sample, params, ignore_outliers=False, method='mean-of-mean
                                                                       'n_samples': len(row.vgp_dec.values)}))
     
     # Now we need to move this to (lat, lon) space. 
-    vgp_lon, vgp_lat, _, _ = pmag.dia_vgp(df_site.vgp_dec, df_site.vgp_inc, 0, params.site_lat, params.site_lon)
+    vgp_lon, vgp_lat, _, _ = pmag.dia_vgp(df_site.vgp_dec, 
+                                          df_site.vgp_inc, 
+                                          0, 
+                                          params.site_lat, 
+                                          params.site_lon)
  
     df_site["vgp_lon"] = vgp_lon
     df_site["vgp_lat"] = vgp_lat
 
     # Final fisher mean
-    pole_estimate = ipmag.fisher_mean(dec=df_site.vgp_lon.values, inc=df_site.vgp_lat.values)
+    pole_estimate = ipmag.fisher_mean(dec=df_site.vgp_lon.values, 
+                                      inc=df_site.vgp_lat.values)
  
     if method=='mean-of-means':
         return pole_estimate['dec'], pole_estimate['inc'], df_site.n_samples.sum(), df_site.n_samples.unique()           

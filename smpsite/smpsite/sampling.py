@@ -36,7 +36,7 @@ def generate_design(params):
     return equal_template
         
     
-def generate_samples(params):
+def generate_samples(params, secular_method="tk03"):
     '''
     Fuction to generate experimental design 
     
@@ -52,10 +52,22 @@ def generate_samples(params):
     N_sites = len(design)
     latitude = params.site_lat
     
-    # We can sample directions directly from TK03
-    directions_tk03 = ipmag.tk03(n=N_sites, dec=0, lat=latitude, rev='no', G1=-18e3, G2=0, G3=0, B_threshold=0)
-    declinations_tk03, inclinations_tk03 = np.asarray(directions_tk03)[:,0], np.asarray(directions_tk03)[:,1]
-    
+    # Sample directions from secular variation model 
+    if secular_method=="tk03":
+        directions_secular = ipmag.tk03(n=N_sites, dec=0, lat=latitude, rev='no', G1=-18e3, G2=0, G3=0, B_threshold=0)
+        dec_secular, inc_secular = np.asarray(directions_secular)[:,0], np.asarray(directions_secular)[:,1]
+    elif secular_method=="Fisher":
+        longitude_secular, latitude_secular = ipmag.fishrot(k=50, 
+                                                            n=N_sites,
+                                                            dec=0,
+                                                            inc=90,
+                                                            di_block=False)
+        # Transform to inclination, declination
+        #
+        # dec_secular, inc_secular = ...
+    else:
+        raise ValueError("Method for sampling secular variation not implemented.")
+        
     
     for i, nk in enumerate(design):
         
@@ -63,31 +75,33 @@ def generate_samples(params):
             nk is the number of samples in the i_th site
         '''
         outliers = np.random.binomial(1, params.outlier_rate, nk) # probability of outliers 
+        
+        # Arrange the true samples and then the outliers
         outliers = sorted(outliers)
+        
         n_outliers = np.sum(outliers)
         n_samples = nk - n_outliers
         
-        # add within site-dispersion
-        # Note: Worth exploring the NAM database to see the actual range of this parameter before applying any 'selection criteria'
+        # Sample in-site observations
         declinations, inclinations = ipmag.fishrot(k=params.kappa_within_site, 
                                                    n=n_samples,
-                                                   dec=declinations_tk03[i],
-                                                   inc=inclinations_tk03[i],
+                                                   dec=dec_secular[i],
+                                                   inc=inc_secular[i],
                                                    di_block=False)
-        
+
         # Sample VGP outliers in (dec, inc) space
         vgp_dec_out, vgp_inc_out = pmag.get_unf(n_outliers).T
         
-        vgp_dec = np.concatenate((declinations, vgp_dec_out))
-        vgp_inc = np.concatenate((inclinations, vgp_inc_out))        
-        
+        vgp_dec = np.hstack((declinations, vgp_dec_out))
+        vgp_inc = np.hstack((inclinations, vgp_inc_out))   
+                
         # Convert specimen/sample/directions to VGP space
         vgp_lon, vgp_lat = [], [] 
         for j in range(len(vgp_dec)):
             lon, lat, _, _ = pmag.dia_vgp(vgp_dec[j], vgp_inc[j], 0, params.site_lat, params.site_lon)
             vgp_lon.append(lon)
             vgp_lat.append(lat)
-                    
+        
         df_ = pd.DataFrame({'sample_site': i,
                             'vgp_lon': vgp_lon,
                             'vgp_lat': vgp_lat,
