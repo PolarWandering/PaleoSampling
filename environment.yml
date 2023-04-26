@@ -1,0 +1,22 @@
+name: paleostats
+channels:
+  - conda-forge
+dependencies:
+  - future
+  - matplotlib
+  - cartopy
+  - wxpython
+  - pandas
+  - requests
+  - jupyter
+  - conda-forge::python-wget
+  - seaborn
+  - openpyxl
+  - jupyter-book
+  - scikit-learn
+  - ipyparallel
+  - distributed
+  - ipywidgets
+  - ca-certificates
+  - certifi
+  - openssl
