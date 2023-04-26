@@ -1,12 +1,13 @@
 import numpy as np
 import pandas as pd
+import pathlib
 from scipy import interpolate
 
-df = pd.read_csv("smpsite/smpsite/kappa_tabular/kappa2angular.csv", header=0)
+_file_location = pathlib.Path(__file__).parent.joinpath("kappa_tabular/kappa2angular.csv")#.parent.joinpath("")
+df = pd.read_csv(_file_location, header=0)
 
 kappa2angular = interpolate.interp1d(df.kappa, df.std_angular)
 angular2kappa = interpolate.interp1d(df.std_angular, df.kappa)
-
 
 
 def kappa_from_latitude(latitude, a = 11.23, b=0.27, degrees = False, inversion="interpolation"):
