@@ -17,9 +17,9 @@ class Params(NamedTuple):
     """
 
     # Number of sites
-    n : int
+    N : int
     # Number of samples per site
-    k : int
+    n0 : int
     
     # Concentration parameter within site
     kappa_within_site : float    
@@ -42,12 +42,11 @@ def generate_design(params):
     want per site, returns a list whose lenght is the number of sites and the repeated
     number of samples per site
     '''
-    equal_template = np.repeat(params.k, params.n)
-    # equal_template = np.array([params.N_per_site] * int(params.N/params.N_per_site))
-    # equal_template[:params.N % params.N_per_site] += 1
-    assert np.sum(equal_template) == params.n * params.k
-    assert np.min(equal_template) >= params.k
-    assert np.max(equal_template) <= params.k
+    equal_template = np.repeat(params.n0, params.N)
+
+    assert np.sum(equal_template) == params.N * params.n0
+    assert np.min(equal_template) >= params.n0
+    assert np.max(equal_template) <= params.n0
     return equal_template
         
     
@@ -64,7 +63,7 @@ def generate_samples(params):
     design = generate_design(params)
 
     if params.secular_method=="tk03":
-        directions_secular = ipmag.tk03(n=params.n, dec=0, lat=params.site_lat, rev='no', G1=-18e3, G2=0, G3=0, B_threshold=0)
+        directions_secular = ipmag.tk03(n=params.N.k, dec=0, lat=params.site_lat, rev='no', G1=-18e3, G2=0, G3=0, B_threshold=0)
         dec_secular, inc_secular = np.asarray(directions_secular)[:,0], np.asarray(directions_secular)[:,1]
     
     elif params.secular_method=="G" or params.secular_method=="Fisher":
@@ -76,7 +75,7 @@ def generate_samples(params):
             _kappa_secular = params.kappa_secular
 
         directional_secular = ipmag.fishrot(k=_kappa_secular, 
-                                            n=params.n,
+                                            n=params.N,
                                             dec=0,
                                             inc=90,
                                             di_block=True)
@@ -102,8 +101,8 @@ def generate_samples(params):
         # Arrange the true samples and then the outliers
         outliers = sorted(outliers)
         
-        n_outliers = np.sum(outliers)    # Number of outliers
-        n_samples = nk - n_outliers      # Number of real samples
+        n_outliers = np.sum(outliers)     # Number of outliers
+        n_samples  = nk - n_outliers      # Number of real samples
         
         # Sample in-site observations
         declinations, inclinations = ipmag.fishrot(k=params.kappa_within_site, 

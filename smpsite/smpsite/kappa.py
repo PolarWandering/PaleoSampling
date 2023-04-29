@@ -23,7 +23,7 @@ def kappa_from_latitude(latitude, a = 11.23, b=0.27, degrees = False, inversion=
         latitude = np.degrees(np.abs(latitude))
         
     # Model G from Doubrovine et al. 2019  
-    S = np.sqrt( a ** 2 + ( latitude *b ) ** 2 ) 
+    S = np.sqrt( a ** 2 + ( latitude * b ) ** 2 ) 
     
     if inversion == "power-law":
         return 72.33 * np.power(S, -0.5)
@@ -33,3 +33,12 @@ def kappa_from_latitude(latitude, a = 11.23, b=0.27, degrees = False, inversion=
     
     else:
         raise ValueError()
+        
+def lat_correction(lat, degrees=True):
+    """
+    latitude correction based on Cox (1970)
+    """
+    if degrees:
+        _lat = lat * np.pi / 180
+    sn2 = np.sin(_lat) ** 2
+    return (5 + 18 * sn2 + 9 * sn2**2) / 8
