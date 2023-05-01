@@ -5,7 +5,7 @@ from sklearn.metrics.pairwise import haversine_distances
 import pmagpy.pmag as pmag
 import pmagpy.ipmag as ipmag
 
-from .kappa import lat_correction
+from .kappa import lat_correction, kappa2angular, kappa_from_latitude
 from .sampling import generate_samples
 
 def robust_fisher_mean(decs, incs):
@@ -90,7 +90,7 @@ def estimate_pole(df_sample, params, ignore_outliers=False):
     
     # Estimation of the VGP dispersion
     df_site["Delta_pole"] = df_site.apply(lambda row: (180/np.pi) * haversine_distances([(np.pi/180) * np.array([row.vgp_lat, row.vgp_long]),
-                                                                                      (np.pi/180) * np.array([pole_inc, pole_dec])])[0,1], axis=1) 
+                                                                                         (np.pi/180) * np.array([pole_inc, pole_dec])])[0,1], axis=1) 
  
     S2_total = np.sum(df_site.Delta_pole.values ** 2) / (params.N - 1)
     S2_vgp = S2_total - S2_within_total
@@ -131,12 +131,32 @@ def simulate_estimations(params, n_iters=100, ignore_outliers=False, seed=None):
         poles['S2_vgp'].append(pole_estimate["S2_vgp"])
 
     df_poles = pd.DataFrame(poles)
+    
     df_poles['error_angle'] = 90.0 - df_poles.plat
+    
+    # Add real secular variation of VGPs
+    if params.secular_method == 'G':
+        _kappa_secular = kappa_from_latitude(params.site_lat, degrees=True)
+    elif params.secular_method == 'Fisher':
+        _kappa_secular = params.kappa_secular
+    df_poles['S2_vgp_real'] = kappa2angular(_kappa_secular) ** 2
+    
+    # Add all parameters to simulation to keep track of them
+    df_poles['n_tot'] = params.N * params.n0
+    df_poles['N'] = params.N
+    df_poles['n0'] = params.n0
+    df_poles['kappa_within_site'] = params.kappa_within_site
+    df_poles['site_lat'] = params.site_lat
+    df_poles['site_long'] = params.site_long
+    df_poles['outlier_rate'] = params.outlier_rate
+    df_poles['secular_method'] = params.secular_method
+    df_poles['kappa_secular'] = params.kappa_secular
+    df_poles['ignore_outliers'] = ignore_outliers
     
     return df_poles
 
 
-def summary_simulations(df_tot, params):
+def summary_simulations(df_tot):
     """
     Create summary statistics of simulations
     """
@@ -150,15 +170,16 @@ def summary_simulations(df_tot, params):
                                  'error_angle_std': [stats['std']]})
     
     df['error_angle_S2'] = np.mean(df_tot.error_angle.values ** 2)
-    df['n_tot'] = params.N * params.n0
-    df['N'] = params.N
-    df['n0'] = params.n0
-    df['kappa_within_site'] = params.kappa_within_site
-    df['site_lat'] = params.site_lat
-    df['site_long'] = params.site_long
-    df['outlier_rate'] = params.outlier_rate
-    df['secular_method'] = params.secular_method
-    df['kappa_secular'] = params.kappa_secular
-    df['ignore_outliers'] = params.ignore_outliers
+    
+    df['error_vgp_scatter'] = np.mean( (df_tot['S2_vgp'] ** .5 - df_tot['S2_vgp_real'] ** .5 ) ** 2 ) ** .5
+    
+    # Add parameters to the final simulation table
+    
+    for attribute in ['n_tot', 'N', 'n0', 'kappa_within_site', 'site_lat', 'site_long', 'outlier_rate', 'secular_method', 'kappa_secular', 'ignore_outliers']:
+        attribute_all = np.unique(df_tot[attribute])
+        assert len(attribute_all) == 1, print(attribute_all)
+        df[attribute] = attribute_all[0]
+    
+    df['total_simulations'] = df_tot.shape[0]
     
     return df
