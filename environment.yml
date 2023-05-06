@@ -1,4 +1,4 @@
-name: paleostats
+name: paleosampling
 channels:
   - conda-forge
 dependencies:
@@ -20,3 +20,5 @@ dependencies:
   - ca-certificates
   - certifi
   - openssl
+  - pip: 
+    - pmagpy==4.2.106
