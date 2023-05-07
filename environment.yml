@@ -22,3 +22,5 @@ dependencies:
   - openssl
   - pip: 
     - pmagpy==4.2.106
+    # We install the modules for the sampling
+    - -e ./smpsite
