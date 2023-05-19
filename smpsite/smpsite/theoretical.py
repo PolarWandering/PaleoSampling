@@ -2,6 +2,23 @@ import numpy as np
 
 from .kappa import lat_correction, kappa_from_latitude, kappa2angular
 
+
+def inverse(f, delta=1e-8):
+    """Given a function y = f(x) that is a monotonically increasing function on
+    non-negative numbers, return the function x = f_1(y) that is an approximate
+    inverse, picking the closest value to the inverse, within delta."""
+    def f_1(y):
+        low, high = 0, 10e7
+        last, mid = 0, high/2
+        while abs(mid-last) > delta:
+            if f(mid) < y:
+                low = mid
+            else:
+                high = mid
+            last, mid = mid, (low + high)/2
+        return mid
+    return f_1
+
 def rho_kappa(k, n):
     """
     Expected vector length of Fisher distribition
@@ -11,6 +28,7 @@ def rho_kappa(k, n):
     else:
         return 1
     
+    
 def kappa_theoretical(params):
     """
     Theoretical result
@@ -19,17 +37,94 @@ def kappa_theoretical(params):
     N = params.N
     n = params.n0
     if params.secular_method == "G":
-        k0 = kappa_from_latitude(params.site_lat, degrees=True)
+        k_between = kappa_from_latitude(params.site_lat, degrees=True)
     else:
         raise ValueError()
-    k1 = params.kappa_within_site
+    k_within = params.kappa_within_site
     p = params.outlier_rate
     lat = params.site_lat
     
-    k1_corrected = k1 / lat_correction(lat, degrees=True)
-    # print(k1, k1_corrected)
-    # k1_corrected = k1
-    _kappa =  N * k0 * rho_kappa(k0, N) / (1 + (k0)/(k1_corrected * rho_kappa(k1_corrected, n) * (1-p) * n))
+    if p > 0.001 and n > 2:
+        rho_kappa_inverse = inverse(lambda x: rho_kappa(x, n=2))
+        k_within = rho_kappa_inverse( (1-p) * rho_kappa(k_within, 2) )
     
-    return _kappa
-    # return float(kappa2angular(_kappa))
+    k_within_site = n * rho_kappa(k_within, n) * k_within 
+    
+    k_within_site_lat_corrected = k_within_site / lat_correction(lat, degrees=True)
+    
+    k_between_vgp = k_between 
+    
+    k_combined = k_within_site_lat_corrected * k_between_vgp / (k_within_site_lat_corrected + k_between_vgp)
+    
+    k_tot = N * k_combined * rho_kappa(k_combined, N) #* (1 - p)
+        
+    if n==1 and p > 0.001:
+        print("I am here.")
+        rho_kappa_inverse = inverse(lambda x: rho_kappa(x, n=2))
+        k_combined = rho_kappa_inverse( (1-p) * rho_kappa(k_combined, 2) )
+        k_tot = N * k_combined * rho_kappa(k_combined, N)
+        
+    return float(k_tot)
+        
+    if p < 0.001:
+        return float(k_tot)
+    else:
+        """
+        Compute the expectation of k * \rho(k) when n0 ~ Binom(n, 1-p) and use that for the within dispersion
+        """
+        from scipy.stats import binom
+        k_tot = 0
+        for n0_ in range(n+1):
+            k_within_site =  n0_ * k_within * rho_kappa(k_within, n0_)
+        
+            k_within_site_lat_corrected = k_within_site / lat_correction(lat, degrees=True)
+    
+            k_between_vgp = k_between 
+
+            k_combined = k_within_site_lat_corrected * k_between_vgp / (k_within_site_lat_corrected + k_between_vgp)
+
+            if k_combined > 0.0001:
+                k_tot += binom(n=n, p=1-p).pmf(n0_) * ( N * k_combined * rho_kappa(k_combined, N) )
+        
+        return float(k_tot)
+        
+        rho_kappa_inverse = inverse(lambda x: rho_kappa(x, n=2))
+        # _factor =  1 - p
+        # _factor = 1 / np.sqrt(1 + p/(1-p))
+        _factor = ( 1 + (1 - p) ** 2 ) / 2
+        return rho_kappa_inverse( _factor * rho_kappa(k_tot, 2) )
+    
+#     _k0_lat_corrected = k0 / lat_correction(lat, degrees=True)
+    
+#     _kappa_vgp = k1 / (1 + ( k1 / (n * rho_kappa(_k0_lat_corrected, n) * _k0_lat_corrected ) ))
+    
+#     # print(rho_kappa(_kappa_vgp, N))
+#     _kappa = N * _kappa_vgp * rho_kappa(_kappa_vgp, N)
+
+#     return float(_kappa)
+    
+#     if p < 0.001:
+#         k1_within = k1
+#     else: 
+#         if n > 2:
+#             rho_kappa_inverse = inverse(lambda x: rho_kappa(x, n=2))
+#             k1_within = rho_kappa_inverse( (1-p) * rho_kappa(k1, 2) )
+#             # k1_within = 1 / (1 - (1-p) * rho_kappa(k1_corrected, n))    
+#         else:
+#             k1_within = k1
+            
+#     k1_corrected = k1_within / lat_correction(lat, degrees=True)
+#     # print(k1, k1_corrected)
+#     # k1_corrected = k1
+
+#     _kappa =  N * k0 * rho_kappa(k0, N) / (1 + (k0)/(k1_corrected * rho_kappa(k1_corrected, n) * n))
+#     # _kappa =  N * k0 * rho_kappa(k0, N) / (1 + (k0)/(k1_corrected * rho_kappa(k1_corrected, n) * (1-p) * n))
+
+#     if p > 0.001 and n == 1:
+#         rho_kappa_inverse = inverse(lambda x: rho_kappa(x, n=2))
+#         print(_kappa)
+#         _kappa = rho_kappa_inverse( (1-p) * rho_kappa(_kappa, 2) )
+#         print(_kappa)
+    
+#     return float(_kappa)
+#     # return float(kappa2angular(_kappa))

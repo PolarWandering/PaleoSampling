@@ -8,12 +8,23 @@ import pmagpy.ipmag as ipmag
 from .kappa import lat_correction, kappa2angular, kappa_from_latitude
 from .sampling import generate_samples
 
+import warnings 
+warnings.filterwarnings('default')
+
+
+class NoPointsForMean(Exception):
+    """
+    This error should never happen, but it does. 
+    There is something with the groupby() operation that leaves empty objects.
+    """
+    pass
+
 def robust_fisher_mean(decs, incs):
     
     assert len(decs) == len(incs)
     
     if len(decs) == 0:
-        raise ValueError("No points to compute the mean")
+        raise NoPointsForMean("No points to compute the mean")
     
     if len(decs) == 1:
         return {'vgp_dec': decs[0], 
@@ -116,14 +127,18 @@ def simulate_estimations(params, n_iters=100, ignore_outliers=False, seed=None):
     if seed is not None:
         np.random.seed(seed)
     
-    for _ in range(n_iters):
+    _iter = 0 
+    
+    while _iter < n_iters:
 
         df_sample = generate_samples(params)
-        
-        # estimate_pole() first groups samples by # of site and then computes a fisher mean for the pole (means of means)
-        pole_estimate = estimate_pole(df_sample, params, ignore_outliers=ignore_outliers)
-        # pole_long, pole_lat, total_samples, samples_per_site = estimate_pole(df_sample, params, ignore_outliers=ignore_outliers)
-        
+
+        try:
+            pole_estimate = estimate_pole(df_sample, params, ignore_outliers=ignore_outliers)
+            _iter += 1
+        except NoPointsForMean:
+            warnings.warn("No points to compute mean in one simulation.")
+            
         poles['plong'].append(pole_estimate["pole_dec"])
         poles['plat'].append(pole_estimate["pole_inc"])
         poles['total_samples'].append(pole_estimate["total_samples"])
