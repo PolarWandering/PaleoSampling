@@ -5,7 +5,9 @@ to estimate the precision of different strategies at the moment of estimating pa
 based on site observations. 
 
 You can open a cloud JupyterHub version of all the code in this repository and execute it using the following Binder link:
+
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/PolarWandering/PaleoSampling/HEAD)
+
 Lear more about the Binder project in this [link](https://mybinder.readthedocs.io/en/latest/).
 
 ### Organization
