@@ -59,7 +59,11 @@ def estimate_pole(df_sample, params, ignore_outliers=False):
      - Number of samples per site.
     '''
     
-    if ignore_outliers:
+    # Outliers at the site-leve, if True, we discard the outliers at the site-level
+    # Outliers at the VGP-level: we consider all the directions within each site, and after tranform to VGP, 
+    # we can apply Vandamme cutoff
+    
+    if ignore_outliers:        
         df = df_sample[df_sample.is_outlier==0]
     else:
         df = df_sample
@@ -90,8 +94,9 @@ def estimate_pole(df_sample, params, ignore_outliers=False):
  
     df_site["vgp_long"] = vgp_long
     df_site["vgp_lat"]  = vgp_lat
-
     
+    if ignore_outliers == 'vandamme': df_site, A, ASD = pmag.dovandamme(df_site)
+
     # Final fisher mean
     pole_estimate = ipmag.fisher_mean(dec=df_site.vgp_long.values, 
                                       inc=df_site.vgp_lat.values)
