@@ -34,7 +34,6 @@ def robust_fisher_mean(decs, incs):
     
     else:
         pole_mean = ipmag.fisher_mean(dec=decs, inc=incs)
-        # return pole_mean['dec'], pole_mean['inc']
         return {'vgp_dec': pole_mean['dec'], 
                 'vgp_inc': pole_mean['inc'], 
                 'n_samples': pole_mean['n'], 
@@ -68,13 +67,7 @@ def estimate_pole(df_sample, params, ignore_outliers=False):
     else:
         df = df_sample
     
-    # L = len(np.unique(df.sample_site))
-
     
-    # Note: Add kappa and csd to the output, then we can sample from these distributions and compare with the MLEstimate
-    # df_site = df.groupby('sample_site').apply(lambda row : pd.Series({'vgp_dec': robust_fisher_mean(row.vgp_dec.values, row.vgp_inc.values)[0],
-    #                                                                   'vgp_inc': robust_fisher_mean(row.vgp_dec.values, row.vgp_inc.values)[1],
-    #                                                                   'n_samples': len(row.vgp_dec.values)}))    
     df_site = df.groupby('sample_site').apply(lambda row : pd.Series(robust_fisher_mean(row.vgp_dec.values, row.vgp_inc.values)))
     
     # Within site dispersion 
@@ -95,7 +88,9 @@ def estimate_pole(df_sample, params, ignore_outliers=False):
     df_site["vgp_long"] = vgp_long
     df_site["vgp_lat"]  = vgp_lat
     
-    if ignore_outliers == 'vandamme': df_site, A, ASD = pmag.dovandamme(df_site)
+    # Filter VGPs based on Vandamme method
+    if ignore_outliers == 'vandamme': 
+        df_site, _, _ = pmag.dovandamme(df_site)
 
     # Final fisher mean
     pole_estimate = ipmag.fisher_mean(dec=df_site.vgp_long.values, 
@@ -116,8 +111,6 @@ def estimate_pole(df_sample, params, ignore_outliers=False):
             "S2_vgp": S2_vgp, 
             "total_samples": df_site.n_samples.sum(), 
             "samples_per_site": params.n0 }
-
-    # return pole_estimate['dec'], pole_estimate['inc'], df_site.n_samples.sum(), df_site.n_samples.unique()           
     
 
             

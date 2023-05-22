@@ -8,7 +8,6 @@ import pmagpy.ipmag as ipmag
 
 from typing import NamedTuple
 
-# from .estimate import robust_fisher_mean, estimate_pole
 from .kappa import *
 
 class Params(NamedTuple):
@@ -121,12 +120,6 @@ def generate_samples(params):
 
         # Convert specimen/sample/directions to VGP space
         samples_dia = np.apply_along_axis(lambda x: pmag.dia_vgp(x[0], x[1], 0, params.site_lat, params.site_long), axis=1, arr = samples_vgp)[:,:2]  
-        
-        # vgp_lon, vgp_lat = [], [] 
-        # for j in range(len(vgp_dec)):
-        #     lon, lat, _, _ = pmag.dia_vgp(vgp_dec[j], vgp_inc[j], 0, params.site_lat, params.site_lon)
-        #     vgp_lon.append(lon)
-        #     vgp_lat.append(lat)
         
         df_ = pd.DataFrame({'sample_site': i,
                             'vgp_long': samples_dia[:,0],
