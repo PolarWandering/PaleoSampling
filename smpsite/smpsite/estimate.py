@@ -46,10 +46,11 @@ def S2_within_site(resultant_length, n_samples, lat, degrees=True):
     if n_samples == 1:
         return 0.0
     k_wi = (n_samples - 1) / (n_samples - resultant_length)
+    assert k_wi >= 0.0
     return 2 * (180 / np.pi) ** 2 * lat_correction(lat, degrees=degrees) / k_wi 
 
 
-def estimate_pole(df_sample, params, ignore_outliers=False):
+def estimate_pole(df_sample, params, ignore_outliers):
     '''
     Function to estimate the Fisher estimate for the paloemagnetic pole
     Returns:
@@ -62,7 +63,9 @@ def estimate_pole(df_sample, params, ignore_outliers=False):
     # Outliers at the VGP-level: we consider all the directions within each site, and after tranform to VGP, 
     # we can apply Vandamme cutoff
     
-    if ignore_outliers:        
+    assert ignore_outliers in ["True", "False", "vandamme"], "Ignore outlier method is not supported."
+    
+    if ignore_outliers == "True":        
         df = df_sample[df_sample.is_outlier==0]
     else:
         df = df_sample
@@ -89,7 +92,7 @@ def estimate_pole(df_sample, params, ignore_outliers=False):
     df_site["vgp_lat"]  = vgp_lat
     
     # Filter VGPs based on Vandamme method
-    if ignore_outliers == 'vandamme': 
+    if ignore_outliers == "vandamme": 
         df_site, _, _ = pmag.dovandamme(df_site)
 
     # Final fisher mean
