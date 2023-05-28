@@ -1,0 +1,22 @@
+format: jb-book
+root: Main
+
+parts:
+- caption: Analysis
+  chapters:
+    - file: notebooks/Sampling_example.ipynb
+    - file: notebooks/Sampling_comparision.ipynb
+    - file: notebooks/Parallel.ipynb
+- caption: Figures
+  chapters:
+    - file: figures/figure1/Figure1.ipynb
+    - file: figures/figure2/Figure2.ipynb
+    - file: figures/figure3_histogram/Figure3_hist.ipynb
+    - file: figures/figure3_instersection/Figure3_intersection.ipynb
+    - file: figures/figure3_heatmap/Figure3_heatmap.ipynb
+    - file: figures/figure4_boxplot/Figure4_boxplot.ipynb
+
+
+
+
+
