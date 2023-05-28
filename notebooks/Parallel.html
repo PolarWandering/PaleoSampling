@@ -1,0 +1,2998 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Parallelization with Dask &#8212; Quantitative Analysis of Paleomagnetic Sampling Strategies</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/Parallel';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Figure 1: Mean Squared Error as a function of the samples per site and sites" href="../figures/figure1/Figure1.html" />
+    <link rel="prev" title="Comparision of two sampling strategies" href="Sampling_comparision.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../Main.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Quantitative Analysis of Paleomagnetic Sampling Strategies</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../Main.html">
+                    Quantitative Analysis of Paleomagnetic Sampling Strategies
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Analysis</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Sampling_example.html">Example of sampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Sampling_comparision.html">Comparision of two sampling strategies</a></li>
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Parallelization with Dask</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Figures</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../figures/figure1/Figure1.html">Figure 1: Mean Squared Error as a function of the samples per site and sites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../figures/figure2/Figure2.html">Figure 2:  Decay as a function of the number of samples and sites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../figures/figure3_histogram/Figure3_hist.html">Paleomagnetic Sampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../figures/figure3_heatmap/Figure3_heatmap.html">Figure 2: Difference in Performance between different number of samples per site</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../figures/figure4_boxplot/Figure4_boxplot.html">Figure 4: Boxplot</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/PolarWandering/PaleoSampling/HEAD/v2/gh/PolarWandering/PaleoSampling/main?urlpath=tree/notebooks/Parallel.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/Parallel.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Parallelization with Dask</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dask-setup">1. Dask Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#macro-function-definition">2. Macro function definition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameter-space-exploration">3. Parameter space exploration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#figure-1-heatmmap-with-no-outliers">3.1. Figure 1 - Heatmmap with no outliers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#figure-3e-and-3f-intersection-of-errors">3.2. Figure 3e and 3f - Intersection of errors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#figure-2-function-of-the-total-number-of-samples-n">3.3. Figure 2 - Function of the total number of samples <span class="math notranslate nohighlight">\(n\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#figure-2-function-of-the-total-number-of-sites-n">3.4. Figure 2 - Function of the total number of sites <span class="math notranslate nohighlight">\(N\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#figure-3-intersection">Figure 3 - Intersection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#figure-4-boxplot">Figure 4 - Boxplot</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-simulation">4. Run Simulation</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="parallelization-with-dask">
+<h1>Parallelization with Dask<a class="headerlink" href="#parallelization-with-dask" title="Permalink to this heading">#</a></h1>
+<p>This notebook includes a series of experiments to make multiple samples in parallel using Dark.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">ipyparallel</span> <span class="k">as</span> <span class="nn">ipp</span>
+<span class="kn">import</span> <span class="nn">itertools</span>
+<span class="kn">from</span> <span class="nn">distributed</span> <span class="kn">import</span> <span class="n">progress</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">NamedTuple</span>
+
+<span class="kn">import</span> <span class="nn">smpsite</span> <span class="k">as</span> <span class="nn">smp</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="dask-setup">
+<h2>1. Dask Setup<a class="headerlink" href="#dask-setup" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">number_of_clusters</span> <span class="o">=</span> <span class="mi">60</span>
+
+<span class="n">rc</span> <span class="o">=</span> <span class="n">ipp</span><span class="o">.</span><span class="n">Cluster</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">number_of_clusters</span><span class="p">)</span><span class="o">.</span><span class="n">start_and_connect_sync</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dask_client</span> <span class="o">=</span> <span class="n">rc</span><span class="o">.</span><span class="n">become_dask</span><span class="p">()</span>
+<span class="n">dask_client</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+    <div style="width: 24px; height: 24px; background-color: #e1e1e1; border: 3px solid #9D9D9D; border-radius: 5px; position: absolute;"> </div>
+    <div style="margin-left: 48px;">
+        <h3 style="margin-bottom: 0px;">Client</h3>
+        <p style="color: #9D9D9D; margin-bottom: 0px;">Client-21b728d6-fcba-11ed-82dc-d2fa4b15a597</p>
+        <table style="width: 100%; text-align: left;">
+
+        <tr>
+        
+            <td style="text-align: left;"><strong>Connection method:</strong> Direct</td>
+            <td style="text-align: left;"></td>
+        
+        </tr>
+
+        
+            <tr>
+                <td style="text-align: left;">
+                    <strong>Dashboard: </strong> <a href="/user/facusapienza21/ODINN/proxy/8787/status" target="_blank">/user/facusapienza21/ODINN/proxy/8787/status</a>
+                </td>
+                <td style="text-align: left;"></td>
+            </tr>
+        
+
+        </table>
+
+        
+            <details>
+            <summary style="margin-bottom: 20px;"><h3 style="display: inline;">Scheduler Info</h3></summary>
+            <div style="">
+    <div>
+        <div style="width: 24px; height: 24px; background-color: #FFF7E5; border: 3px solid #FF6132; border-radius: 5px; position: absolute;"> </div>
+        <div style="margin-left: 48px;">
+            <h3 style="margin-bottom: 0px;">Scheduler</h3>
+            <p style="color: #9D9D9D; margin-bottom: 0px;">Scheduler-e27d3a3e-8311-4436-ba30-e816174b04cd</p>
+            <table style="width: 100%; text-align: left;">
+                <tr>
+                    <td style="text-align: left;">
+                        <strong>Comm:</strong> tcp://192.168.11.89:39609
+                    </td>
+                    <td style="text-align: left;">
+                        <strong>Workers:</strong> 22
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;">
+                        <strong>Dashboard:</strong> <a href="/user/facusapienza21/ODINN/proxy/8787/status" target="_blank">/user/facusapienza21/ODINN/proxy/8787/status</a>
+                    </td>
+                    <td style="text-align: left;">
+                        <strong>Total threads:</strong> 22
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;">
+                        <strong>Started:</strong> Just now
+                    </td>
+                    <td style="text-align: left;">
+                        <strong>Total memory:</strong> 84.69 GiB
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <details style="margin-left: 48px;">
+        <summary style="margin-bottom: 20px;">
+            <h3 style="display: inline;">Workers</h3>
+        </summary>
+
+        
+        <div style="margin-bottom: 20px;">
+            <div style="width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;"> </div>
+            <div style="margin-left: 48px;">
+            <details>
+                <summary>
+                    <h4 style="margin-bottom: 0px; display: inline;">Worker: tcp://192.168.11.89:32971</h4>
+                </summary>
+                <table style="width: 100%; text-align: left;">
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Comm: </strong> tcp://192.168.11.89:32971
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Total threads: </strong> 1
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Dashboard: </strong> <a href="/user/facusapienza21/ODINN/proxy/34057/status" target="_blank">/user/facusapienza21/ODINN/proxy/34057/status</a>
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Memory: </strong> 3.85 GiB
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Nanny: </strong> None
+                        </td>
+                        <td style="text-align: left;"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: left;">
+                            <strong>Local directory: </strong> /tmp/dask-worker-space/worker-g91icw92
+                        </td>
+                    </tr>
+
+                    
+
+                    
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Tasks executing: </strong> 0
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Tasks in memory: </strong> 0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Tasks ready: </strong> 0
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Tasks in flight: </strong>0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>CPU usage:</strong> 0.0%
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Last seen: </strong> Just now
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Memory usage: </strong> 92.81 MiB
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Spilled bytes: </strong> 0 B
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Read bytes: </strong> 0.0 B
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Write bytes: </strong> 0.0 B
+                        </td>
+                    </tr>
+                    
+
+                </table>
+            </details>
+            </div>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+            <div style="width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;"> </div>
+            <div style="margin-left: 48px;">
+            <details>
+                <summary>
+                    <h4 style="margin-bottom: 0px; display: inline;">Worker: tcp://192.168.11.89:33663</h4>
+                </summary>
+                <table style="width: 100%; text-align: left;">
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Comm: </strong> tcp://192.168.11.89:33663
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Total threads: </strong> 1
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Dashboard: </strong> <a href="/user/facusapienza21/ODINN/proxy/33183/status" target="_blank">/user/facusapienza21/ODINN/proxy/33183/status</a>
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Memory: </strong> 3.85 GiB
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Nanny: </strong> None
+                        </td>
+                        <td style="text-align: left;"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: left;">
+                            <strong>Local directory: </strong> /tmp/dask-worker-space/worker-a0_3aus_
+                        </td>
+                    </tr>
+
+                    
+
+                    
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Tasks executing: </strong> 0
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Tasks in memory: </strong> 0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Tasks ready: </strong> 0
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Tasks in flight: </strong>0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>CPU usage:</strong> 0.0%
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Last seen: </strong> Just now
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Memory usage: </strong> 92.74 MiB
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Spilled bytes: </strong> 0 B
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Read bytes: </strong> 0.0 B
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Write bytes: </strong> 0.0 B
+                        </td>
+                    </tr>
+                    
+
+                </table>
+            </details>
+            </div>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+            <div style="width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;"> </div>
+            <div style="margin-left: 48px;">
+            <details>
+                <summary>
+                    <h4 style="margin-bottom: 0px; display: inline;">Worker: tcp://192.168.11.89:34421</h4>
+                </summary>
+                <table style="width: 100%; text-align: left;">
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Comm: </strong> tcp://192.168.11.89:34421
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Total threads: </strong> 1
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Dashboard: </strong> <a href="/user/facusapienza21/ODINN/proxy/41711/status" target="_blank">/user/facusapienza21/ODINN/proxy/41711/status</a>
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Memory: </strong> 3.85 GiB
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Nanny: </strong> None
+                        </td>
+                        <td style="text-align: left;"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: left;">
+                            <strong>Local directory: </strong> /tmp/dask-worker-space/worker-s3jaagfc
+                        </td>
+                    </tr>
+
+                    
+
+                    
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Tasks executing: </strong> 0
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Tasks in memory: </strong> 0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Tasks ready: </strong> 0
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Tasks in flight: </strong>0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>CPU usage:</strong> 0.0%
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Last seen: </strong> Just now
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Memory usage: </strong> 92.74 MiB
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Spilled bytes: </strong> 0 B
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Read bytes: </strong> 0.0 B
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Write bytes: </strong> 0.0 B
+                        </td>
+                    </tr>
+                    
+
+                </table>
+            </details>
+            </div>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+            <div style="width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;"> </div>
+            <div style="margin-left: 48px;">
+            <details>
+                <summary>
+                    <h4 style="margin-bottom: 0px; display: inline;">Worker: tcp://192.168.11.89:34799</h4>
+                </summary>
+                <table style="width: 100%; text-align: left;">
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Comm: </strong> tcp://192.168.11.89:34799
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Total threads: </strong> 1
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Dashboard: </strong> <a href="/user/facusapienza21/ODINN/proxy/39433/status" target="_blank">/user/facusapienza21/ODINN/proxy/39433/status</a>
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Memory: </strong> 3.85 GiB
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Nanny: </strong> None
+                        </td>
+                        <td style="text-align: left;"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: left;">
+                            <strong>Local directory: </strong> /tmp/dask-worker-space/worker-_9rkw7b7
+                        </td>
+                    </tr>
+
+                    
+
+                    
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Tasks executing: </strong> 0
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Tasks in memory: </strong> 0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Tasks ready: </strong> 0
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Tasks in flight: </strong>0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>CPU usage:</strong> 0.0%
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Last seen: </strong> Just now
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Memory usage: </strong> 93.05 MiB
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Spilled bytes: </strong> 0 B
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Read bytes: </strong> 5.48 MiB
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Write bytes: </strong> 5.48 MiB
+                        </td>
+                    </tr>
+                    
+
+                </table>
+            </details>
+            </div>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+            <div style="width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;"> </div>
+            <div style="margin-left: 48px;">
+            <details>
+                <summary>
+                    <h4 style="margin-bottom: 0px; display: inline;">Worker: tcp://192.168.11.89:34947</h4>
+                </summary>
+                <table style="width: 100%; text-align: left;">
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Comm: </strong> tcp://192.168.11.89:34947
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Total threads: </strong> 1
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Dashboard: </strong> <a href="/user/facusapienza21/ODINN/proxy/42849/status" target="_blank">/user/facusapienza21/ODINN/proxy/42849/status</a>
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Memory: </strong> 3.85 GiB
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Nanny: </strong> None
+                        </td>
+                        <td style="text-align: left;"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: left;">
+                            <strong>Local directory: </strong> /tmp/dask-worker-space/worker-vkp3b4ph
+                        </td>
+                    </tr>
+
+                    
+
+                    
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Tasks executing: </strong> 0
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Tasks in memory: </strong> 0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Tasks ready: </strong> 0
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Tasks in flight: </strong>0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>CPU usage:</strong> 0.0%
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Last seen: </strong> Just now
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Memory usage: </strong> 92.95 MiB
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Spilled bytes: </strong> 0 B
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Read bytes: </strong> 410.79 kiB
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Write bytes: </strong> 410.79 kiB
+                        </td>
+                    </tr>
+                    
+
+                </table>
+            </details>
+            </div>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+            <div style="width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;"> </div>
+            <div style="margin-left: 48px;">
+            <details>
+                <summary>
+                    <h4 style="margin-bottom: 0px; display: inline;">Worker: tcp://192.168.11.89:35151</h4>
+                </summary>
+                <table style="width: 100%; text-align: left;">
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Comm: </strong> tcp://192.168.11.89:35151
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Total threads: </strong> 1
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Dashboard: </strong> <a href="/user/facusapienza21/ODINN/proxy/44453/status" target="_blank">/user/facusapienza21/ODINN/proxy/44453/status</a>
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Memory: </strong> 3.85 GiB
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Nanny: </strong> None
+                        </td>
+                        <td style="text-align: left;"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: left;">
+                            <strong>Local directory: </strong> /tmp/dask-worker-space/worker-akf6mndv
+                        </td>
+                    </tr>
+
+                    
+
+                    
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Tasks executing: </strong> 0
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Tasks in memory: </strong> 0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Tasks ready: </strong> 0
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Tasks in flight: </strong>0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>CPU usage:</strong> 0.0%
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Last seen: </strong> Just now
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Memory usage: </strong> 92.96 MiB
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Spilled bytes: </strong> 0 B
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Read bytes: </strong> 0.0 B
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Write bytes: </strong> 0.0 B
+                        </td>
+                    </tr>
+                    
+
+                </table>
+            </details>
+            </div>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+            <div style="width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;"> </div>
+            <div style="margin-left: 48px;">
+            <details>
+                <summary>
+                    <h4 style="margin-bottom: 0px; display: inline;">Worker: tcp://192.168.11.89:35363</h4>
+                </summary>
+                <table style="width: 100%; text-align: left;">
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Comm: </strong> tcp://192.168.11.89:35363
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Total threads: </strong> 1
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Dashboard: </strong> <a href="/user/facusapienza21/ODINN/proxy/40769/status" target="_blank">/user/facusapienza21/ODINN/proxy/40769/status</a>
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Memory: </strong> 3.85 GiB
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Nanny: </strong> None
+                        </td>
+                        <td style="text-align: left;"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: left;">
+                            <strong>Local directory: </strong> /tmp/dask-worker-space/worker-to11mdf1
+                        </td>
+                    </tr>
+
+                    
+
+                    
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Tasks executing: </strong> 0
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Tasks in memory: </strong> 0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Tasks ready: </strong> 0
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Tasks in flight: </strong>0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>CPU usage:</strong> 0.0%
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Last seen: </strong> Just now
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Memory usage: </strong> 92.86 MiB
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Spilled bytes: </strong> 0 B
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Read bytes: </strong> 0.0 B
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Write bytes: </strong> 0.0 B
+                        </td>
+                    </tr>
+                    
+
+                </table>
+            </details>
+            </div>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+            <div style="width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;"> </div>
+            <div style="margin-left: 48px;">
+            <details>
+                <summary>
+                    <h4 style="margin-bottom: 0px; display: inline;">Worker: tcp://192.168.11.89:35789</h4>
+                </summary>
+                <table style="width: 100%; text-align: left;">
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Comm: </strong> tcp://192.168.11.89:35789
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Total threads: </strong> 1
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Dashboard: </strong> <a href="/user/facusapienza21/ODINN/proxy/41069/status" target="_blank">/user/facusapienza21/ODINN/proxy/41069/status</a>
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Memory: </strong> 3.85 GiB
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Nanny: </strong> None
+                        </td>
+                        <td style="text-align: left;"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: left;">
+                            <strong>Local directory: </strong> /tmp/dask-worker-space/worker-u79ooj2x
+                        </td>
+                    </tr>
+
+                    
+
+                    
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Tasks executing: </strong> 0
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Tasks in memory: </strong> 0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Tasks ready: </strong> 0
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Tasks in flight: </strong>0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>CPU usage:</strong> 0.0%
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Last seen: </strong> Just now
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Memory usage: </strong> 93.09 MiB
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Spilled bytes: </strong> 0 B
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Read bytes: </strong> 0.0 B
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Write bytes: </strong> 0.0 B
+                        </td>
+                    </tr>
+                    
+
+                </table>
+            </details>
+            </div>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+            <div style="width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;"> </div>
+            <div style="margin-left: 48px;">
+            <details>
+                <summary>
+                    <h4 style="margin-bottom: 0px; display: inline;">Worker: tcp://192.168.11.89:36781</h4>
+                </summary>
+                <table style="width: 100%; text-align: left;">
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Comm: </strong> tcp://192.168.11.89:36781
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Total threads: </strong> 1
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Dashboard: </strong> <a href="/user/facusapienza21/ODINN/proxy/34589/status" target="_blank">/user/facusapienza21/ODINN/proxy/34589/status</a>
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Memory: </strong> 3.85 GiB
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Nanny: </strong> None
+                        </td>
+                        <td style="text-align: left;"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: left;">
+                            <strong>Local directory: </strong> /tmp/dask-worker-space/worker-oqcanrne
+                        </td>
+                    </tr>
+
+                    
+
+                    
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Tasks executing: </strong> 0
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Tasks in memory: </strong> 0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Tasks ready: </strong> 0
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Tasks in flight: </strong>0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>CPU usage:</strong> 0.0%
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Last seen: </strong> Just now
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Memory usage: </strong> 92.80 MiB
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Spilled bytes: </strong> 0 B
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Read bytes: </strong> 0.0 B
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Write bytes: </strong> 0.0 B
+                        </td>
+                    </tr>
+                    
+
+                </table>
+            </details>
+            </div>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+            <div style="width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;"> </div>
+            <div style="margin-left: 48px;">
+            <details>
+                <summary>
+                    <h4 style="margin-bottom: 0px; display: inline;">Worker: tcp://192.168.11.89:37179</h4>
+                </summary>
+                <table style="width: 100%; text-align: left;">
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Comm: </strong> tcp://192.168.11.89:37179
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Total threads: </strong> 1
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Dashboard: </strong> <a href="/user/facusapienza21/ODINN/proxy/38027/status" target="_blank">/user/facusapienza21/ODINN/proxy/38027/status</a>
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Memory: </strong> 3.85 GiB
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Nanny: </strong> None
+                        </td>
+                        <td style="text-align: left;"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: left;">
+                            <strong>Local directory: </strong> /tmp/dask-worker-space/worker-xplwa8zq
+                        </td>
+                    </tr>
+
+                    
+
+                    
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Tasks executing: </strong> 0
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Tasks in memory: </strong> 0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Tasks ready: </strong> 0
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Tasks in flight: </strong>0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>CPU usage:</strong> 0.0%
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Last seen: </strong> Just now
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Memory usage: </strong> 92.95 MiB
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Spilled bytes: </strong> 0 B
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Read bytes: </strong> 8.22 MiB
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Write bytes: </strong> 8.22 MiB
+                        </td>
+                    </tr>
+                    
+
+                </table>
+            </details>
+            </div>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+            <div style="width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;"> </div>
+            <div style="margin-left: 48px;">
+            <details>
+                <summary>
+                    <h4 style="margin-bottom: 0px; display: inline;">Worker: tcp://192.168.11.89:38531</h4>
+                </summary>
+                <table style="width: 100%; text-align: left;">
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Comm: </strong> tcp://192.168.11.89:38531
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Total threads: </strong> 1
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Dashboard: </strong> <a href="/user/facusapienza21/ODINN/proxy/35419/status" target="_blank">/user/facusapienza21/ODINN/proxy/35419/status</a>
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Memory: </strong> 3.85 GiB
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Nanny: </strong> None
+                        </td>
+                        <td style="text-align: left;"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: left;">
+                            <strong>Local directory: </strong> /tmp/dask-worker-space/worker-kzp1oqti
+                        </td>
+                    </tr>
+
+                    
+
+                    
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Tasks executing: </strong> 0
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Tasks in memory: </strong> 0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Tasks ready: </strong> 0
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Tasks in flight: </strong>0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>CPU usage:</strong> 0.0%
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Last seen: </strong> Just now
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Memory usage: </strong> 92.75 MiB
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Spilled bytes: </strong> 0 B
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Read bytes: </strong> 14.48 MiB
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Write bytes: </strong> 14.48 MiB
+                        </td>
+                    </tr>
+                    
+
+                </table>
+            </details>
+            </div>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+            <div style="width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;"> </div>
+            <div style="margin-left: 48px;">
+            <details>
+                <summary>
+                    <h4 style="margin-bottom: 0px; display: inline;">Worker: tcp://192.168.11.89:39371</h4>
+                </summary>
+                <table style="width: 100%; text-align: left;">
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Comm: </strong> tcp://192.168.11.89:39371
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Total threads: </strong> 1
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Dashboard: </strong> <a href="/user/facusapienza21/ODINN/proxy/35855/status" target="_blank">/user/facusapienza21/ODINN/proxy/35855/status</a>
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Memory: </strong> 3.85 GiB
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Nanny: </strong> None
+                        </td>
+                        <td style="text-align: left;"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: left;">
+                            <strong>Local directory: </strong> /tmp/dask-worker-space/worker-9hjdj4e8
+                        </td>
+                    </tr>
+
+                    
+
+                    
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Tasks executing: </strong> 0
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Tasks in memory: </strong> 0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Tasks ready: </strong> 0
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Tasks in flight: </strong>0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>CPU usage:</strong> 0.0%
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Last seen: </strong> Just now
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Memory usage: </strong> 93.03 MiB
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Spilled bytes: </strong> 0 B
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Read bytes: </strong> 0.0 B
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Write bytes: </strong> 0.0 B
+                        </td>
+                    </tr>
+                    
+
+                </table>
+            </details>
+            </div>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+            <div style="width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;"> </div>
+            <div style="margin-left: 48px;">
+            <details>
+                <summary>
+                    <h4 style="margin-bottom: 0px; display: inline;">Worker: tcp://192.168.11.89:40345</h4>
+                </summary>
+                <table style="width: 100%; text-align: left;">
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Comm: </strong> tcp://192.168.11.89:40345
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Total threads: </strong> 1
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Dashboard: </strong> <a href="/user/facusapienza21/ODINN/proxy/33831/status" target="_blank">/user/facusapienza21/ODINN/proxy/33831/status</a>
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Memory: </strong> 3.85 GiB
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Nanny: </strong> None
+                        </td>
+                        <td style="text-align: left;"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: left;">
+                            <strong>Local directory: </strong> /tmp/dask-worker-space/worker-oggwcryh
+                        </td>
+                    </tr>
+
+                    
+
+                    
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Tasks executing: </strong> 0
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Tasks in memory: </strong> 0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Tasks ready: </strong> 0
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Tasks in flight: </strong>0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>CPU usage:</strong> 0.0%
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Last seen: </strong> Just now
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Memory usage: </strong> 92.89 MiB
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Spilled bytes: </strong> 0 B
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Read bytes: </strong> 0.0 B
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Write bytes: </strong> 0.0 B
+                        </td>
+                    </tr>
+                    
+
+                </table>
+            </details>
+            </div>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+            <div style="width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;"> </div>
+            <div style="margin-left: 48px;">
+            <details>
+                <summary>
+                    <h4 style="margin-bottom: 0px; display: inline;">Worker: tcp://192.168.11.89:41191</h4>
+                </summary>
+                <table style="width: 100%; text-align: left;">
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Comm: </strong> tcp://192.168.11.89:41191
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Total threads: </strong> 1
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Dashboard: </strong> <a href="/user/facusapienza21/ODINN/proxy/38937/status" target="_blank">/user/facusapienza21/ODINN/proxy/38937/status</a>
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Memory: </strong> 3.85 GiB
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Nanny: </strong> None
+                        </td>
+                        <td style="text-align: left;"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: left;">
+                            <strong>Local directory: </strong> /tmp/dask-worker-space/worker-npbnb306
+                        </td>
+                    </tr>
+
+                    
+
+                    
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Tasks executing: </strong> 0
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Tasks in memory: </strong> 0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Tasks ready: </strong> 0
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Tasks in flight: </strong>0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>CPU usage:</strong> 0.0%
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Last seen: </strong> Just now
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Memory usage: </strong> 93.01 MiB
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Spilled bytes: </strong> 0 B
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Read bytes: </strong> 7.60 MiB
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Write bytes: </strong> 7.60 MiB
+                        </td>
+                    </tr>
+                    
+
+                </table>
+            </details>
+            </div>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+            <div style="width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;"> </div>
+            <div style="margin-left: 48px;">
+            <details>
+                <summary>
+                    <h4 style="margin-bottom: 0px; display: inline;">Worker: tcp://192.168.11.89:43191</h4>
+                </summary>
+                <table style="width: 100%; text-align: left;">
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Comm: </strong> tcp://192.168.11.89:43191
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Total threads: </strong> 1
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Dashboard: </strong> <a href="/user/facusapienza21/ODINN/proxy/44261/status" target="_blank">/user/facusapienza21/ODINN/proxy/44261/status</a>
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Memory: </strong> 3.85 GiB
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Nanny: </strong> None
+                        </td>
+                        <td style="text-align: left;"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: left;">
+                            <strong>Local directory: </strong> /tmp/dask-worker-space/worker-baetmu0n
+                        </td>
+                    </tr>
+
+                    
+
+                    
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Tasks executing: </strong> 0
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Tasks in memory: </strong> 0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Tasks ready: </strong> 0
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Tasks in flight: </strong>0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>CPU usage:</strong> 0.0%
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Last seen: </strong> Just now
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Memory usage: </strong> 93.04 MiB
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Spilled bytes: </strong> 0 B
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Read bytes: </strong> 6.72 MiB
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Write bytes: </strong> 6.72 MiB
+                        </td>
+                    </tr>
+                    
+
+                </table>
+            </details>
+            </div>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+            <div style="width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;"> </div>
+            <div style="margin-left: 48px;">
+            <details>
+                <summary>
+                    <h4 style="margin-bottom: 0px; display: inline;">Worker: tcp://192.168.11.89:44271</h4>
+                </summary>
+                <table style="width: 100%; text-align: left;">
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Comm: </strong> tcp://192.168.11.89:44271
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Total threads: </strong> 1
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Dashboard: </strong> <a href="/user/facusapienza21/ODINN/proxy/38119/status" target="_blank">/user/facusapienza21/ODINN/proxy/38119/status</a>
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Memory: </strong> 3.85 GiB
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Nanny: </strong> None
+                        </td>
+                        <td style="text-align: left;"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: left;">
+                            <strong>Local directory: </strong> /tmp/dask-worker-space/worker-cquxu82j
+                        </td>
+                    </tr>
+
+                    
+
+                    
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Tasks executing: </strong> 0
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Tasks in memory: </strong> 0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Tasks ready: </strong> 0
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Tasks in flight: </strong>0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>CPU usage:</strong> 0.0%
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Last seen: </strong> Just now
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Memory usage: </strong> 92.93 MiB
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Spilled bytes: </strong> 0 B
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Read bytes: </strong> 0.0 B
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Write bytes: </strong> 0.0 B
+                        </td>
+                    </tr>
+                    
+
+                </table>
+            </details>
+            </div>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+            <div style="width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;"> </div>
+            <div style="margin-left: 48px;">
+            <details>
+                <summary>
+                    <h4 style="margin-bottom: 0px; display: inline;">Worker: tcp://192.168.11.89:45027</h4>
+                </summary>
+                <table style="width: 100%; text-align: left;">
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Comm: </strong> tcp://192.168.11.89:45027
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Total threads: </strong> 1
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Dashboard: </strong> <a href="/user/facusapienza21/ODINN/proxy/40747/status" target="_blank">/user/facusapienza21/ODINN/proxy/40747/status</a>
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Memory: </strong> 3.85 GiB
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Nanny: </strong> None
+                        </td>
+                        <td style="text-align: left;"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: left;">
+                            <strong>Local directory: </strong> /tmp/dask-worker-space/worker-mkmd29e0
+                        </td>
+                    </tr>
+
+                    
+
+                    
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Tasks executing: </strong> 0
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Tasks in memory: </strong> 0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Tasks ready: </strong> 0
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Tasks in flight: </strong>0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>CPU usage:</strong> 0.0%
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Last seen: </strong> Just now
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Memory usage: </strong> 93.07 MiB
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Spilled bytes: </strong> 0 B
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Read bytes: </strong> 0.0 B
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Write bytes: </strong> 0.0 B
+                        </td>
+                    </tr>
+                    
+
+                </table>
+            </details>
+            </div>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+            <div style="width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;"> </div>
+            <div style="margin-left: 48px;">
+            <details>
+                <summary>
+                    <h4 style="margin-bottom: 0px; display: inline;">Worker: tcp://192.168.11.89:45439</h4>
+                </summary>
+                <table style="width: 100%; text-align: left;">
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Comm: </strong> tcp://192.168.11.89:45439
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Total threads: </strong> 1
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Dashboard: </strong> <a href="/user/facusapienza21/ODINN/proxy/33641/status" target="_blank">/user/facusapienza21/ODINN/proxy/33641/status</a>
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Memory: </strong> 3.85 GiB
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Nanny: </strong> None
+                        </td>
+                        <td style="text-align: left;"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: left;">
+                            <strong>Local directory: </strong> /tmp/dask-worker-space/worker-tkhsi69v
+                        </td>
+                    </tr>
+
+                    
+
+                    
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Tasks executing: </strong> 0
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Tasks in memory: </strong> 0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Tasks ready: </strong> 0
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Tasks in flight: </strong>0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>CPU usage:</strong> 0.0%
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Last seen: </strong> Just now
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Memory usage: </strong> 93.10 MiB
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Spilled bytes: </strong> 0 B
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Read bytes: </strong> 2.83 MiB
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Write bytes: </strong> 2.83 MiB
+                        </td>
+                    </tr>
+                    
+
+                </table>
+            </details>
+            </div>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+            <div style="width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;"> </div>
+            <div style="margin-left: 48px;">
+            <details>
+                <summary>
+                    <h4 style="margin-bottom: 0px; display: inline;">Worker: tcp://192.168.11.89:45539</h4>
+                </summary>
+                <table style="width: 100%; text-align: left;">
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Comm: </strong> tcp://192.168.11.89:45539
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Total threads: </strong> 1
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Dashboard: </strong> <a href="/user/facusapienza21/ODINN/proxy/36955/status" target="_blank">/user/facusapienza21/ODINN/proxy/36955/status</a>
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Memory: </strong> 3.85 GiB
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Nanny: </strong> None
+                        </td>
+                        <td style="text-align: left;"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: left;">
+                            <strong>Local directory: </strong> /tmp/dask-worker-space/worker-vm8i06mt
+                        </td>
+                    </tr>
+
+                    
+
+                    
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Tasks executing: </strong> 0
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Tasks in memory: </strong> 0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Tasks ready: </strong> 0
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Tasks in flight: </strong>0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>CPU usage:</strong> 0.0%
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Last seen: </strong> Just now
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Memory usage: </strong> 92.93 MiB
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Spilled bytes: </strong> 0 B
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Read bytes: </strong> 500.72 kiB
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Write bytes: </strong> 500.72 kiB
+                        </td>
+                    </tr>
+                    
+
+                </table>
+            </details>
+            </div>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+            <div style="width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;"> </div>
+            <div style="margin-left: 48px;">
+            <details>
+                <summary>
+                    <h4 style="margin-bottom: 0px; display: inline;">Worker: tcp://192.168.11.89:45855</h4>
+                </summary>
+                <table style="width: 100%; text-align: left;">
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Comm: </strong> tcp://192.168.11.89:45855
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Total threads: </strong> 1
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Dashboard: </strong> <a href="/user/facusapienza21/ODINN/proxy/45425/status" target="_blank">/user/facusapienza21/ODINN/proxy/45425/status</a>
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Memory: </strong> 3.85 GiB
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Nanny: </strong> None
+                        </td>
+                        <td style="text-align: left;"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: left;">
+                            <strong>Local directory: </strong> /tmp/dask-worker-space/worker-oc0mp1rb
+                        </td>
+                    </tr>
+
+                    
+
+                    
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Tasks executing: </strong> 0
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Tasks in memory: </strong> 0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Tasks ready: </strong> 0
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Tasks in flight: </strong>0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>CPU usage:</strong> 0.0%
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Last seen: </strong> Just now
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Memory usage: </strong> 92.96 MiB
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Spilled bytes: </strong> 0 B
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Read bytes: </strong> 0.0 B
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Write bytes: </strong> 0.0 B
+                        </td>
+                    </tr>
+                    
+
+                </table>
+            </details>
+            </div>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+            <div style="width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;"> </div>
+            <div style="margin-left: 48px;">
+            <details>
+                <summary>
+                    <h4 style="margin-bottom: 0px; display: inline;">Worker: tcp://192.168.11.89:46187</h4>
+                </summary>
+                <table style="width: 100%; text-align: left;">
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Comm: </strong> tcp://192.168.11.89:46187
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Total threads: </strong> 1
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Dashboard: </strong> <a href="/user/facusapienza21/ODINN/proxy/42057/status" target="_blank">/user/facusapienza21/ODINN/proxy/42057/status</a>
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Memory: </strong> 3.85 GiB
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Nanny: </strong> None
+                        </td>
+                        <td style="text-align: left;"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: left;">
+                            <strong>Local directory: </strong> /tmp/dask-worker-space/worker-85jmo9it
+                        </td>
+                    </tr>
+
+                    
+
+                    
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Tasks executing: </strong> 0
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Tasks in memory: </strong> 0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Tasks ready: </strong> 0
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Tasks in flight: </strong>0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>CPU usage:</strong> 0.0%
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Last seen: </strong> Just now
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Memory usage: </strong> 92.94 MiB
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Spilled bytes: </strong> 0 B
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Read bytes: </strong> 0.0 B
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Write bytes: </strong> 0.0 B
+                        </td>
+                    </tr>
+                    
+
+                </table>
+            </details>
+            </div>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+            <div style="width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;"> </div>
+            <div style="margin-left: 48px;">
+            <details>
+                <summary>
+                    <h4 style="margin-bottom: 0px; display: inline;">Worker: tcp://192.168.11.89:46831</h4>
+                </summary>
+                <table style="width: 100%; text-align: left;">
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Comm: </strong> tcp://192.168.11.89:46831
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Total threads: </strong> 1
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Dashboard: </strong> <a href="/user/facusapienza21/ODINN/proxy/40015/status" target="_blank">/user/facusapienza21/ODINN/proxy/40015/status</a>
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Memory: </strong> 3.85 GiB
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Nanny: </strong> None
+                        </td>
+                        <td style="text-align: left;"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: left;">
+                            <strong>Local directory: </strong> /tmp/dask-worker-space/worker-npna3w1f
+                        </td>
+                    </tr>
+
+                    
+
+                    
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Tasks executing: </strong> 0
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Tasks in memory: </strong> 0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Tasks ready: </strong> 0
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Tasks in flight: </strong>0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>CPU usage:</strong> 0.0%
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Last seen: </strong> Just now
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Memory usage: </strong> 93.04 MiB
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Spilled bytes: </strong> 0 B
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Read bytes: </strong> 0.0 B
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Write bytes: </strong> 0.0 B
+                        </td>
+                    </tr>
+                    
+
+                </table>
+            </details>
+            </div>
+        </div>
+        
+
+    </details>
+</div>
+            </details>
+        
+
+    </div>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check to see if the threads are ready</span>
+<span class="n">dview</span> <span class="o">=</span> <span class="n">rc</span><span class="p">[:]</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">dview</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>60
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="macro-function-definition">
+<h2>2. Macro function definition<a class="headerlink" href="#macro-function-definition" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ipp_simulate_estimations</span><span class="p">(</span><span class="n">N</span><span class="p">,</span>
+                             <span class="n">n0</span><span class="p">,</span>
+                             <span class="n">kappa_within_site</span><span class="p">,</span> 
+                             <span class="n">site_lat</span><span class="p">,</span>
+                             <span class="n">site_long</span><span class="p">,</span>
+                             <span class="n">outlier_rate</span><span class="p">,</span> 
+                             <span class="n">secular_method</span><span class="p">,</span>
+                             <span class="n">kappa_secular</span><span class="p">,</span> 
+                             <span class="n">ignore_outliers</span><span class="p">,</span> 
+                             <span class="n">seed</span><span class="p">,</span> 
+                             <span class="n">n_sim</span><span class="p">):</span>
+    
+    <span class="k">class</span> <span class="nc">Params</span><span class="p">(</span><span class="n">NamedTuple</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Macro to encapsulate all the parameters in the sampling model.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Number of sites</span>
+        <span class="n">N</span> <span class="p">:</span> <span class="nb">int</span>
+        <span class="c1"># Number of samples per site</span>
+        <span class="n">n0</span> <span class="p">:</span> <span class="nb">int</span>
+
+        <span class="c1"># Concentration parameter within site</span>
+        <span class="n">kappa_within_site</span> <span class="p">:</span> <span class="nb">float</span>    
+
+        <span class="c1"># Latitude and longitude of site</span>
+        <span class="n">site_lat</span>  <span class="p">:</span> <span class="nb">float</span> 
+        <span class="n">site_long</span> <span class="p">:</span> <span class="nb">float</span>
+
+        <span class="c1"># Proportion of outliers to be sampled from uniform distribution</span>
+        <span class="n">outlier_rate</span> <span class="p">:</span> <span class="nb">float</span>
+
+        <span class="c1"># Method to sample secular variation. Options are (&quot;tk03&quot;, &quot;G&quot;, &quot;Fisher&quot;)</span>
+        <span class="n">secular_method</span> <span class="p">:</span> <span class="nb">str</span> 
+        <span class="n">kappa_secular</span> <span class="p">:</span> <span class="nb">float</span>    <span class="c1"># Just needed for Fisher sampler</span>
+        
+        
+    <span class="n">params</span> <span class="o">=</span> <span class="n">Params</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="n">N</span><span class="p">,</span>
+                    <span class="n">n0</span><span class="o">=</span><span class="n">n0</span><span class="p">,</span> 
+                    <span class="n">kappa_within_site</span><span class="o">=</span><span class="n">kappa_within_site</span><span class="p">,</span>
+                    <span class="n">site_lat</span><span class="o">=</span><span class="n">site_lat</span><span class="p">,</span> 
+                    <span class="n">site_long</span><span class="o">=</span><span class="n">site_long</span><span class="p">,</span> 
+                    <span class="n">outlier_rate</span><span class="o">=</span><span class="n">outlier_rate</span><span class="p">,</span> 
+                    <span class="n">secular_method</span><span class="o">=</span><span class="n">secular_method</span><span class="p">,</span>
+                    <span class="n">kappa_secular</span><span class="o">=</span><span class="n">kappa_secular</span><span class="p">)</span>
+    
+    
+    <span class="c1"># Create all samples</span>
+    <span class="n">df_tot</span> <span class="o">=</span> <span class="n">smp</span><span class="o">.</span><span class="n">simulate_estimations</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> 
+                                      <span class="n">n_iters</span><span class="o">=</span><span class="n">n_sim</span><span class="p">,</span>
+                                      <span class="n">ignore_outliers</span><span class="o">=</span><span class="n">ignore_outliers</span><span class="p">,</span> 
+                                      <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
+    
+    <span class="n">simulation_hash</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="n">n0</span><span class="p">,</span> <span class="n">kappa_within_site</span><span class="p">,</span> <span class="n">site_lat</span><span class="p">,</span> <span class="n">site_long</span><span class="p">,</span> <span class="n">outlier_rate</span><span class="p">,</span> <span class="n">secular_method</span><span class="p">,</span> <span class="n">kappa_secular</span><span class="p">))</span>
+    <span class="n">df_tot</span><span class="p">[</span><span class="s2">&quot;hash&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">simulation_hash</span>
+    
+    <span class="k">return</span> <span class="n">df_tot</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="parameter-space-exploration">
+<h2>3. Parameter space exploration<a class="headerlink" href="#parameter-space-exploration" title="Permalink to this heading">#</a></h2>
+<section id="figure-1-heatmmap-with-no-outliers">
+<h3>3.1. Figure 1 - Heatmmap with no outliers<a class="headerlink" href="#figure-1-heatmmap-with-no-outliers" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">min_n</span><span class="p">,</span> <span class="n">max_n</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">300</span>
+<span class="n">n_simulations</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">N_max</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">n0_max</span> <span class="o">=</span> <span class="mi">20</span>
+
+<span class="n">params_iter</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N_max</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+               <span class="s1">&#39;n0&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n0_max</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> 
+               <span class="s1">&#39;kappa_within_site&#39;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+               <span class="s1">&#39;site_lat&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">30.0</span><span class="p">],</span>
+               <span class="s1">&#39;site_long&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">],</span> 
+               <span class="s1">&#39;outlier_rate&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">],</span>
+               <span class="s1">&#39;secular_method&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;G&quot;</span><span class="p">],</span> 
+               <span class="s1">&#39;kappa_secular&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">],</span>
+               <span class="s1">&#39;ignore_outliers&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;False&quot;</span><span class="p">]}</span>
+
+<span class="n">output_file_name</span> <span class="o">=</span> <span class="s2">&quot;fig1a_bis_</span><span class="si">{}</span><span class="s2">sim&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n_simulations</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">params_iter_mesh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">params_iter</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">params_iter</span><span class="o">.</span><span class="n">keys</span><span class="p">()])</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">params_iter</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+    <span class="n">params_iter</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">params_iter_mesh</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    
+<span class="n">all_n_tot</span> <span class="o">=</span> <span class="n">params_iter</span><span class="p">[</span><span class="s1">&#39;N&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">params_iter</span><span class="p">[</span><span class="s1">&#39;n0&#39;</span><span class="p">]</span>
+<span class="n">valid_index</span> <span class="o">=</span> <span class="p">(</span><span class="n">min_n</span> <span class="o">&lt;=</span> <span class="n">all_n_tot</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">all_n_tot</span> <span class="o">&lt;=</span> <span class="n">max_n</span><span class="p">)</span> 
+
+<span class="n">n_tasks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">valid_index</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total number of simulations: &quot;</span><span class="p">,</span> <span class="n">n_tasks</span><span class="p">)</span>
+
+<span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_tasks</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">params_iter</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="n">params_iter</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">params_iter</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">valid_index</span><span class="p">]</span>
+    <span class="c1"># Shuffle</span>
+    <span class="n">params_iter</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">params_iter</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">indices</span><span class="p">]</span>
+
+<span class="n">params_iter</span><span class="p">[</span><span class="s2">&quot;seed&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="mi">32</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_tasks</span><span class="p">)</span>
+<span class="n">params_iter</span><span class="p">[</span><span class="s2">&quot;n_sim&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">n_simulations</span><span class="p">,</span> <span class="n">n_tasks</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total number of simulations:  824
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="figure-3e-and-3f-intersection-of-errors">
+<h3>3.2. Figure 3e and 3f - Intersection of errors<a class="headerlink" href="#figure-3e-and-3f-intersection-of-errors" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">min_n</span><span class="p">,</span> <span class="n">max_n</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span>
+
+<span class="n">n_simulations</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="n">params_iter</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span>
+               <span class="s1">&#39;n0&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> 
+               <span class="s1">&#39;kappa_within_site&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+               <span class="s1">&#39;site_lat&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">81</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+               <span class="s1">&#39;site_long&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">],</span> 
+               <span class="s1">&#39;outlier_rate&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.30</span><span class="p">,</span> <span class="mf">0.70</span><span class="p">,</span> <span class="mf">.04</span><span class="p">),</span>
+               <span class="s1">&#39;secular_method&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;G&quot;</span><span class="p">],</span> 
+               <span class="s1">&#39;kappa_secular&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">],</span>
+               <span class="s1">&#39;ignore_outliers&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">None</span><span class="p">]}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">params_iter_mesh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">params_iter</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">params_iter</span><span class="o">.</span><span class="n">keys</span><span class="p">()])</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">params_iter</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+    <span class="n">params_iter</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">params_iter_mesh</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    
+<span class="n">all_n_tot</span> <span class="o">=</span> <span class="n">params_iter</span><span class="p">[</span><span class="s1">&#39;N&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">params_iter</span><span class="p">[</span><span class="s1">&#39;n0&#39;</span><span class="p">]</span>
+<span class="n">valid_index</span> <span class="o">=</span> <span class="p">(</span><span class="n">min_n</span> <span class="o">&lt;=</span> <span class="n">all_n_tot</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">all_n_tot</span> <span class="o">&lt;=</span> <span class="n">max_n</span><span class="p">)</span>
+
+<span class="n">n_tasks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">valid_index</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total number of simulations: &quot;</span><span class="p">,</span> <span class="n">n_tasks</span><span class="p">)</span>
+
+<span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_tasks</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">params_iter</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="n">params_iter</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">params_iter</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">valid_index</span><span class="p">]</span>
+    <span class="c1"># Shuffle</span>
+    <span class="n">params_iter</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">params_iter</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">indices</span><span class="p">]</span>
+
+<span class="n">params_iter</span><span class="p">[</span><span class="s2">&quot;seed&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="mi">32</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_tasks</span><span class="p">)</span>
+
+<span class="n">params_iter</span><span class="p">[</span><span class="s1">&#39;ignore_outliers&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">params_iter</span><span class="p">[</span><span class="s1">&#39;n0&#39;</span><span class="p">])</span> <span class="o">==</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;True&quot;</span><span class="p">,</span> <span class="s2">&quot;vandamme&quot;</span><span class="p">)</span>
+<span class="n">params_iter</span><span class="p">[</span><span class="s2">&quot;n_sim&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">n_simulations</span><span class="p">,</span> <span class="n">n_tasks</span><span class="p">)</span>
+
+<span class="n">output_file_name</span> <span class="o">=</span> <span class="s2">&quot;fig3e_</span><span class="si">{}</span><span class="s2">sim&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n_simulations</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total number of simulations:  1800
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="figure-2-function-of-the-total-number-of-samples-n">
+<h3>3.3. Figure 2 - Function of the total number of samples <span class="math notranslate nohighlight">\(n\)</span><a class="headerlink" href="#figure-2-function-of-the-total-number-of-samples-n" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">min_n</span><span class="p">,</span> <span class="n">max_n</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">300</span>
+
+<span class="n">n_simulations</span> <span class="o">=</span> <span class="mi">2000</span>
+
+<span class="n">params_iter</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">min_n</span><span class="p">,</span> <span class="n">max_n</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+               <span class="s1">&#39;n0&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> 
+               <span class="s1">&#39;kappa_within_site&#39;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+               <span class="s1">&#39;site_lat&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">30.0</span><span class="p">],</span>
+               <span class="s1">&#39;site_long&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">],</span> 
+               <span class="s1">&#39;outlier_rate&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">],</span>
+               <span class="s1">&#39;secular_method&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;G&quot;</span><span class="p">],</span> 
+               <span class="s1">&#39;kappa_secular&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">],</span>
+               <span class="s1">&#39;ignore_outliers&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;False&quot;</span><span class="p">]}</span>
+
+<span class="n">output_file_name</span> <span class="o">=</span> <span class="s2">&quot;fig2ab_</span><span class="si">{}</span><span class="s2">sim&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n_simulations</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">params_iter_mesh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">params_iter</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">params_iter</span><span class="o">.</span><span class="n">keys</span><span class="p">()])</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">params_iter</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+    <span class="n">params_iter</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">params_iter_mesh</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    
+<span class="n">all_n_tot</span> <span class="o">=</span> <span class="n">params_iter</span><span class="p">[</span><span class="s1">&#39;N&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">params_iter</span><span class="p">[</span><span class="s1">&#39;n0&#39;</span><span class="p">]</span>
+<span class="n">valid_index</span> <span class="o">=</span> <span class="p">(</span><span class="n">min_n</span> <span class="o">&lt;=</span> <span class="n">all_n_tot</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">all_n_tot</span> <span class="o">&lt;=</span> <span class="n">max_n</span><span class="p">)</span> <span class="c1">#&amp; (all_n_tot % 5 == 0)</span>
+
+<span class="n">n_tasks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">valid_index</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total number of simulations: &quot;</span><span class="p">,</span> <span class="n">n_tasks</span><span class="p">)</span>
+
+<span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_tasks</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">params_iter</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="n">params_iter</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">params_iter</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">valid_index</span><span class="p">]</span>
+    <span class="c1"># Shuffle</span>
+    <span class="n">params_iter</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">params_iter</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">indices</span><span class="p">]</span>
+
+<span class="n">params_iter</span><span class="p">[</span><span class="s2">&quot;seed&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="mi">32</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_tasks</span><span class="p">)</span>
+<span class="n">params_iter</span><span class="p">[</span><span class="s2">&quot;n_sim&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">n_simulations</span><span class="p">,</span> <span class="n">n_tasks</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total number of simulations:  776
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="figure-2-function-of-the-total-number-of-sites-n">
+<h3>3.4. Figure 2 - Function of the total number of sites <span class="math notranslate nohighlight">\(N\)</span><a class="headerlink" href="#figure-2-function-of-the-total-number-of-sites-n" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">min_n</span><span class="p">,</span> <span class="n">max_n</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3000</span>
+
+<span class="n">n_simulations</span> <span class="o">=</span> <span class="mi">2000</span>
+
+<span class="n">params_iter</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+               <span class="s1">&#39;n0&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> 
+               <span class="s1">&#39;kappa_within_site&#39;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+               <span class="s1">&#39;site_lat&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">30.0</span><span class="p">],</span>
+               <span class="s1">&#39;site_long&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">],</span> 
+               <span class="s1">&#39;outlier_rate&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">],</span>
+               <span class="s1">&#39;secular_method&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;G&quot;</span><span class="p">],</span> 
+               <span class="s1">&#39;kappa_secular&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">],</span>
+               <span class="s1">&#39;ignore_outliers&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;False&quot;</span><span class="p">]}</span>
+
+<span class="n">output_file_name</span> <span class="o">=</span> <span class="s2">&quot;fig2cd_</span><span class="si">{}</span><span class="s2">sim&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n_simulations</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">params_iter_mesh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">params_iter</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">params_iter</span><span class="o">.</span><span class="n">keys</span><span class="p">()])</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">params_iter</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+    <span class="n">params_iter</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">params_iter_mesh</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    
+<span class="n">all_n_tot</span> <span class="o">=</span> <span class="n">params_iter</span><span class="p">[</span><span class="s1">&#39;N&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">params_iter</span><span class="p">[</span><span class="s1">&#39;n0&#39;</span><span class="p">]</span>
+<span class="n">valid_index</span> <span class="o">=</span> <span class="p">(</span><span class="n">min_n</span> <span class="o">&lt;=</span> <span class="n">all_n_tot</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">all_n_tot</span> <span class="o">&lt;=</span> <span class="n">max_n</span><span class="p">)</span> <span class="c1">#&amp; (all_n_tot % 5 == 0)</span>
+
+<span class="n">n_tasks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">valid_index</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total number of simulations: &quot;</span><span class="p">,</span> <span class="n">n_tasks</span><span class="p">)</span>
+
+<span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_tasks</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">params_iter</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="n">params_iter</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">params_iter</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">valid_index</span><span class="p">]</span>
+    <span class="c1"># Shuffle</span>
+    <span class="n">params_iter</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">params_iter</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">indices</span><span class="p">]</span>
+
+<span class="n">params_iter</span><span class="p">[</span><span class="s2">&quot;seed&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="mi">32</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_tasks</span><span class="p">)</span>
+<span class="n">params_iter</span><span class="p">[</span><span class="s2">&quot;n_sim&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">n_simulations</span><span class="p">,</span> <span class="n">n_tasks</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total number of simulations:  357
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="figure-3-intersection">
+<h3>Figure 3 - Intersection<a class="headerlink" href="#figure-3-intersection" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">min_n</span><span class="p">,</span> <span class="n">max_n</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span>
+<span class="n">n_simulations</span> <span class="o">=</span> <span class="mi">5000</span>
+
+<span class="n">params_iter</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span>
+               <span class="s1">&#39;n0&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> 
+               <span class="s1">&#39;kappa_within_site&#39;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+               <span class="s1">&#39;site_lat&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">30.0</span><span class="p">],</span>
+               <span class="s1">&#39;site_long&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">],</span> 
+               <span class="s1">&#39;outlier_rate&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.61</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">),</span>
+               <span class="s1">&#39;secular_method&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;G&quot;</span><span class="p">],</span> 
+               <span class="s1">&#39;kappa_secular&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">],</span>
+               <span class="s1">&#39;ignore_outliers&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;True&quot;</span><span class="p">,</span> <span class="s2">&quot;False&quot;</span><span class="p">,</span> <span class="s2">&quot;vandamme&quot;</span><span class="p">]}</span>
+
+<span class="n">output_file_name</span> <span class="o">=</span> <span class="s2">&quot;fig3c_</span><span class="si">{}</span><span class="s2">sim&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n_simulations</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">params_iter_mesh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">params_iter</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">params_iter</span><span class="o">.</span><span class="n">keys</span><span class="p">()])</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">params_iter</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+    <span class="n">params_iter</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">params_iter_mesh</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    
+<span class="n">all_n_tot</span> <span class="o">=</span> <span class="n">params_iter</span><span class="p">[</span><span class="s1">&#39;N&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">params_iter</span><span class="p">[</span><span class="s1">&#39;n0&#39;</span><span class="p">]</span>
+<span class="n">valid_index</span> <span class="o">=</span> <span class="p">(</span><span class="n">min_n</span> <span class="o">&lt;=</span> <span class="n">all_n_tot</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">all_n_tot</span> <span class="o">&lt;=</span> <span class="n">max_n</span><span class="p">)</span>
+
+<span class="n">n_tasks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">valid_index</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total number of simulations: &quot;</span><span class="p">,</span> <span class="n">n_tasks</span><span class="p">)</span>
+
+<span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_tasks</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">params_iter</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="n">params_iter</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">params_iter</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">valid_index</span><span class="p">]</span>
+    <span class="c1"># Shuffle</span>
+    <span class="n">params_iter</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">params_iter</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">indices</span><span class="p">]</span>
+
+<span class="c1"># params_iter[&quot;ignore_outliers&quot;] = params_iter[&quot;n0&quot;] == 5</span>
+
+<span class="n">params_iter</span><span class="p">[</span><span class="s2">&quot;seed&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="mi">32</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_tasks</span><span class="p">)</span>
+<span class="n">params_iter</span><span class="p">[</span><span class="s2">&quot;n_sim&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">n_simulations</span><span class="p">,</span> <span class="n">n_tasks</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total number of simulations:  186
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="figure-4-boxplot">
+<h3>Figure 4 - Boxplot<a class="headerlink" href="#figure-4-boxplot" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">min_n</span><span class="p">,</span> <span class="n">max_n</span> <span class="o">=</span> <span class="mi">96</span><span class="p">,</span> <span class="mi">104</span>
+<span class="n">n_simulations</span> <span class="o">=</span> <span class="mi">5000</span>
+
+<span class="n">params_iter</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;N&#39;</span><span class="p">:</span>  <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">14</span><span class="p">],</span>
+               <span class="s1">&#39;n0&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span>   <span class="mi">2</span><span class="p">,</span>  <span class="mi">3</span><span class="p">,</span>  <span class="mi">4</span><span class="p">,</span>  <span class="mi">5</span><span class="p">,</span>  <span class="mi">6</span><span class="p">,</span>  <span class="mi">7</span><span class="p">],</span> 
+               <span class="s1">&#39;kappa_within_site&#39;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+               <span class="s1">&#39;site_lat&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">30.0</span><span class="p">],</span>
+               <span class="s1">&#39;site_long&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">],</span> 
+               <span class="s1">&#39;outlier_rate&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">,</span> <span class="mf">0.20</span><span class="p">,</span> <span class="mf">0.40</span><span class="p">,</span> <span class="mf">0.60</span><span class="p">],</span> <span class="c1"># np.arange(0, 0.61, 0.05),  # Just select a few outliers values for the plot. </span>
+               <span class="s1">&#39;secular_method&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;G&quot;</span><span class="p">],</span> 
+               <span class="s1">&#39;kappa_secular&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">],</span>
+               <span class="s1">&#39;ignore_outliers&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;False&quot;</span><span class="p">,</span> <span class="s2">&quot;True&quot;</span><span class="p">,</span> <span class="s2">&quot;vandamme&quot;</span><span class="p">]}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">params_iter_mesh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">params_iter</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">params_iter</span><span class="o">.</span><span class="n">keys</span><span class="p">()])</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">params_iter</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+    <span class="n">params_iter</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">params_iter_mesh</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    
+<span class="n">all_n_tot</span> <span class="o">=</span> <span class="n">params_iter</span><span class="p">[</span><span class="s1">&#39;N&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">params_iter</span><span class="p">[</span><span class="s1">&#39;n0&#39;</span><span class="p">]</span>
+<span class="n">valid_index</span> <span class="o">=</span> <span class="p">(</span><span class="n">min_n</span> <span class="o">&lt;=</span> <span class="n">all_n_tot</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">all_n_tot</span> <span class="o">&lt;=</span> <span class="n">max_n</span><span class="p">)</span>
+
+<span class="n">n_tasks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">valid_index</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total number of simulations: &quot;</span><span class="p">,</span> <span class="n">n_tasks</span><span class="p">)</span>
+
+<span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_tasks</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">params_iter</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="n">params_iter</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">params_iter</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">valid_index</span><span class="p">]</span>
+    <span class="c1"># Shuffle</span>
+    <span class="n">params_iter</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">params_iter</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">indices</span><span class="p">]</span>
+    
+<span class="n">params_iter</span><span class="p">[</span><span class="s2">&quot;seed&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="mi">32</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_tasks</span><span class="p">)</span>
+<span class="n">params_iter</span><span class="p">[</span><span class="s2">&quot;n_sim&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">n_simulations</span><span class="p">,</span> <span class="n">n_tasks</span><span class="p">)</span>
+
+<span class="n">output_file_name</span> <span class="o">=</span> <span class="s2">&quot;fig4_</span><span class="si">{}</span><span class="s2">sim&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n_simulations</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total number of simulations:  105
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="run-simulation">
+<h2>4. Run Simulation<a class="headerlink" href="#run-simulation" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">task</span> <span class="o">=</span> <span class="n">dask_client</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">ipp_simulate_estimations</span><span class="p">,</span> 
+                       <span class="n">params_iter</span><span class="p">[</span><span class="s1">&#39;N&#39;</span><span class="p">],</span>
+                       <span class="n">params_iter</span><span class="p">[</span><span class="s1">&#39;n0&#39;</span><span class="p">],</span>
+                       <span class="n">params_iter</span><span class="p">[</span><span class="s1">&#39;kappa_within_site&#39;</span><span class="p">],</span> 
+                       <span class="n">params_iter</span><span class="p">[</span><span class="s1">&#39;site_lat&#39;</span><span class="p">],</span> 
+                       <span class="n">params_iter</span><span class="p">[</span><span class="s1">&#39;site_long&#39;</span><span class="p">],</span> 
+                       <span class="n">params_iter</span><span class="p">[</span><span class="s1">&#39;outlier_rate&#39;</span><span class="p">],</span>
+                       <span class="n">params_iter</span><span class="p">[</span><span class="s1">&#39;secular_method&#39;</span><span class="p">],</span> 
+                       <span class="n">params_iter</span><span class="p">[</span><span class="s1">&#39;kappa_secular&#39;</span><span class="p">],</span> 
+                       <span class="n">params_iter</span><span class="p">[</span><span class="s1">&#39;ignore_outliers&#39;</span><span class="p">],</span> 
+                       <span class="n">params_iter</span><span class="p">[</span><span class="s1">&#39;seed&#39;</span><span class="p">],</span> 
+                       <span class="n">params_iter</span><span class="p">[</span><span class="s2">&quot;n_sim&quot;</span><span class="p">])</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">dask_client</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">,</span> <span class="n">task</span><span class="p">)</span>
+
+<span class="n">progress</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "d8ed2abdbbc849c285e8436dccc4a09f", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">df_all</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_all</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_all</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../outputs/&#39;</span> <span class="o">+</span> <span class="n">output_file_name</span> <span class="o">+</span> <span class="s1">&#39;_total.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Summary table</span>
+<span class="n">df_summary</span> <span class="o">=</span> <span class="n">df_all</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;hash&quot;</span><span class="p">,</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">smp</span><span class="o">.</span><span class="n">summary_simulations</span><span class="p">)</span>
+<span class="n">df_summary</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_summary</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../outputs/&#39;</span> <span class="o">+</span> <span class="n">output_file_name</span> <span class="o">+</span> <span class="s1">&#39;_summary.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-env-.conda-paleostats-py"
+        },
+        kernelOptions: {
+            name: "conda-env-.conda-paleostats-py",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-env-.conda-paleostats-py'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Sampling_comparision.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Comparision of two sampling strategies</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../figures/figure1/Figure1.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Figure 1: Mean Squared Error as a function of the samples per site and sites</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dask-setup">1. Dask Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#macro-function-definition">2. Macro function definition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameter-space-exploration">3. Parameter space exploration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#figure-1-heatmmap-with-no-outliers">3.1. Figure 1 - Heatmmap with no outliers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#figure-3e-and-3f-intersection-of-errors">3.2. Figure 3e and 3f - Intersection of errors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#figure-2-function-of-the-total-number-of-samples-n">3.3. Figure 2 - Function of the total number of samples <span class="math notranslate nohighlight">\(n\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#figure-2-function-of-the-total-number-of-sites-n">3.4. Figure 2 - Function of the total number of sites <span class="math notranslate nohighlight">\(N\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#figure-3-intersection">Figure 3 - Intersection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#figure-4-boxplot">Figure 4 - Boxplot</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-simulation">4. Run Simulation</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Facundo Sapienza
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

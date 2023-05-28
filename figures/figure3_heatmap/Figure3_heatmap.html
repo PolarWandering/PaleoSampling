@@ -1,0 +1,1312 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Figure 2: Difference in Performance between different number of samples per site &#8212; Quantitative Analysis of Paleomagnetic Sampling Strategies</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'figures/figure3_heatmap/Figure3_heatmap';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Figure 4: Boxplot" href="../figure4_boxplot/Figure4_boxplot.html" />
+    <link rel="prev" title="Paleomagnetic Sampling" href="../figure3_histogram/Figure3_hist.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../Main.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Quantitative Analysis of Paleomagnetic Sampling Strategies</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../Main.html">
+                    Quantitative Analysis of Paleomagnetic Sampling Strategies
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks/Sampling_example.html">Example of sampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks/Sampling_comparision.html">Comparision of two sampling strategies</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks/Parallel.html">Parallelization with Dask</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Figures</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../figure1/Figure1.html">Figure 1: Mean Squared Error as a function of the samples per site and sites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../figure2/Figure2.html">Figure 2:  Decay as a function of the number of samples and sites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../figure3_histogram/Figure3_hist.html">Paleomagnetic Sampling</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Figure 2: Difference in Performance between different number of samples per site</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../figure4_boxplot/Figure4_boxplot.html">Figure 4: Boxplot</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/PolarWandering/PaleoSampling/HEAD/v2/gh/PolarWandering/PaleoSampling/main?urlpath=tree/figures/figure3_heatmap/Figure3_heatmap.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/figures/figure3_heatmap/Figure3_heatmap.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Figure 2: Difference in Performance between different number of samples per site</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#figure-3f">Figure 3f</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="figure-2-difference-in-performance-between-different-number-of-samples-per-site">
+<h1>Figure 2: Difference in Performance between different number of samples per site<a class="headerlink" href="#figure-2-difference-in-performance-between-different-number-of-samples-per-site" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">InterpolatedUnivariateSpline</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../../outputs/fig3e_1000sim_summary.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>Unnamed: 1</th>
+      <th>error_angle_mean</th>
+      <th>error_angle_median</th>
+      <th>error_angle_25</th>
+      <th>error_angle_75</th>
+      <th>error_angle_95</th>
+      <th>error_angle_std</th>
+      <th>error_angle_S2</th>
+      <th>error_vgp_scatter</th>
+      <th>...</th>
+      <th>N</th>
+      <th>n0</th>
+      <th>kappa_within_site</th>
+      <th>site_lat</th>
+      <th>site_long</th>
+      <th>outlier_rate</th>
+      <th>secular_method</th>
+      <th>kappa_secular</th>
+      <th>ignore_outliers</th>
+      <th>total_simulations</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0</td>
+      <td>3.771308</td>
+      <td>3.594938</td>
+      <td>2.240421</td>
+      <td>5.035025</td>
+      <td>7.375312</td>
+      <td>2.023242</td>
+      <td>18.312184</td>
+      <td>2.997391</td>
+      <td>...</td>
+      <td>20</td>
+      <td>5</td>
+      <td>30</td>
+      <td>30</td>
+      <td>0.0</td>
+      <td>0.50</td>
+      <td>G</td>
+      <td>NaN</td>
+      <td>True</td>
+      <td>1000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>0</td>
+      <td>1.730438</td>
+      <td>1.648910</td>
+      <td>1.104129</td>
+      <td>2.261568</td>
+      <td>3.274322</td>
+      <td>0.869591</td>
+      <td>3.749846</td>
+      <td>1.273642</td>
+      <td>...</td>
+      <td>100</td>
+      <td>1</td>
+      <td>80</td>
+      <td>20</td>
+      <td>0.0</td>
+      <td>0.34</td>
+      <td>G</td>
+      <td>NaN</td>
+      <td>vandamme</td>
+      <td>1000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>0</td>
+      <td>8.017145</td>
+      <td>6.780163</td>
+      <td>4.366665</td>
+      <td>10.443058</td>
+      <td>17.805335</td>
+      <td>5.227918</td>
+      <td>91.578404</td>
+      <td>38.481535</td>
+      <td>...</td>
+      <td>100</td>
+      <td>1</td>
+      <td>60</td>
+      <td>40</td>
+      <td>0.0</td>
+      <td>0.62</td>
+      <td>G</td>
+      <td>NaN</td>
+      <td>vandamme</td>
+      <td>1000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>0</td>
+      <td>5.956192</td>
+      <td>4.968238</td>
+      <td>3.012804</td>
+      <td>7.761616</td>
+      <td>14.643731</td>
+      <td>4.244685</td>
+      <td>53.475554</td>
+      <td>27.775155</td>
+      <td>...</td>
+      <td>100</td>
+      <td>1</td>
+      <td>70</td>
+      <td>40</td>
+      <td>0.0</td>
+      <td>0.58</td>
+      <td>G</td>
+      <td>NaN</td>
+      <td>vandamme</td>
+      <td>1000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>0</td>
+      <td>2.642335</td>
+      <td>2.486254</td>
+      <td>1.598886</td>
+      <td>3.473907</td>
+      <td>5.219749</td>
+      <td>1.425148</td>
+      <td>9.010949</td>
+      <td>2.356351</td>
+      <td>...</td>
+      <td>100</td>
+      <td>1</td>
+      <td>80</td>
+      <td>60</td>
+      <td>0.0</td>
+      <td>0.30</td>
+      <td>G</td>
+      <td>NaN</td>
+      <td>vandamme</td>
+      <td>1000</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1795</th>
+      <td>1795</td>
+      <td>0</td>
+      <td>2.614553</td>
+      <td>2.447370</td>
+      <td>1.594581</td>
+      <td>3.453479</td>
+      <td>5.070875</td>
+      <td>1.374982</td>
+      <td>8.724571</td>
+      <td>1.823777</td>
+      <td>...</td>
+      <td>20</td>
+      <td>5</td>
+      <td>40</td>
+      <td>10</td>
+      <td>0.0</td>
+      <td>0.30</td>
+      <td>G</td>
+      <td>NaN</td>
+      <td>True</td>
+      <td>1000</td>
+    </tr>
+    <tr>
+      <th>1796</th>
+      <td>1796</td>
+      <td>0</td>
+      <td>3.008607</td>
+      <td>2.862543</td>
+      <td>1.816675</td>
+      <td>3.980189</td>
+      <td>5.834281</td>
+      <td>1.573454</td>
+      <td>11.524994</td>
+      <td>1.943311</td>
+      <td>...</td>
+      <td>20</td>
+      <td>5</td>
+      <td>70</td>
+      <td>30</td>
+      <td>0.0</td>
+      <td>0.30</td>
+      <td>G</td>
+      <td>NaN</td>
+      <td>True</td>
+      <td>1000</td>
+    </tr>
+    <tr>
+      <th>1797</th>
+      <td>1797</td>
+      <td>0</td>
+      <td>3.824889</td>
+      <td>3.575288</td>
+      <td>2.178672</td>
+      <td>5.088705</td>
+      <td>7.684161</td>
+      <td>2.072258</td>
+      <td>18.919735</td>
+      <td>2.600436</td>
+      <td>...</td>
+      <td>20</td>
+      <td>5</td>
+      <td>70</td>
+      <td>40</td>
+      <td>0.0</td>
+      <td>0.58</td>
+      <td>G</td>
+      <td>NaN</td>
+      <td>True</td>
+      <td>1000</td>
+    </tr>
+    <tr>
+      <th>1798</th>
+      <td>1798</td>
+      <td>0</td>
+      <td>5.027593</td>
+      <td>4.746179</td>
+      <td>3.024909</td>
+      <td>6.557026</td>
+      <td>9.930260</td>
+      <td>2.625040</td>
+      <td>32.160635</td>
+      <td>3.128950</td>
+      <td>...</td>
+      <td>20</td>
+      <td>5</td>
+      <td>80</td>
+      <td>70</td>
+      <td>0.0</td>
+      <td>0.54</td>
+      <td>G</td>
+      <td>NaN</td>
+      <td>True</td>
+      <td>1000</td>
+    </tr>
+    <tr>
+      <th>1799</th>
+      <td>1799</td>
+      <td>0</td>
+      <td>4.391415</td>
+      <td>3.851872</td>
+      <td>2.431412</td>
+      <td>5.755751</td>
+      <td>9.592751</td>
+      <td>2.725885</td>
+      <td>26.707541</td>
+      <td>14.180027</td>
+      <td>...</td>
+      <td>100</td>
+      <td>1</td>
+      <td>40</td>
+      <td>70</td>
+      <td>0.0</td>
+      <td>0.38</td>
+      <td>G</td>
+      <td>NaN</td>
+      <td>vandamme</td>
+      <td>1000</td>
+    </tr>
+  </tbody>
+</table>
+<p>1800 rows × 21 columns</p>
+</div></div></div>
+</div>
+<p>Let’s pick just one entry of the array (<code class="docutils literal notranslate"><span class="pre">kappa_within_site</span></code> and <code class="docutils literal notranslate"><span class="pre">latitude</span></code>) and see the different performances as a function of <code class="docutils literal notranslate"><span class="pre">outlier</span> <span class="pre">rate</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">critical_outlier_rate</span><span class="p">(</span><span class="n">df_</span><span class="p">,</span> <span class="n">kappa_within_site</span><span class="p">,</span> <span class="n">site_lat</span><span class="p">):</span>
+    
+    <span class="n">df_subset</span> <span class="o">=</span> <span class="n">df_</span><span class="p">[(</span><span class="n">df_</span><span class="o">.</span><span class="n">kappa_within_site</span><span class="o">==</span><span class="n">kappa_within_site</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_</span><span class="o">.</span><span class="n">site_lat</span><span class="o">==</span><span class="n">site_lat</span><span class="p">)]</span>
+
+    <span class="n">df1</span> <span class="o">=</span> <span class="n">df_subset</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">n0</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;outlier_rate&quot;</span><span class="p">)</span>
+    <span class="n">df5</span> <span class="o">=</span> <span class="n">df_subset</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">n0</span><span class="o">==</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;outlier_rate&quot;</span><span class="p">)</span>
+    
+    <span class="n">outlier_rate</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">outlier_rate</span>
+    <span class="n">error_1</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">error_angle_mean</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">error_5</span> <span class="o">=</span> <span class="n">df5</span><span class="o">.</span><span class="n">error_angle_mean</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">error_diff</span> <span class="o">=</span> <span class="n">error_1</span> <span class="o">-</span> <span class="n">error_5</span>
+    
+    <span class="c1"># plt.figure()</span>
+    <span class="c1"># plt.plot(outlier_rate, error_1)</span>
+    <span class="c1"># plt.plot(outlier_rate, error_5)</span>
+    <span class="c1"># plt.show()</span>
+    
+    <span class="n">roots</span> <span class="o">=</span> <span class="n">InterpolatedUnivariateSpline</span><span class="p">(</span><span class="n">outlier_rate</span><span class="p">,</span> <span class="n">error_diff</span><span class="p">)</span><span class="o">.</span><span class="n">roots</span><span class="p">()</span>
+    
+    <span class="c1"># print(roots)</span>
+    <span class="c1"># assert len(roots) == 1, roots</span>
+    <span class="k">return</span> <span class="n">roots</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_kappa_within_site</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">kappa_within_site</span><span class="p">))</span>
+<span class="n">all_site_lat</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">site_lat</span><span class="p">))</span>
+
+<span class="n">n_kappa_within_site</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_kappa_within_site</span><span class="p">)</span>
+<span class="n">n_site_lat</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_site_lat</span><span class="p">)</span>
+
+<span class="n">Critical_outlier_rate</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_site_lat</span><span class="p">,</span> <span class="n">n_kappa_within_site</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_site_lat</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_kappa_within_site</span><span class="p">):</span>
+        <span class="n">_df_critical</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;site_lat&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">all_site_lat</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span>
+                                      <span class="s2">&quot;kappa_within_site&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">all_kappa_within_site</span><span class="p">[</span><span class="n">j</span><span class="p">]],</span>
+                                      <span class="s2">&quot;critical&quot;</span><span class="p">:</span> <span class="n">critical_outlier_rate</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">kappa_within_site</span><span class="o">=</span><span class="n">all_kappa_within_site</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">site_lat</span><span class="o">=</span><span class="n">all_site_lat</span><span class="p">[</span><span class="n">i</span><span class="p">])})</span>
+        <span class="k">if</span> <span class="n">i</span><span class="o">==</span><span class="mi">0</span> <span class="ow">and</span> <span class="n">j</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+            <span class="n">df_critical</span> <span class="o">=</span> <span class="n">_df_critical</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">df_critical</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_critical</span><span class="p">,</span> <span class="n">_df_critical</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="c1"># Critical_outlier_rate[i,j] = critical_outlier_rate(df, kappa_within_site=all_kappa_within_site[j], site_lat=all_site_lat[i])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_6884/3641503491.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
+/tmp/ipykernel_6884/3641503491.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">df_critical</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="s1">&#39;site_lat&#39;</span><span class="p">,</span> <span class="s1">&#39;kappa_within_site&#39;</span><span class="p">,</span> <span class="s1">&#39;critical&#39;</span><span class="p">),</span> <span class="n">decimals</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>kappa_within_site</th>
+      <th>10</th>
+      <th>20</th>
+      <th>30</th>
+      <th>40</th>
+      <th>50</th>
+      <th>60</th>
+      <th>70</th>
+      <th>80</th>
+      <th>90</th>
+      <th>100</th>
+    </tr>
+    <tr>
+      <th>site_lat</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>80</th>
+      <td>0.36</td>
+      <td>0.39</td>
+      <td>0.40</td>
+      <td>0.42</td>
+      <td>0.44</td>
+      <td>0.43</td>
+      <td>0.44</td>
+      <td>0.45</td>
+      <td>0.45</td>
+      <td>0.46</td>
+    </tr>
+    <tr>
+      <th>70</th>
+      <td>0.36</td>
+      <td>0.40</td>
+      <td>0.43</td>
+      <td>0.42</td>
+      <td>0.45</td>
+      <td>0.44</td>
+      <td>0.45</td>
+      <td>0.45</td>
+      <td>0.46</td>
+      <td>0.46</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>0.38</td>
+      <td>0.41</td>
+      <td>0.43</td>
+      <td>0.44</td>
+      <td>0.46</td>
+      <td>0.47</td>
+      <td>0.45</td>
+      <td>0.48</td>
+      <td>0.48</td>
+      <td>0.47</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>0.39</td>
+      <td>0.43</td>
+      <td>0.44</td>
+      <td>0.46</td>
+      <td>0.48</td>
+      <td>0.48</td>
+      <td>0.48</td>
+      <td>0.48</td>
+      <td>0.49</td>
+      <td>0.50</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>0.40</td>
+      <td>0.47</td>
+      <td>0.48</td>
+      <td>0.49</td>
+      <td>0.50</td>
+      <td>0.51</td>
+      <td>0.51</td>
+      <td>0.51</td>
+      <td>0.51</td>
+      <td>0.52</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>0.49</td>
+      <td>0.50</td>
+      <td>0.52</td>
+      <td>0.53</td>
+      <td>0.54</td>
+      <td>0.54</td>
+      <td>0.55</td>
+      <td>0.55</td>
+      <td>0.55</td>
+      <td>0.55</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>0.52</td>
+      <td>0.54</td>
+      <td>0.55</td>
+      <td>0.58</td>
+      <td>0.57</td>
+      <td>0.56</td>
+      <td>0.57</td>
+      <td>0.58</td>
+      <td>0.57</td>
+      <td>0.57</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>0.57</td>
+      <td>0.59</td>
+      <td>0.60</td>
+      <td>0.59</td>
+      <td>0.59</td>
+      <td>0.60</td>
+      <td>0.60</td>
+      <td>0.60</td>
+      <td>0.60</td>
+      <td>0.60</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>0.60</td>
+      <td>0.60</td>
+      <td>0.60</td>
+      <td>0.61</td>
+      <td>0.60</td>
+      <td>0.62</td>
+      <td>0.61</td>
+      <td>0.61</td>
+      <td>0.61</td>
+      <td>0.60</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">df_critical</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="s1">&#39;site_lat&#39;</span><span class="p">,</span> <span class="s1">&#39;kappa_within_site&#39;</span><span class="p">,</span> <span class="s1">&#39;critical&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span> 
+            <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;.2f&quot;</span><span class="p">,</span>
+            <span class="n">square</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> 
+            <span class="n">vmin</span><span class="o">=</span><span class="mf">0.35</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.65</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Greens&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+            <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">cbar_kws</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;location&#39;</span><span class="p">:</span> <span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="s2">&quot;boundaries&quot;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.65</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">),</span> <span class="s2">&quot;fraction&quot;</span><span class="p">:</span> <span class="mf">0.04</span><span class="p">},</span>
+            <span class="n">annot_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;fontsize&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="s2">&quot;color&quot;</span><span class="p">:</span><span class="s1">&#39;black&#39;</span><span class="p">})</span>
+            <span class="c1"># cmap=sns.color_palette(&quot;YlOrBr&quot;, as_cmap=True));</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Site latitude ($\lambda$)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Kappa within site ($\kappa_w$)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;Figure3e.pdf&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;pdf&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;Figure3e.png&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;png&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/cc49d66298709a4c5685077a5300f60b0a84de913700c0ce7a1549f161d24e5b.png" src="../../_images/cc49d66298709a4c5685077a5300f60b0a84de913700c0ce7a1549f161d24e5b.png" />
+</div>
+</div>
+<section id="figure-3f">
+<h2>Figure 3f<a class="headerlink" href="#figure-3f" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../../outputs/fig3f_1000sim_summary.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;k&#39;</span><span class="p">:</span> <span class="s1">&#39;n0&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_kappa_within_site</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">kappa_within_site</span><span class="p">))</span>
+<span class="n">all_site_lat</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">site_lat</span><span class="p">))</span>
+
+<span class="n">n_kappa_within_site</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_kappa_within_site</span><span class="p">)</span>
+<span class="n">n_site_lat</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_site_lat</span><span class="p">)</span>
+
+<span class="n">Critical_outlier_rate</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_site_lat</span><span class="p">,</span> <span class="n">n_kappa_within_site</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_site_lat</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_kappa_within_site</span><span class="p">):</span>
+        <span class="n">_df_critical</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;site_lat&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">all_site_lat</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span>
+                                      <span class="s2">&quot;kappa_within_site&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">all_kappa_within_site</span><span class="p">[</span><span class="n">j</span><span class="p">]],</span>
+                                      <span class="s2">&quot;critical&quot;</span><span class="p">:</span> <span class="n">critical_outlier_rate</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">kappa_within_site</span><span class="o">=</span><span class="n">all_kappa_within_site</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">site_lat</span><span class="o">=</span><span class="n">all_site_lat</span><span class="p">[</span><span class="n">i</span><span class="p">])})</span>
+        <span class="k">if</span> <span class="n">i</span><span class="o">==</span><span class="mi">0</span> <span class="ow">and</span> <span class="n">j</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+            <span class="n">df_critical</span> <span class="o">=</span> <span class="n">_df_critical</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">df_critical</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_critical</span><span class="p">,</span> <span class="n">_df_critical</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_6884/3641503491.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
+/tmp/ipykernel_6884/3641503491.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_critical</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="s1">&#39;site_lat&#39;</span><span class="p">,</span> <span class="s1">&#39;kappa_within_site&#39;</span><span class="p">,</span> <span class="s1">&#39;critical&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>kappa_within_site</th>
+      <th>10</th>
+      <th>20</th>
+      <th>30</th>
+      <th>40</th>
+      <th>50</th>
+      <th>60</th>
+      <th>70</th>
+      <th>80</th>
+      <th>90</th>
+      <th>100</th>
+    </tr>
+    <tr>
+      <th>site_lat</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.156380</td>
+      <td>0.165629</td>
+      <td>0.156434</td>
+      <td>0.159964</td>
+      <td>0.155416</td>
+      <td>0.171965</td>
+      <td>0.163982</td>
+      <td>0.154663</td>
+      <td>0.165004</td>
+      <td>0.164228</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>0.168659</td>
+      <td>0.169738</td>
+      <td>0.168751</td>
+      <td>0.165758</td>
+      <td>0.175887</td>
+      <td>0.172173</td>
+      <td>0.163978</td>
+      <td>0.163244</td>
+      <td>0.175941</td>
+      <td>0.178935</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>0.132851</td>
+      <td>0.169150</td>
+      <td>0.169066</td>
+      <td>0.168359</td>
+      <td>0.163420</td>
+      <td>0.177810</td>
+      <td>0.184387</td>
+      <td>0.178106</td>
+      <td>0.178417</td>
+      <td>0.175304</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>0.144295</td>
+      <td>0.169173</td>
+      <td>0.169671</td>
+      <td>0.192395</td>
+      <td>0.210313</td>
+      <td>0.195387</td>
+      <td>0.206105</td>
+      <td>0.192376</td>
+      <td>0.205377</td>
+      <td>0.201191</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>0.106997</td>
+      <td>0.197987</td>
+      <td>0.209623</td>
+      <td>0.196504</td>
+      <td>0.223931</td>
+      <td>0.204281</td>
+      <td>0.230277</td>
+      <td>0.217496</td>
+      <td>0.222616</td>
+      <td>0.210247</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>0.175222</td>
+      <td>0.227058</td>
+      <td>0.223659</td>
+      <td>0.235979</td>
+      <td>0.231177</td>
+      <td>0.229102</td>
+      <td>0.237134</td>
+      <td>0.230700</td>
+      <td>0.241577</td>
+      <td>0.236623</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>0.196765</td>
+      <td>0.253619</td>
+      <td>0.253192</td>
+      <td>0.238187</td>
+      <td>0.252754</td>
+      <td>0.267897</td>
+      <td>0.257686</td>
+      <td>0.260715</td>
+      <td>0.275921</td>
+      <td>0.261220</td>
+    </tr>
+    <tr>
+      <th>70</th>
+      <td>0.221986</td>
+      <td>0.260223</td>
+      <td>0.268968</td>
+      <td>0.252914</td>
+      <td>0.259466</td>
+      <td>0.286350</td>
+      <td>0.287681</td>
+      <td>0.284877</td>
+      <td>0.285631</td>
+      <td>0.300714</td>
+    </tr>
+    <tr>
+      <th>80</th>
+      <td>0.281501</td>
+      <td>0.298051</td>
+      <td>0.298636</td>
+      <td>0.318150</td>
+      <td>0.312047</td>
+      <td>0.289040</td>
+      <td>0.296003</td>
+      <td>0.309820</td>
+      <td>0.317483</td>
+      <td>0.283609</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">df_critical</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="s1">&#39;site_lat&#39;</span><span class="p">,</span> <span class="s1">&#39;kappa_within_site&#39;</span><span class="p">,</span> <span class="s1">&#39;critical&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span> 
+            <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;.2f&quot;</span><span class="p">,</span>
+            <span class="n">square</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> 
+            <span class="n">vmin</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.35</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Blues&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+            <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">cbar_kws</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;location&#39;</span><span class="p">:</span> <span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="s2">&quot;boundaries&quot;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.30</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">),</span> <span class="s2">&quot;fraction&quot;</span><span class="p">:</span> <span class="mf">0.04</span><span class="p">},</span>
+            <span class="n">annot_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;fontsize&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="s2">&quot;color&quot;</span><span class="p">:</span><span class="s1">&#39;black&#39;</span><span class="p">})</span>
+            <span class="c1"># cmap=sns.color_palette(&quot;YlOrBr&quot;, as_cmap=True));</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Site latitude ($\lambda$)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Kappa within site ($\kappa_w$)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;Figure3f.pdf&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;pdf&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;Figure3f.png&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;png&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/5c5cf038440f0011074aee9b0c66049859fee1061c58e5b905dcd9c46bb4a348.png" src="../../_images/5c5cf038440f0011074aee9b0c66049859fee1061c58e5b905dcd9c46bb4a348.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-env-.conda-paleostats-py"
+        },
+        kernelOptions: {
+            name: "conda-env-.conda-paleostats-py",
+            path: "./figures/figure3_heatmap"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-env-.conda-paleostats-py'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../figure3_histogram/Figure3_hist.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Paleomagnetic Sampling</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../figure4_boxplot/Figure4_boxplot.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Figure 4: Boxplot</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#figure-3f">Figure 3f</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Facundo Sapienza
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

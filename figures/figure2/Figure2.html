@@ -1,0 +1,1645 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Figure 2: Decay as a function of the number of samples and sites &#8212; Quantitative Analysis of Paleomagnetic Sampling Strategies</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'figures/figure2/Figure2';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Paleomagnetic Sampling" href="../figure3_histogram/Figure3_hist.html" />
+    <link rel="prev" title="Figure 1: Mean Squared Error as a function of the samples per site and sites" href="../figure1/Figure1.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../Main.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Quantitative Analysis of Paleomagnetic Sampling Strategies</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../Main.html">
+                    Quantitative Analysis of Paleomagnetic Sampling Strategies
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks/Sampling_example.html">Example of sampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks/Sampling_comparision.html">Comparision of two sampling strategies</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks/Parallel.html">Parallelization with Dask</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Figures</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../figure1/Figure1.html">Figure 1: Mean Squared Error as a function of the samples per site and sites</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Figure 2:  Decay as a function of the number of samples and sites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../figure3_histogram/Figure3_hist.html">Paleomagnetic Sampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../figure3_heatmap/Figure3_heatmap.html">Figure 2: Difference in Performance between different number of samples per site</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../figure4_boxplot/Figure4_boxplot.html">Figure 4: Boxplot</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/PolarWandering/PaleoSampling/HEAD/v2/gh/PolarWandering/PaleoSampling/main?urlpath=tree/figures/figure2/Figure2.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/figures/figure2/Figure2.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Figure 2:  Decay as a function of the number of samples and sites</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#figures-a-b-decay-as-a-function-of-the-number-of-total-samples-n">1. Figures a &amp; b: Decay as a function of the number of total samples <span class="math notranslate nohighlight">\(n\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#figure-c-d-decay-as-a-function-of-the-number-of-sites">Figure c &amp; d: Decay as a function of the number of sites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-decay-as-a-function-of-p">Bonus: Decay as a Function of p</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="figure-2-decay-as-a-function-of-the-number-of-samples-and-sites">
+<h1>Figure 2:  Decay as a function of the number of samples and sites<a class="headerlink" href="#figure-2-decay-as-a-function-of-the-number-of-samples-and-sites" title="Permalink to this heading">#</a></h1>
+<p>These series of plots shows how the overall root mean squared error (RMSE) decays as we increase the number of totol samples and the number of sites for different choices of samples per site.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="kn">import</span> <span class="nn">smpsite</span> <span class="k">as</span> <span class="nn">smp</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<section id="figures-a-b-decay-as-a-function-of-the-number-of-total-samples-n">
+<h2>1. Figures a &amp; b: Decay as a function of the number of total samples <span class="math notranslate nohighlight">\(n\)</span><a class="headerlink" href="#figures-a-b-decay-as-a-function-of-the-number-of-total-samples-n" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../../outputs/fig2ab_2000sim_summary.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>Unnamed: 1</th>
+      <th>error_angle_mean</th>
+      <th>error_angle_median</th>
+      <th>error_angle_25</th>
+      <th>error_angle_75</th>
+      <th>error_angle_95</th>
+      <th>error_angle_std</th>
+      <th>error_angle_S2</th>
+      <th>error_angle_S</th>
+      <th>...</th>
+      <th>N</th>
+      <th>n0</th>
+      <th>kappa_within_site</th>
+      <th>site_lat</th>
+      <th>site_long</th>
+      <th>outlier_rate</th>
+      <th>secular_method</th>
+      <th>kappa_secular</th>
+      <th>ignore_outliers</th>
+      <th>total_simulations</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0</td>
+      <td>4.418425</td>
+      <td>4.068730</td>
+      <td>2.574621</td>
+      <td>5.931969</td>
+      <td>8.843983</td>
+      <td>2.389484</td>
+      <td>25.229262</td>
+      <td>5.022874</td>
+      <td>...</td>
+      <td>10</td>
+      <td>3</td>
+      <td>50</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>G</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>2000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>0</td>
+      <td>3.564401</td>
+      <td>3.307917</td>
+      <td>2.101149</td>
+      <td>4.756044</td>
+      <td>7.050093</td>
+      <td>1.916513</td>
+      <td>16.376137</td>
+      <td>4.046744</td>
+      <td>...</td>
+      <td>24</td>
+      <td>1</td>
+      <td>50</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>G</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>2000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>0</td>
+      <td>7.039044</td>
+      <td>6.605681</td>
+      <td>4.265727</td>
+      <td>9.247352</td>
+      <td>13.943720</td>
+      <td>3.726799</td>
+      <td>63.430232</td>
+      <td>7.964310</td>
+      <td>...</td>
+      <td>4</td>
+      <td>3</td>
+      <td>50</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>G</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>2000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>0</td>
+      <td>1.238532</td>
+      <td>1.158910</td>
+      <td>0.764595</td>
+      <td>1.644945</td>
+      <td>2.368667</td>
+      <td>0.645502</td>
+      <td>1.950427</td>
+      <td>1.396577</td>
+      <td>...</td>
+      <td>229</td>
+      <td>1</td>
+      <td>50</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>G</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>2000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>0</td>
+      <td>1.129028</td>
+      <td>1.053866</td>
+      <td>0.674889</td>
+      <td>1.512438</td>
+      <td>2.201005</td>
+      <td>0.590024</td>
+      <td>1.622659</td>
+      <td>1.273836</td>
+      <td>...</td>
+      <td>277</td>
+      <td>1</td>
+      <td>50</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>G</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>2000</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>771</th>
+      <td>771</td>
+      <td>0</td>
+      <td>1.534570</td>
+      <td>1.439038</td>
+      <td>0.929228</td>
+      <td>2.031131</td>
+      <td>2.954905</td>
+      <td>0.789545</td>
+      <td>2.977974</td>
+      <td>1.725681</td>
+      <td>...</td>
+      <td>87</td>
+      <td>3</td>
+      <td>50</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>G</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>2000</td>
+    </tr>
+    <tr>
+      <th>772</th>
+      <td>772</td>
+      <td>0</td>
+      <td>1.215589</td>
+      <td>1.158157</td>
+      <td>0.741750</td>
+      <td>1.638733</td>
+      <td>2.333324</td>
+      <td>0.615145</td>
+      <td>1.855872</td>
+      <td>1.362304</td>
+      <td>...</td>
+      <td>242</td>
+      <td>1</td>
+      <td>50</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>G</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>2000</td>
+    </tr>
+    <tr>
+      <th>773</th>
+      <td>773</td>
+      <td>0</td>
+      <td>2.524885</td>
+      <td>2.360240</td>
+      <td>1.513693</td>
+      <td>3.397144</td>
+      <td>4.986915</td>
+      <td>1.338083</td>
+      <td>8.164615</td>
+      <td>2.857379</td>
+      <td>...</td>
+      <td>35</td>
+      <td>2</td>
+      <td>50</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>G</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>2000</td>
+    </tr>
+    <tr>
+      <th>774</th>
+      <td>774</td>
+      <td>0</td>
+      <td>5.089531</td>
+      <td>4.711650</td>
+      <td>2.986586</td>
+      <td>6.697563</td>
+      <td>10.387042</td>
+      <td>2.796089</td>
+      <td>33.717527</td>
+      <td>5.806680</td>
+      <td>...</td>
+      <td>11</td>
+      <td>1</td>
+      <td>50</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>G</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>2000</td>
+    </tr>
+    <tr>
+      <th>775</th>
+      <td>775</td>
+      <td>0</td>
+      <td>1.662648</td>
+      <td>1.569897</td>
+      <td>1.007462</td>
+      <td>2.204899</td>
+      <td>3.196883</td>
+      <td>0.861498</td>
+      <td>3.506206</td>
+      <td>1.872487</td>
+      <td>...</td>
+      <td>117</td>
+      <td>1</td>
+      <td>50</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>G</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>2000</td>
+    </tr>
+  </tbody>
+</table>
+<p>776 rows × 22 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;error_kappa_theoretical&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">smp</span><span class="o">.</span><span class="n">kappa_theoretical</span><span class="p">(</span><span class="n">smp</span><span class="o">.</span><span class="n">Params</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="n">row</span><span class="o">.</span><span class="n">N</span><span class="p">,</span> 
+                                                                                      <span class="n">n0</span><span class="o">=</span><span class="n">row</span><span class="o">.</span><span class="n">n0</span><span class="p">,</span> 
+                                                                                      <span class="n">kappa_within_site</span><span class="o">=</span><span class="n">row</span><span class="o">.</span><span class="n">kappa_within_site</span><span class="p">,</span>
+                                                                                      <span class="n">site_lat</span><span class="o">=</span><span class="n">row</span><span class="o">.</span><span class="n">site_lat</span><span class="p">,</span>
+                                                                                      <span class="n">site_long</span><span class="o">=</span><span class="n">row</span><span class="o">.</span><span class="n">site_long</span><span class="p">,</span> 
+                                                                                      <span class="n">outlier_rate</span><span class="o">=</span><span class="n">row</span><span class="o">.</span><span class="n">outlier_rate</span><span class="p">,</span> 
+                                                                                      <span class="n">secular_method</span><span class="o">=</span><span class="n">row</span><span class="o">.</span><span class="n">secular_method</span><span class="p">,</span> 
+                                                                                      <span class="n">kappa_secular</span><span class="o">=</span><span class="n">row</span><span class="o">.</span><span class="n">kappa_secular</span><span class="p">)),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;error_angle_theoretical&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">smp</span><span class="o">.</span><span class="n">kappa2angular</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">error_kappa_theoretical</span><span class="p">)),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+
+<span class="n">log_scale</span> <span class="o">=</span> <span class="kc">True</span> 
+
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="n">palette</span> <span class="o">=</span> <span class="p">{</span><span class="n">x</span> <span class="p">:</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;viridis&#39;</span><span class="p">)((</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">7</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">)}</span>
+
+<span class="n">sizes</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span><span class="p">:</span><span class="mi">5</span> <span class="o">-</span> <span class="mf">0.4</span><span class="o">*</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">)}</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;n_tot&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;error_angle_S&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;n0&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s1">&#39;n0&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">,</span> <span class="n">sizes</span><span class="o">=</span><span class="n">sizes</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;n_tot&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;error_angle_theoretical&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;n0&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashdot&#39;</span><span class="p">)</span>
+<span class="c1"># plt.xscale(&quot;log&quot;)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Total number of samples ($n$)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;RMSE (degrees)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+
+<span class="n">leg</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Samples per site&quot;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">title_fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">):</span>
+    <span class="n">leg</span><span class="o">.</span><span class="n">get_lines</span><span class="p">()[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_linewidth</span><span class="p">(</span><span class="mf">1.5</span><span class="o">*</span><span class="n">sizes</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[[</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="s1">&#39;top&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">log_scale</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;Figure2b_log.pdf&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;pdf&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;Figure2b_log.png&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;png&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">300</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;Figure2a.pdf&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;pdf&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;Figure2a.png&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;png&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/c88962443ae9aaa3cbd00a43fe841f8afb487a519094d288172cc4a5905f5fb8.png" src="../../_images/c88962443ae9aaa3cbd00a43fe841f8afb487a519094d288172cc4a5905f5fb8.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;error_kappa_theoretical&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">smp</span><span class="o">.</span><span class="n">kappa_theoretical</span><span class="p">(</span><span class="n">smp</span><span class="o">.</span><span class="n">Params</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="n">row</span><span class="o">.</span><span class="n">n</span><span class="p">,</span> 
+                                                                                      <span class="n">n0</span><span class="o">=</span><span class="n">row</span><span class="o">.</span><span class="n">k</span><span class="p">,</span> 
+                                                                                      <span class="n">kappa_within_site</span><span class="o">=</span><span class="n">row</span><span class="o">.</span><span class="n">kappa_within_site</span><span class="p">,</span>
+                                                                                      <span class="n">site_lat</span><span class="o">=</span><span class="n">row</span><span class="o">.</span><span class="n">site_lat</span><span class="p">,</span>
+                                                                                      <span class="n">site_long</span><span class="o">=</span><span class="n">row</span><span class="o">.</span><span class="n">site_long</span><span class="p">,</span>   
+                                                                                      <span class="n">outlier_rate</span><span class="o">=</span><span class="n">row</span><span class="o">.</span><span class="n">outlier_rate</span><span class="p">,</span> 
+                                                                                      <span class="n">secular_method</span><span class="o">=</span><span class="n">row</span><span class="o">.</span><span class="n">secular_method</span><span class="p">,</span> 
+                                                                                      <span class="n">kappa_secular</span><span class="o">=</span><span class="n">row</span><span class="o">.</span><span class="n">kappa_secular</span><span class="p">)),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;error_angle_theoretical&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">smp</span><span class="o">.</span><span class="n">kappa2angular</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">error_kappa_theoretical</span><span class="p">)),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="figure-c-d-decay-as-a-function-of-the-number-of-sites">
+<h2>Figure c &amp; d: Decay as a function of the number of sites<a class="headerlink" href="#figure-c-d-decay-as-a-function-of-the-number-of-sites" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../../outputs/fig2cd_2000sim_summary.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>Unnamed: 1</th>
+      <th>error_angle_mean</th>
+      <th>error_angle_median</th>
+      <th>error_angle_25</th>
+      <th>error_angle_75</th>
+      <th>error_angle_95</th>
+      <th>error_angle_std</th>
+      <th>error_angle_S2</th>
+      <th>error_vgp_scatter</th>
+      <th>...</th>
+      <th>N</th>
+      <th>n0</th>
+      <th>kappa_within_site</th>
+      <th>site_lat</th>
+      <th>site_long</th>
+      <th>outlier_rate</th>
+      <th>secular_method</th>
+      <th>kappa_secular</th>
+      <th>ignore_outliers</th>
+      <th>total_simulations</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0</td>
+      <td>3.507303</td>
+      <td>3.326483</td>
+      <td>2.133586</td>
+      <td>4.603671</td>
+      <td>6.762467</td>
+      <td>1.803921</td>
+      <td>15.553678</td>
+      <td>2.244988</td>
+      <td>...</td>
+      <td>14</td>
+      <td>6</td>
+      <td>50</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>G</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>2000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>0</td>
+      <td>1.824976</td>
+      <td>1.716661</td>
+      <td>1.092270</td>
+      <td>2.457725</td>
+      <td>3.515834</td>
+      <td>0.944936</td>
+      <td>4.222996</td>
+      <td>1.319370</td>
+      <td>...</td>
+      <td>70</td>
+      <td>2</td>
+      <td>50</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>G</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>2000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>0</td>
+      <td>2.755531</td>
+      <td>2.596467</td>
+      <td>1.664463</td>
+      <td>3.666091</td>
+      <td>5.281088</td>
+      <td>1.430537</td>
+      <td>9.638365</td>
+      <td>2.061391</td>
+      <td>...</td>
+      <td>30</td>
+      <td>2</td>
+      <td>50</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>G</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>2000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>0</td>
+      <td>3.865201</td>
+      <td>3.690096</td>
+      <td>2.323372</td>
+      <td>5.129322</td>
+      <td>7.579034</td>
+      <td>2.014398</td>
+      <td>18.995552</td>
+      <td>2.327094</td>
+      <td>...</td>
+      <td>12</td>
+      <td>7</td>
+      <td>50</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>G</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>2000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>0</td>
+      <td>2.231617</td>
+      <td>2.061765</td>
+      <td>1.363932</td>
+      <td>2.949242</td>
+      <td>4.350726</td>
+      <td>1.154125</td>
+      <td>6.311454</td>
+      <td>1.434520</td>
+      <td>...</td>
+      <td>36</td>
+      <td>5</td>
+      <td>50</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>G</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>2000</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>352</th>
+      <td>352</td>
+      <td>0</td>
+      <td>2.462295</td>
+      <td>2.297074</td>
+      <td>1.502908</td>
+      <td>3.300662</td>
+      <td>4.778267</td>
+      <td>1.280982</td>
+      <td>7.702988</td>
+      <td>1.632359</td>
+      <td>...</td>
+      <td>32</td>
+      <td>4</td>
+      <td>50</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>G</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>2000</td>
+    </tr>
+    <tr>
+      <th>353</th>
+      <td>353</td>
+      <td>0</td>
+      <td>1.979653</td>
+      <td>1.858608</td>
+      <td>1.168008</td>
+      <td>2.691842</td>
+      <td>3.864772</td>
+      <td>1.057756</td>
+      <td>5.037314</td>
+      <td>1.223433</td>
+      <td>...</td>
+      <td>44</td>
+      <td>7</td>
+      <td>50</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>G</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>2000</td>
+    </tr>
+    <tr>
+      <th>354</th>
+      <td>354</td>
+      <td>0</td>
+      <td>1.361468</td>
+      <td>1.278077</td>
+      <td>0.825126</td>
+      <td>1.807194</td>
+      <td>2.679220</td>
+      <td>0.722299</td>
+      <td>2.375049</td>
+      <td>0.878151</td>
+      <td>...</td>
+      <td>98</td>
+      <td>4</td>
+      <td>50</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>G</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>2000</td>
+    </tr>
+    <tr>
+      <th>355</th>
+      <td>355</td>
+      <td>0</td>
+      <td>2.096491</td>
+      <td>1.979148</td>
+      <td>1.295316</td>
+      <td>2.769094</td>
+      <td>4.051376</td>
+      <td>1.073121</td>
+      <td>5.546288</td>
+      <td>1.378519</td>
+      <td>...</td>
+      <td>46</td>
+      <td>3</td>
+      <td>50</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>G</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>2000</td>
+    </tr>
+    <tr>
+      <th>356</th>
+      <td>356</td>
+      <td>0</td>
+      <td>1.515558</td>
+      <td>1.421238</td>
+      <td>0.915071</td>
+      <td>2.030036</td>
+      <td>2.954767</td>
+      <td>0.801870</td>
+      <td>2.939590</td>
+      <td>0.954425</td>
+      <td>...</td>
+      <td>80</td>
+      <td>5</td>
+      <td>50</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>G</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>2000</td>
+    </tr>
+  </tbody>
+</table>
+<p>357 rows × 21 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;error_angle_S&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;error_angle_S2&quot;</span><span class="p">]</span> <span class="o">**</span> <span class="mf">.5</span> 
+
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;error_kappa_theoretical&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">smp</span><span class="o">.</span><span class="n">kappa_theoretical</span><span class="p">(</span><span class="n">smp</span><span class="o">.</span><span class="n">Params</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="n">row</span><span class="o">.</span><span class="n">N</span><span class="p">,</span> 
+                                                                                    <span class="n">n0</span><span class="o">=</span><span class="n">row</span><span class="o">.</span><span class="n">n0</span><span class="p">,</span> 
+                                                                                    <span class="n">kappa_within_site</span><span class="o">=</span><span class="n">row</span><span class="o">.</span><span class="n">kappa_within_site</span><span class="p">,</span>
+                                                                                    <span class="n">site_lat</span><span class="o">=</span><span class="n">row</span><span class="o">.</span><span class="n">site_lat</span><span class="p">,</span>
+                                                                                    <span class="n">site_long</span><span class="o">=</span><span class="n">row</span><span class="o">.</span><span class="n">site_long</span><span class="p">,</span> 
+                                                                                    <span class="n">outlier_rate</span><span class="o">=</span><span class="n">row</span><span class="o">.</span><span class="n">outlier_rate</span><span class="p">,</span> 
+                                                                                    <span class="n">secular_method</span><span class="o">=</span><span class="n">row</span><span class="o">.</span><span class="n">secular_method</span><span class="p">,</span> 
+                                                                                    <span class="n">kappa_secular</span><span class="o">=</span><span class="n">row</span><span class="o">.</span><span class="n">kappa_secular</span><span class="p">)),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;error_angle_theoretical&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">smp</span><span class="o">.</span><span class="n">kappa2angular</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">error_kappa_theoretical</span><span class="p">)),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+
+<span class="n">log_scale</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">plot_theory</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="n">palette</span> <span class="o">=</span> <span class="p">{</span><span class="n">x</span> <span class="p">:</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;viridis&#39;</span><span class="p">)((</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">7</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">)}</span>
+
+<span class="n">sizes</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span><span class="p">:</span><span class="mi">5</span> <span class="o">-</span> <span class="mf">0.4</span><span class="o">*</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">)}</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;error_angle_S&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;n0&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s1">&#39;n0&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">,</span> <span class="n">sizes</span><span class="o">=</span><span class="n">sizes</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">plot_theory</span><span class="p">:</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;error_angle_theoretical&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;n0&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashdot&#39;</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Total number of sites ($N$)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;RMSE (degrees)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+
+<span class="n">leg</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Samples per site&quot;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">title_fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">):</span>
+    <span class="n">leg</span><span class="o">.</span><span class="n">get_lines</span><span class="p">()[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_linewidth</span><span class="p">(</span><span class="mf">1.5</span><span class="o">*</span><span class="n">sizes</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[[</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="s1">&#39;top&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">log_scale</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;Figure2d_log.pdf&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;pdf&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;Figure2d_log.png&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;png&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;Figure2c.pdf&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;pdf&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;Figure2c.png&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;png&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/693ad3056399c0aac586a1e28ec2aaf514c1c070f89675a844c39cdd2c562212.png" src="../../_images/693ad3056399c0aac586a1e28ec2aaf514c1c070f89675a844c39cdd2c562212.png" />
+</div>
+</div>
+</section>
+<section id="bonus-decay-as-a-function-of-p">
+<h2>Bonus: Decay as a Function of p<a class="headerlink" href="#bonus-decay-as-a-function-of-p" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../../outputs/fig2b_5000sim_summary.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;outlier_rate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;outlier_rate&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;outlier_rate&#39;</span><span class="p">:</span> <span class="s1">&#39;Outlier rate&#39;</span><span class="p">,</span> <span class="s1">&#39;n0&#39;</span><span class="p">:</span> <span class="s1">&#39;Samples per site&#39;</span><span class="p">})</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>Unnamed: 1</th>
+      <th>error_angle_mean</th>
+      <th>error_angle_median</th>
+      <th>error_angle_25</th>
+      <th>error_angle_75</th>
+      <th>error_angle_95</th>
+      <th>error_angle_std</th>
+      <th>error_angle_S2</th>
+      <th>error_vgp_scatter</th>
+      <th>...</th>
+      <th>N</th>
+      <th>Samples per site</th>
+      <th>kappa_within_site</th>
+      <th>site_lat</th>
+      <th>site_long</th>
+      <th>Outlier rate</th>
+      <th>secular_method</th>
+      <th>kappa_secular</th>
+      <th>ignore_outliers</th>
+      <th>total_simulations</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0</td>
+      <td>6.961978</td>
+      <td>6.488409</td>
+      <td>4.136269</td>
+      <td>9.261255</td>
+      <td>13.836567</td>
+      <td>3.716380</td>
+      <td>62.277862</td>
+      <td>5.420113</td>
+      <td>...</td>
+      <td>5</td>
+      <td>5</td>
+      <td>20</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>0.2</td>
+      <td>G</td>
+      <td>NaN</td>
+      <td>True</td>
+      <td>5000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>0</td>
+      <td>3.791026</td>
+      <td>3.531298</td>
+      <td>2.277889</td>
+      <td>4.993698</td>
+      <td>7.494339</td>
+      <td>2.013242</td>
+      <td>18.424207</td>
+      <td>44.144837</td>
+      <td>...</td>
+      <td>155</td>
+      <td>1</td>
+      <td>20</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>0.3</td>
+      <td>G</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>5000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>0</td>
+      <td>14.727711</td>
+      <td>13.691266</td>
+      <td>8.633307</td>
+      <td>19.532117</td>
+      <td>29.285867</td>
+      <td>7.975314</td>
+      <td>280.498400</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>1</td>
+      <td>5</td>
+      <td>20</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>G</td>
+      <td>NaN</td>
+      <td>True</td>
+      <td>5000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>0</td>
+      <td>4.312370</td>
+      <td>3.972334</td>
+      <td>2.507251</td>
+      <td>5.767838</td>
+      <td>8.750726</td>
+      <td>2.369111</td>
+      <td>24.208094</td>
+      <td>4.677090</td>
+      <td>...</td>
+      <td>21</td>
+      <td>5</td>
+      <td>20</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>0.6</td>
+      <td>G</td>
+      <td>NaN</td>
+      <td>True</td>
+      <td>5000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>0</td>
+      <td>62.616947</td>
+      <td>48.991792</td>
+      <td>22.157356</td>
+      <td>101.319496</td>
+      <td>146.726474</td>
+      <td>46.409750</td>
+      <td>6074.316193</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>20</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>0.6</td>
+      <td>G</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>5000</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>835</th>
+      <td>835</td>
+      <td>0</td>
+      <td>4.943423</td>
+      <td>4.608345</td>
+      <td>2.933310</td>
+      <td>6.561474</td>
+      <td>9.732801</td>
+      <td>2.644652</td>
+      <td>31.430214</td>
+      <td>4.707596</td>
+      <td>...</td>
+      <td>14</td>
+      <td>5</td>
+      <td>20</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>0.5</td>
+      <td>G</td>
+      <td>NaN</td>
+      <td>True</td>
+      <td>5000</td>
+    </tr>
+    <tr>
+      <th>836</th>
+      <td>836</td>
+      <td>0</td>
+      <td>2.978835</td>
+      <td>2.798113</td>
+      <td>1.785733</td>
+      <td>3.957709</td>
+      <td>5.880434</td>
+      <td>1.595506</td>
+      <td>11.418589</td>
+      <td>35.624377</td>
+      <td>...</td>
+      <td>170</td>
+      <td>1</td>
+      <td>20</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>0.2</td>
+      <td>G</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>5000</td>
+    </tr>
+    <tr>
+      <th>837</th>
+      <td>837</td>
+      <td>0</td>
+      <td>3.022812</td>
+      <td>2.812697</td>
+      <td>1.808776</td>
+      <td>4.025882</td>
+      <td>5.949004</td>
+      <td>1.619803</td>
+      <td>11.760630</td>
+      <td>3.964830</td>
+      <td>...</td>
+      <td>44</td>
+      <td>5</td>
+      <td>20</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>0.6</td>
+      <td>G</td>
+      <td>NaN</td>
+      <td>True</td>
+      <td>5000</td>
+    </tr>
+    <tr>
+      <th>838</th>
+      <td>838</td>
+      <td>0</td>
+      <td>3.301272</td>
+      <td>3.058390</td>
+      <td>1.967244</td>
+      <td>4.396888</td>
+      <td>6.575474</td>
+      <td>1.765834</td>
+      <td>14.015940</td>
+      <td>4.089674</td>
+      <td>...</td>
+      <td>38</td>
+      <td>5</td>
+      <td>20</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>0.6</td>
+      <td>G</td>
+      <td>NaN</td>
+      <td>True</td>
+      <td>5000</td>
+    </tr>
+    <tr>
+      <th>839</th>
+      <td>839</td>
+      <td>0</td>
+      <td>20.190920</td>
+      <td>16.964556</td>
+      <td>10.502211</td>
+      <td>25.991543</td>
+      <td>46.798864</td>
+      <td>14.201549</td>
+      <td>609.316903</td>
+      <td>62.983495</td>
+      <td>...</td>
+      <td>25</td>
+      <td>1</td>
+      <td>20</td>
+      <td>30.0</td>
+      <td>0.0</td>
+      <td>0.6</td>
+      <td>G</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>5000</td>
+    </tr>
+  </tbody>
+</table>
+<p>840 rows × 21 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># df1 = df[df.k==1]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
+
+<span class="n">palette</span> <span class="o">=</span> <span class="p">{</span><span class="mf">0.0</span><span class="p">:</span> <span class="s1">&#39;#130F40&#39;</span><span class="p">,</span> 
+           <span class="mf">0.1</span><span class="p">:</span> <span class="s1">&#39;#2A2647&#39;</span><span class="p">,</span>
+           <span class="mf">0.2</span><span class="p">:</span> <span class="s1">&#39;#413E4E&#39;</span><span class="p">,</span> 
+           <span class="mf">0.3</span><span class="p">:</span> <span class="s1">&#39;#595556&#39;</span><span class="p">,</span> 
+           <span class="mf">0.4</span><span class="p">:</span> <span class="s1">&#39;#706C5D&#39;</span><span class="p">,</span> 
+           <span class="mf">0.5</span><span class="p">:</span> <span class="s1">&#39;#878464&#39;</span><span class="p">,</span> 
+           <span class="mf">0.6</span><span class="p">:</span> <span class="s1">&#39;#9E9B6B&#39;</span><span class="p">}</span>
+
+<span class="n">sizes</span> <span class="o">=</span> <span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="mi">5</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">]}</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;n_tot&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;error_angle_mean&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;Samples per site&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Outlier rate&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s1">&#39;Outlier rate&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">,</span> <span class="n">sizes</span><span class="o">=</span><span class="n">sizes</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Total number of samples ($n$)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Mean error (degrees)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">300</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Samples per site&quot;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">title_fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[[</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="s1">&#39;top&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># plt.xscale(&#39;log&#39;)</span>
+<span class="c1"># plt.yscale(&#39;log&#39;)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;Figure2b.pdf&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;pdf&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;Figure2b.png&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;png&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/73a1db9cc2d45fdceb85affb03caec83c1d277dd3c62510e89735f44361de4c8.png" src="../../_images/73a1db9cc2d45fdceb85affb03caec83c1d277dd3c62510e89735f44361de4c8.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-env-.conda-paleostats-py"
+        },
+        kernelOptions: {
+            name: "conda-env-.conda-paleostats-py",
+            path: "./figures/figure2"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-env-.conda-paleostats-py'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../figure1/Figure1.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Figure 1: Mean Squared Error as a function of the samples per site and sites</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../figure3_histogram/Figure3_hist.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Paleomagnetic Sampling</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#figures-a-b-decay-as-a-function-of-the-number-of-total-samples-n">1. Figures a &amp; b: Decay as a function of the number of total samples <span class="math notranslate nohighlight">\(n\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#figure-c-d-decay-as-a-function-of-the-number-of-sites">Figure c &amp; d: Decay as a function of the number of sites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-decay-as-a-function-of-p">Bonus: Decay as a Function of p</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Facundo Sapienza
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
