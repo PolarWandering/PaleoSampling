@@ -185,7 +185,10 @@ def summary_simulations(df_tot):
                                  'error_angle_95': [stats['95%']],
                                  'error_angle_std': [stats['std']]})
     
+    # Mean square error
     df['error_angle_S2'] = np.mean(df_tot.error_angle.values ** 2)
+    # Root mean square error
+    df['error_angle_S']  = df['error_angle_S2'] ** .5
     
     df['error_vgp_scatter'] = np.mean( (df_tot['S2_vgp'] ** .5 - df_tot['S2_vgp_real'] ** .5 ) ** 2 ) ** .5
     
