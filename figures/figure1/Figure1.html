@@ -349,12 +349,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#figure-1-heatmap-of-accuracy-for-pole-and-vgp-scatter-estimation">Figure 1: Heatmap of accuracy for Pole and VGP Scatter estimation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error-in-pole-estimation">Error in Pole estimation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error-in-vgp-scatter-estimation">Error in VGP scatter estimation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#both-plots-together">Both plots together</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#figure">Figure</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#theoretical-comparision">Theoretical comparision</a></li>
 </ul>
             </nav>
@@ -384,16 +379,19 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_7051/2142690695.py:4: DeprecationWarning: Please use `gaussian_filter` from the `scipy.ndimage` namespace, the `scipy.ndimage.filters` namespace is deprecated.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_844/2142690695.py:4: DeprecationWarning: Please use `gaussian_filter` from the `scipy.ndimage` namespace, the `scipy.ndimage.filters` namespace is deprecated.
   from scipy.ndimage.filters import gaussian_filter
 </pre></div>
 </div>
 </div>
 </div>
+<section id="figure">
+<h2>Figure<a class="headerlink" href="#figure" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># df = pd.read_csv(&#39;../outputs/fig1_5000samples.csv&#39;)</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../../outputs/fig1a_10000sim_summary.csv&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../../outputs/fig1a_10000sim_summary.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># Compute the root of the mean square error</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;error_angle_S&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;error_angle_S2&#39;</span><span class="p">]</span> <span class="o">**</span> <span class="mf">.5</span>
 <span class="n">df</span>
 </pre></div>
@@ -711,8 +709,20 @@ document.write(`
 <p>759 rows × 22 columns</p>
 </div></div></div>
 </div>
-<section id="figure-1-heatmap-of-accuracy-for-pole-and-vgp-scatter-estimation">
-<h2>Figure 1: Heatmap of accuracy for Pole and VGP Scatter estimation<a class="headerlink" href="#figure-1-heatmap-of-accuracy-for-pole-and-vgp-scatter-estimation" title="Permalink to this heading">#</a></h2>
+<p>We define a function that will make the heatmap. Ideally, we want this to be part of <code class="docutils literal notranslate"><span class="pre">smpsite</span></code> under the plotting tools. However, since each subfigure has quite some level of customization, we leave it like this for now.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">find_nearest</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">a0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function to round all the values in a generic numpy array A to the closest value in another array n0.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a0</span><span class="p">),</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">T</span> <span class="o">-</span> <span class="n">a0</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">a0</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_angle_error</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_in</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">save_plot</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
@@ -733,7 +743,10 @@ document.write(`
         <span class="n">Z_smooth</span> <span class="o">=</span> <span class="n">gaussian_filter</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
     
         <span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">a_min</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">a_max</span><span class="o">=</span><span class="n">color_max</span><span class="p">)</span>
-        <span class="n">Z_rounded</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">rint</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span>
+        <span class="c1"># Z_rounded = np.rint(Z)</span>
+        <span class="n">mid_points</span> <span class="o">=</span> <span class="p">(</span><span class="n">bounds</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+</span> <span class="n">bounds</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="n">Z_rounded</span> <span class="o">=</span> <span class="n">find_nearest</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">mid_points</span><span class="p">)</span>
+        <span class="n">Z_rounded</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">Z</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
 
         <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
 
@@ -774,7 +787,10 @@ document.write(`
         <span class="n">Z_smooth</span> <span class="o">=</span> <span class="n">gaussian_filter</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
     
         <span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">a_min</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">a_max</span><span class="o">=</span><span class="n">color_max</span><span class="p">)</span>
-        <span class="n">Z_rounded</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">rint</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span>
+        <span class="c1"># Z_rounded = np.rint(Z)</span>
+        <span class="n">mid_points</span> <span class="o">=</span> <span class="p">(</span><span class="n">bounds</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+</span> <span class="n">bounds</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="n">Z_rounded</span> <span class="o">=</span> <span class="n">find_nearest</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">mid_points</span><span class="p">)</span>
+        <span class="n">Z_rounded</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">Z</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
 
         <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
 
@@ -812,7 +828,7 @@ document.write(`
                      <span class="n">cax</span><span class="o">=</span><span class="n">caxes</span><span class="p">,</span>
                      <span class="n">bounds</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">5.0</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">)]),</span> 
                      <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;inferno&#39;</span><span class="p">,</span> 
-                     <span class="n">cbar_title</span><span class="o">=</span><span class="s2">&quot;RMSE for VGP scatter&quot;</span><span class="p">,</span>
+                     <span class="n">cbar_title</span><span class="o">=</span><span class="s2">&quot;RMSE for VGP scatter (degrees)&quot;</span><span class="p">,</span>
                      <span class="n">make_levels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
                      <span class="n">make_contours</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                      <span class="n">color_max</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
@@ -823,7 +839,7 @@ document.write(`
                  <span class="n">cax</span><span class="o">=</span><span class="n">caxes_in</span><span class="p">,</span>
                  <span class="n">bounds</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">5.0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">8.0</span><span class="p">,</span> <span class="mf">16.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">)]),</span> 
                  <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> 
-                 <span class="n">cbar_title</span><span class="o">=</span><span class="s2">&quot;RMSE for pole estimation&quot;</span><span class="p">,</span>
+                 <span class="n">cbar_title</span><span class="o">=</span><span class="s2">&quot;RMSE for pole estimation (degrees)&quot;</span><span class="p">,</span>
                  <span class="n">color_max</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> 
                  <span class="n">ticks</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">])</span>
     
@@ -864,317 +880,9 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/7ec263ea952733848f786becb3bac56d5430235d1960f1936b7b348eabe6f2cb.png" src="../../_images/7ec263ea952733848f786becb3bac56d5430235d1960f1936b7b348eabe6f2cb.png" />
+<img alt="../../_images/4b09d98f14dba2076fc112ebefdf41b61c236f21721af06039f2be1ec89e9f31.png" src="../../_images/4b09d98f14dba2076fc112ebefdf41b61c236f21721af06039f2be1ec89e9f31.png" />
 </div>
 </div>
-<section id="error-in-pole-estimation">
-<h3>Error in Pole estimation<a class="headerlink" href="#error-in-pole-estimation" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.ndimage.filters</span> <span class="kn">import</span> <span class="n">gaussian_filter</span>
-<span class="kn">import</span> <span class="nn">matplotlib.colors</span> <span class="k">as</span> <span class="nn">colors</span>
-
-<span class="k">def</span> <span class="nf">plot_angle_error</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">save_plot</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-    
-    <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-    <span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
-    <span class="c1"># axes.set_aspect(&quot;equal&quot;)</span>
-    
-    <span class="n">caxes</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">inset_axes</span><span class="p">([</span><span class="mf">1.04</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">])</span>
-    
-    <span class="k">def</span> <span class="nf">contour_plot</span><span class="p">(</span><span class="n">df_</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">cax</span><span class="p">,</span> <span class="n">bounds</span><span class="p">,</span> <span class="n">cmap</span><span class="p">,</span> <span class="n">cbar_title</span><span class="p">,</span> <span class="n">make_levels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">make_contours</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color_max</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    
-        <span class="n">X</span> <span class="o">=</span> <span class="n">df_</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span>
-        <span class="n">Y</span> <span class="o">=</span> <span class="n">df_</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span>
-        <span class="n">Z</span> <span class="o">=</span> <span class="n">df_</span><span class="o">.</span><span class="n">values</span>
-        <span class="n">Z_smooth</span> <span class="o">=</span> <span class="n">gaussian_filter</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
-    
-        <span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">a_min</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">a_max</span><span class="o">=</span><span class="n">color_max</span><span class="p">)</span>
-        <span class="n">Z_rounded</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">rint</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span>
-
-        <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
-
-        <span class="k">if</span> <span class="n">make_levels</span><span class="p">:</span>
-            <span class="n">N</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span>
-            <span class="n">levels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">100.0</span><span class="p">,</span> <span class="mi">310</span><span class="p">,</span> <span class="mf">40.</span><span class="p">)])</span>
-            <span class="n">IsoNLines</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="n">levels</span><span class="p">)</span>
-            <span class="n">ax</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">IsoNLines</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-
-        <span class="n">ColorGrid</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">Z_rounded</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">colors</span><span class="o">.</span><span class="n">LogNorm</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">color_max</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
-        
-        <span class="k">if</span> <span class="n">make_contours</span><span class="p">:</span>
-            <span class="n">ContourLines</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="n">bounds</span><span class="p">)</span>  
-            <span class="n">ax</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">ContourLines</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
-
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">df_</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span><span class="p">)])</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">df_</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span><span class="p">)])</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Number of Samples per Site ($n_0$)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Number of Sites (N)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">ticks</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">ticks</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
-    
-        <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">ColorGrid</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">cax</span><span class="p">,</span> <span class="n">boundaries</span><span class="o">=</span><span class="n">bounds</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">)</span><span class="c1">#, fraction=0.02, location=&#39;right&#39;)</span>
-        <span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="n">cbar_title</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">270</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-     
-        <span class="k">return</span> <span class="kc">None</span>
-    
-    <span class="n">contour_plot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> 
-                 <span class="n">axes</span><span class="p">,</span> 
-                 <span class="n">cax</span><span class="o">=</span><span class="n">caxes</span><span class="p">,</span>
-                 <span class="n">bounds</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">5.0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">8.0</span><span class="p">,</span> <span class="mf">16.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">)]),</span> 
-                 <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> 
-                 <span class="n">cbar_title</span><span class="o">=</span><span class="s2">&quot;RMSE for true pole&quot;</span><span class="p">,</span>
-                 <span class="n">color_max</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> 
-                 <span class="n">ticks</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">40</span><span class="p">])</span>
-
-        
-    <span class="k">if</span> <span class="n">save_plot</span><span class="p">:</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;Figure1a.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;png&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;Figure1a.pdf&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;pdf&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span> 
-        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_6150/3820946350.py:1: DeprecationWarning: Please use `gaussian_filter` from the `scipy.ndimage` namespace, the `scipy.ndimage.filters` namespace is deprecated.
-  from scipy.ndimage.filters import gaussian_filter
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_kappa</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">kappa_within_site</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
-
-<span class="n">df_filter</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">site_lat</span><span class="o">==</span><span class="mi">30</span><span class="p">)</span> 
-             <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">kappa_within_site</span><span class="o">==</span><span class="mi">50</span><span class="p">)</span>
-             <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">outlier_rate</span><span class="o">==</span><span class="mf">0.00</span><span class="p">)</span> 
-             <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">ignore_outliers</span><span class="o">==</span><span class="kc">False</span><span class="p">)]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_angle_error</span><span class="p">(</span><span class="n">df_filter</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="s1">&#39;n0&#39;</span><span class="p">,</span> <span class="s1">&#39;error_angle_S&#39;</span><span class="p">),</span> 
-                 <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/892a2ce2448f8cd8c9b132d57d1aabe5cb60906b9c89fd667f9a2bedb265c27f.png" src="../../_images/892a2ce2448f8cd8c9b132d57d1aabe5cb60906b9c89fd667f9a2bedb265c27f.png" />
-</div>
-</div>
-</section>
-<section id="error-in-vgp-scatter-estimation">
-<h3>Error in VGP scatter estimation<a class="headerlink" href="#error-in-vgp-scatter-estimation" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.ndimage.filters</span> <span class="kn">import</span> <span class="n">gaussian_filter</span>
-
-<span class="k">def</span> <span class="nf">plot_angle_error</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">save_plot</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-    
-    <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-    <span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
-    <span class="n">axes</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
-    
-    <span class="n">caxes</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">inset_axes</span><span class="p">([</span><span class="mf">1.04</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">])</span>
-    
-    <span class="k">def</span> <span class="nf">contour_plot</span><span class="p">(</span><span class="n">df_</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">cax</span><span class="p">,</span> <span class="n">bounds</span><span class="p">,</span> <span class="n">cmap</span><span class="p">,</span> <span class="n">cbar_title</span><span class="p">,</span> <span class="n">make_levels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">make_contours</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color_max</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    
-        <span class="n">X</span> <span class="o">=</span> <span class="n">df_</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span>
-        <span class="n">Y</span> <span class="o">=</span> <span class="n">df_</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span>
-        <span class="n">Z</span> <span class="o">=</span> <span class="n">df_</span><span class="o">.</span><span class="n">values</span>
-        <span class="n">Z_smooth</span> <span class="o">=</span> <span class="n">gaussian_filter</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
-    
-        <span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">a_min</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">a_max</span><span class="o">=</span><span class="n">color_max</span><span class="p">)</span>
-        <span class="n">Z_rounded</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">rint</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span>
-
-        <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
-
-        <span class="k">if</span> <span class="n">make_levels</span><span class="p">:</span>
-            <span class="n">N</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span>
-            <span class="n">levels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">100.0</span><span class="p">,</span> <span class="mi">310</span><span class="p">,</span> <span class="mf">40.</span><span class="p">)])</span>
-            <span class="n">IsoNLines</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="n">levels</span><span class="p">)</span>
-            <span class="n">ax</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">IsoNLines</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-
-        <span class="n">ColorGrid</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">Z_rounded</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">colors</span><span class="o">.</span><span class="n">LogNorm</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">color_max</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
-        
-        <span class="k">if</span> <span class="n">make_contours</span><span class="p">:</span>
-            <span class="n">ContourLines</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="n">bounds</span><span class="p">)</span>  
-            <span class="n">ax</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">ContourLines</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
-
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">df_</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span><span class="p">)])</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">df_</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span><span class="p">)])</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Number of Samples per Site ($n_0$)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Number of Sites (N)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">ticks</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">ticks</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
-    
-        <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">ColorGrid</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">cax</span><span class="p">,</span> <span class="n">boundaries</span><span class="o">=</span><span class="n">bounds</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">)</span><span class="c1">#, fraction=0.02, location=&#39;right&#39;)</span>
-        <span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="n">cbar_title</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">270</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-     
-        <span class="k">return</span> <span class="kc">None</span>
-
-    <span class="n">contour_plot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> 
-             <span class="n">axes</span><span class="p">,</span> 
-             <span class="n">cax</span><span class="o">=</span><span class="n">caxes</span><span class="p">,</span>
-             <span class="n">bounds</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">5.0</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">)]),</span> 
-             <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;inferno&#39;</span><span class="p">,</span> 
-             <span class="n">cbar_title</span><span class="o">=</span><span class="s2">&quot;RMSE for VGP scatter&quot;</span><span class="p">,</span>
-             <span class="n">make_levels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
-             <span class="n">make_contours</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-             <span class="n">color_max</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> 
-             <span class="n">ticks</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">])</span>
-        
-    <span class="k">if</span> <span class="n">save_plot</span><span class="p">:</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;Figure1b.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;png&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;Figure1b.pdf&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;pdf&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span> 
-        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_18377/1396219041.py:1: DeprecationWarning: Please use `gaussian_filter` from the `scipy.ndimage` namespace, the `scipy.ndimage.filters` namespace is deprecated.
-  from scipy.ndimage.filters import gaussian_filter
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_angle_error</span><span class="p">(</span><span class="n">df_filter</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="s1">&#39;n0&#39;</span><span class="p">,</span> <span class="s1">&#39;error_vgp_scatter&#39;</span><span class="p">),</span> 
-                 <span class="n">save_plot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/9f2eea1b27838796673312fde9aa46d44c32ddcaf7bbd797499577c92b7f319c.png" src="../../_images/9f2eea1b27838796673312fde9aa46d44c32ddcaf7bbd797499577c92b7f319c.png" />
-</div>
-</div>
-</section>
-<section id="both-plots-together">
-<h3>Both plots together<a class="headerlink" href="#both-plots-together" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.ndimage.filters</span> <span class="kn">import</span> <span class="n">gaussian_filter</span>
-
-<span class="k">def</span> <span class="nf">plot_angle_error</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_in</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">save_plot</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-    
-    <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-    <span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
-    <span class="n">axes</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
-    
-    <span class="n">caxes</span>    <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">inset_axes</span><span class="p">([</span><span class="mf">1.04</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">])</span>
-    <span class="n">caxes_in</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">inset_axes</span><span class="p">([</span><span class="mf">1.04</span><span class="p">,</span> <span class="mf">0.53</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">])</span>
-    
-    <span class="k">def</span> <span class="nf">contour_plot</span><span class="p">(</span><span class="n">df_</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">cax</span><span class="p">,</span> <span class="n">bounds</span><span class="p">,</span> <span class="n">cmap</span><span class="p">,</span> <span class="n">cbar_title</span><span class="p">,</span> <span class="n">make_levels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">make_contours</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color_max</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    
-        <span class="n">X</span> <span class="o">=</span> <span class="n">df_</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span>
-        <span class="n">Y</span> <span class="o">=</span> <span class="n">df_</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span>
-        <span class="n">Z</span> <span class="o">=</span> <span class="n">df_</span><span class="o">.</span><span class="n">values</span>
-        <span class="n">Z_smooth</span> <span class="o">=</span> <span class="n">gaussian_filter</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
-    
-        <span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">a_min</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">a_max</span><span class="o">=</span><span class="n">color_max</span><span class="p">)</span>
-        <span class="n">Z_rounded</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">rint</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span>
-
-        <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
-
-        <span class="k">if</span> <span class="n">make_levels</span><span class="p">:</span>
-            <span class="n">N</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span>
-            <span class="n">levels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">100.0</span><span class="p">,</span> <span class="mi">310</span><span class="p">,</span> <span class="mf">40.</span><span class="p">)])</span>
-            <span class="n">IsoNLines</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="n">levels</span><span class="p">)</span>
-            <span class="n">ax</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">IsoNLines</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-
-        <span class="n">ColorGrid</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">Z_rounded</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">color_max</span><span class="p">)</span>
-        
-        <span class="k">if</span> <span class="n">make_contours</span><span class="p">:</span>
-            <span class="n">ContourLines</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="n">bounds</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>  
-            <span class="n">ax</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">ContourLines</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
-
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">df_</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span><span class="p">)])</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">df_</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span><span class="p">)])</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Number of Samples per Site ($n_0$)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Number of Sites (N)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">ticks</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">ticks</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
-    
-        <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">ColorGrid</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">cax</span><span class="p">,</span> <span class="n">boundaries</span><span class="o">=</span><span class="n">bounds</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">)</span><span class="c1">#, fraction=0.02, location=&#39;right&#39;)</span>
-        <span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="n">cbar_title</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">270</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-     
-        <span class="k">return</span> <span class="kc">None</span>
-    
-    <span class="n">contour_plot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> 
-                 <span class="n">axes</span><span class="p">,</span> 
-                 <span class="n">cax</span><span class="o">=</span><span class="n">caxes</span><span class="p">,</span>
-                 <span class="n">bounds</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">5.0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">8.0</span><span class="p">,</span> <span class="mf">16.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">)]),</span> 
-                 <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> 
-                 <span class="n">cbar_title</span><span class="o">=</span><span class="s2">&quot;RMSE for true pole&quot;</span><span class="p">,</span>
-                 <span class="n">color_max</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> 
-                 <span class="n">ticks</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">40</span><span class="p">])</span>
-    
-    <span class="k">if</span> <span class="n">df_in</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-    
-        <span class="n">axin</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">inset_axes</span><span class="p">([</span><span class="mf">0.45</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">,</span> <span class="mf">0.54</span><span class="p">,</span> <span class="mf">0.54</span><span class="p">])</span>
-        <span class="n">contour_plot</span><span class="p">(</span><span class="n">df_in</span><span class="p">,</span> 
-                     <span class="n">axin</span><span class="p">,</span> 
-                     <span class="n">cax</span><span class="o">=</span><span class="n">caxes_in</span><span class="p">,</span>
-                     <span class="n">bounds</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">5.0</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)]),</span> 
-                     <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;inferno&#39;</span><span class="p">,</span> 
-                     <span class="n">cbar_title</span><span class="o">=</span><span class="s2">&quot;RMSE for VGP scatter&quot;</span><span class="p">,</span>
-                     <span class="n">make_levels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
-                     <span class="n">make_contours</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                     <span class="n">color_max</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> 
-                     <span class="n">ticks</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">])</span>
-        
-    <span class="k">if</span> <span class="n">save_plot</span><span class="p">:</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;Figure1.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;png&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;Figure1.pdf&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;pdf&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span> 
-        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_7051/3759333274.py:1: DeprecationWarning: Please use `gaussian_filter` from the `scipy.ndimage` namespace, the `scipy.ndimage.filters` namespace is deprecated.
-  from scipy.ndimage.filters import gaussian_filter
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_kappa</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">kappa_within_site</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
-
-<span class="n">df_filter</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">site_lat</span><span class="o">==</span><span class="mi">30</span><span class="p">)</span> 
-             <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">kappa_within_site</span><span class="o">==</span><span class="mi">50</span><span class="p">)</span>
-             <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">outlier_rate</span><span class="o">==</span><span class="mf">0.00</span><span class="p">)</span> 
-             <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">ignore_outliers</span><span class="o">==</span><span class="kc">False</span><span class="p">)]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_angle_error</span><span class="p">(</span><span class="n">df_filter</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="s1">&#39;n0&#39;</span><span class="p">,</span> <span class="s1">&#39;error_angle_mean&#39;</span><span class="p">),</span> 
-                 <span class="n">df_filter</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="s1">&#39;n0&#39;</span><span class="p">,</span> <span class="s1">&#39;error_vgp_scatter&#39;</span><span class="p">),</span>
-                 <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/41cf8ea4fea4981328c76f16765beaf3a36ac5281ee9fb3ba35177e1f2fe9bfc.png" src="../../_images/41cf8ea4fea4981328c76f16765beaf3a36ac5281ee9fb3ba35177e1f2fe9bfc.png" />
-</div>
-</div>
-</section>
 </section>
 <section id="theoretical-comparision">
 <h2>Theoretical comparision<a class="headerlink" href="#theoretical-comparision" title="Permalink to this heading">#</a></h2>
@@ -1345,7 +1053,7 @@ document.write(`
  &lt;BarContainer object of 10 artists&gt;)
 </pre></div>
 </div>
-<img alt="../../_images/c54341291951365a37adc7e555c217d5f6377fa691bd3421d82978fce2d6310d.png" src="../../_images/c54341291951365a37adc7e555c217d5f6377fa691bd3421d82978fce2d6310d.png" />
+<img alt="../../_images/950660ca10932923daa13e19cbe1acbe6f3154b9caf8fd722159cfe33c3591b0.png" src="../../_images/950660ca10932923daa13e19cbe1acbe6f3154b9caf8fd722159cfe33c3591b0.png" />
 </div>
 </div>
 </section>
@@ -1418,12 +1126,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#figure-1-heatmap-of-accuracy-for-pole-and-vgp-scatter-estimation">Figure 1: Heatmap of accuracy for Pole and VGP Scatter estimation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error-in-pole-estimation">Error in Pole estimation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error-in-vgp-scatter-estimation">Error in VGP scatter estimation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#both-plots-together">Both plots together</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#figure">Figure</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#theoretical-comparision">Theoretical comparision</a></li>
 </ul>
   </nav></div>
