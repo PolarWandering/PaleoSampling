@@ -1,0 +1,24 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: PaleoSampling
+message: Quantitative Analysis of Paleomagnetic Sampling Strategies
+type: software
+authors:
+  - given-names: Facundo
+    family-names: Sapienza
+    email: fsapienza@berkeley.edu
+    affiliation: UC Berkeley
+    orcid: 'https://orcid.org/0000-0003-4252-7161'
+  - given-names: Leandro Cesar
+    family-names: Gallo
+    email: l.c.gallo@geo.uio.no
+    orcid: 'https://orcid.org/0000-0002-8124-7536'
+    affiliation: The Center for Earth Evolution and Dynamics
+repository-code: 'https://github.com/PolarWandering/PaleoSampling'
+keywords:
+  - statistics
+  - paleomagnetism
+  - error-quantification
+license: MIT
