@@ -10,8 +10,10 @@ You can open a cloud JupyterHub version of all the code in this repository and e
 
 Lear more about the Binder project in this [link](https://mybinder.readthedocs.io/en/latest/).
 
-The notebooks in this repository can be directly been access thought the following [JupyterBook](https://polarwandering.github.io/PaleoSampling/). This link opens a website
-where all the notebooks can been visualizedß. 
+The notebooks in this repository can be directly been access thought the following JupyterBook. This link opens a website
+where all the notebooks can been visualized. 
+
+[![Jupyter Book Badge](https://jupyterbook.org/badge.svg)](https://polarwandering.github.io/PaleoSampling/)
 
 ### Organization
 
