@@ -1,3 +1,7 @@
+### ⚠️ New preprint available! ⚠️
+
+For a detailed description of the project, take a look at [our preprint at JGR](https://www.authorea.com/doi/full/10.22541/essoar.168881772.25833701). 
+
 ## Quantitative Analysis of Paleomagnetic Sampling Strategies
 
 This repository contains all the requirement notebooks and code to reproduce the analysis for the different sampling procedures in order
@@ -55,3 +59,16 @@ path to this repository and use the following commnands to trigger their respect
 - `make env`: Creates the conda environment associated to the `environment.yml` file and then creates the respective iPython kernel such that the 
 environment can be accessed via Jupyter notebooks. 
 - `make help`: Prints a short description of all available commands and their explanation. 
+
+### How to cite 📖
+
+If you want to cite this work, please use this BibTex citation from [our latest preprint](https://gmd.copernicus.org/preprints/gmd-2023-120/):
+```
+@article{sapienza2023quantitative,
+  title={Quantitative Analysis of Paleomagnetic Sampling Strategies},
+  author={Sapienza, Facundo and Gallo, Leandro Cesar and Zhang, Yiming and Vaes, Bram and Domeier, Mathew and Swanson-Hysell, Nicholas L},
+  journal={Authorea Preprints},
+  year={2023},
+  publisher={Authorea}
+}
+```
