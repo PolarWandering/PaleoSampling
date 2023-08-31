@@ -26,3 +26,6 @@ launch_buttons:
 launch_buttons:
   binderhub_url: "https://mybinder.org/v2/gh/PolarWandering/PaleoSampling/HEAD"
   # colab_url: "https://colab.research.google.com"
+  
+bibtex_bibfiles:
+    - book/references.bib
