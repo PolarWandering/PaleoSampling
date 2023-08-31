@@ -1,5 +1,5 @@
 format: jb-book
-root: Main
+root: book/Main
 
 parts:
 - caption: Analysis
