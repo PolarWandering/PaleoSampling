@@ -4,9 +4,11 @@ from .kappa import lat_correction, kappa_from_latitude, kappa2angular
 
 
 def inverse(f, delta=1e-8):
-    """Given a function y = f(x) that is a monotonically increasing function on
+    """
+    Given a function y = f(x) that is a monotonically increasing function on
     non-negative numbers, return the function x = f_1(y) that is an approximate
-    inverse, picking the closest value to the inverse, within delta."""
+    inverse, picking the closest value to the inverse, within delta.
+    """
     def f_1(y):
         low, high = 0, 10e7
         last, mid = 0, high/2
@@ -59,7 +61,6 @@ def kappa_theoretical(params):
     k_tot = N * k_combined * rho_kappa(k_combined, N) #* (1 - p)
         
     if n==1 and p > 0.001:
-        print("I am here.")
         rho_kappa_inverse = inverse(lambda x: rho_kappa(x, n=2))
         k_combined = rho_kappa_inverse( (1-p) * rho_kappa(k_combined, 2) )
         k_tot = N * k_combined * rho_kappa(k_combined, N)
@@ -93,38 +94,3 @@ def kappa_theoretical(params):
         # _factor = 1 / np.sqrt(1 + p/(1-p))
         _factor = ( 1 + (1 - p) ** 2 ) / 2
         return rho_kappa_inverse( _factor * rho_kappa(k_tot, 2) )
-    
-#     _k0_lat_corrected = k0 / lat_correction(lat, degrees=True)
-    
-#     _kappa_vgp = k1 / (1 + ( k1 / (n * rho_kappa(_k0_lat_corrected, n) * _k0_lat_corrected ) ))
-    
-#     # print(rho_kappa(_kappa_vgp, N))
-#     _kappa = N * _kappa_vgp * rho_kappa(_kappa_vgp, N)
-
-#     return float(_kappa)
-    
-#     if p < 0.001:
-#         k1_within = k1
-#     else: 
-#         if n > 2:
-#             rho_kappa_inverse = inverse(lambda x: rho_kappa(x, n=2))
-#             k1_within = rho_kappa_inverse( (1-p) * rho_kappa(k1, 2) )
-#             # k1_within = 1 / (1 - (1-p) * rho_kappa(k1_corrected, n))    
-#         else:
-#             k1_within = k1
-            
-#     k1_corrected = k1_within / lat_correction(lat, degrees=True)
-#     # print(k1, k1_corrected)
-#     # k1_corrected = k1
-
-#     _kappa =  N * k0 * rho_kappa(k0, N) / (1 + (k0)/(k1_corrected * rho_kappa(k1_corrected, n) * n))
-#     # _kappa =  N * k0 * rho_kappa(k0, N) / (1 + (k0)/(k1_corrected * rho_kappa(k1_corrected, n) * (1-p) * n))
-
-#     if p > 0.001 and n == 1:
-#         rho_kappa_inverse = inverse(lambda x: rho_kappa(x, n=2))
-#         print(_kappa)
-#         _kappa = rho_kappa_inverse( (1-p) * rho_kappa(_kappa, 2) )
-#         print(_kappa)
-    
-#     return float(_kappa)
-#     # return float(kappa2angular(_kappa))
