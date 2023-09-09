@@ -5,31 +5,31 @@
 
 #######################################################################################
 # Book settings
-title                       : Quantitative Analysis of Paleomagnetic Sampling Strategies  
-author                      : Facundo Sapienza 
-copyright                   : "2023"  
-logo                        : figures/logo.png  
+title : Quantitative Analysis of Paleomagnetic Sampling Strategies
+author : Facundo Sapienza
+copyright : "2023"  
+logo : figures/logo.png
 
 execute:
-  execute_notebooks: cache
-  allow_errors: false
-  exclude_patterns:
-    - '*Parallel*'
-    - '*Figure*'
+ execute_notebooks: 'off'
+ # allow_errors: false
+ # exclude_patterns:
+ # - '*Parallel*'
+ # - '*Figure*'
 
 repository:
-  url                       : https://github.com/PolarWandering/PaleoSampling
-  branch                    : main  
+ url : https://github.com/PolarWandering/PaleoSampling
+ branch : main
 html:
-  use_repository_button: true
-  use_issues_button: true
+ use_repository_button: true
+ use_issues_button: true
   
 launch_buttons:
-  notebook_interface: "jupyterlab"
+ notebook_interface: "jupyterlab"
   
 launch_buttons:
-  binderhub_url: "https://mybinder.org/v2/gh/PolarWandering/PaleoSampling/HEAD"
+ binderhub_url: "https://mybinder.org/v2/gh/PolarWandering/PaleoSampling/HEAD"
   # colab_url: "https://colab.research.google.com"
   
 bibtex_bibfiles:
-    - book/references.bib
+ - book/references.bib
