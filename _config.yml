@@ -11,11 +11,11 @@ copyright : "2023"
 logo : figures/logo.png
 
 execute:
- execute_notebooks: 'off'
- # allow_errors: false
- # exclude_patterns:
- # - '*Parallel*'
- # - '*Figure*'
+ execute_notebooks: auto
+ allow_errors: false
+ exclude_patterns:
+ - '*Parallel*'
+ - '*Figure*'
 
 repository:
  url : https://github.com/PolarWandering/PaleoSampling
