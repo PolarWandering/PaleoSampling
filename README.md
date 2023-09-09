@@ -2,9 +2,9 @@
 
 For a detailed description of the project, take a look at [our preprint of a manuscript that is in revision at JGR](https://www.authorea.com/doi/full/10.22541/essoar.168881772.25833701).
 
-[![Jupyter Book Badge](https://jupyterbook.org/badge.svg)](https://polarwandering.github.io/PaleoSampling/) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/PolarWandering/PaleoSampling/HEAD) [![DOI](https://zenodo.org/badge/595793364.svg)](https://zenodo.org/badge/latestdoi/595793364) 
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/PolarWandering/PaleoSampling/HEAD) [![DOI](https://zenodo.org/badge/595793364.svg)](https://zenodo.org/badge/latestdoi/595793364) 
 
-[![Build Status](https://github.com/PolarWandering/PaleoSampling/actions/workflows/book.yml/badge.svg?branch=main)](https://github.com/PolarWandering/PaleoSampling/actions/workflows/book.yml?query=branch%3Amain)
+[![Jupyter Book Badge](https://jupyterbook.org/badge.svg)](https://polarwandering.github.io/PaleoSampling/) [![Build Status](https://github.com/PolarWandering/PaleoSampling/actions/workflows/book.yml/badge.svg?branch=main)](https://github.com/PolarWandering/PaleoSampling/actions/workflows/book.yml?query=branch%3Amain)
 
 [![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)](./.github/workflows/book.yml) [![Licence](https://img.shields.io/github/license/Ileriayo/markdown-badges?style=for-the-badge)](./LICENSE)
 
