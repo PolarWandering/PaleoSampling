@@ -400,7 +400,7 @@ document.write(`
                   
   <section id="example-of-sampling">
 <h1>Example of sampling<a class="headerlink" href="#example-of-sampling" title="Permalink to this heading">#</a></h1>
-<p>Here we illustrate an example of how to generate samples using <code class="docutils literal notranslate"><span class="pre">smpsite</span></code>.</p>
+<p>Here we illustrate an example of how to generate samples using our small Python package <code class="docutils literal notranslate"><span class="pre">smpsite</span></code>. Many of the sampling capabilities are directly imported from <code class="docutils literal notranslate"><span class="pre">pmagpy</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pmagpy.pmag</span> <span class="k">as</span> <span class="nn">pmag</span>
@@ -408,17 +408,28 @@ document.write(`
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">smpsite</span> <span class="k">as</span> <span class="nn">smp</span>
 
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">666</span><span class="p">)</span>
+
 <span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
 </div>
 </div>
 </div>
-<p>We define a parameter class defined inside <code class="docutils literal notranslate"><span class="pre">smpsite</span></code> that allow us to specify all the parameters of interest at the same time.</p>
+<p>We define a parameter class defined inside <code class="docutils literal notranslate"><span class="pre">smpsite</span></code> that allow us to specify all the parameters of interest at the same time. These parameters include:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">N</span></code>: Total number of sites</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n0</span></code>: Number of samples per site</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kappa_within_site</span></code>: Concentration parameter of the Fisher distribution in each site</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">site_lat</span></code>: Latitude of the site</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">site_long</span></code>: Longitude of the site</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">outlier_rate</span></code>: Fraction of samples that are randomly taken from the uniform distribution in the sphere, with <code class="docutils literal notranslate"><span class="pre">0.0</span></code> representing no outliers and <code class="docutils literal notranslate"><span class="pre">1.0</span></code> representing all outliers.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">secular_method</span></code>: Method use to sample VGPs. It includes <code class="docutils literal notranslate"><span class="pre">G</span></code>, <code class="docutils literal notranslate"><span class="pre">tk03</span></code> and <code class="docutils literal notranslate"><span class="pre">Fisher</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kappa_secular</span></code>: In case of <code class="docutils literal notranslate"><span class="pre">secular_method=&quot;Fisher&quot;</span></code>, it specifies the concentration parameter of the Fisher distribution.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
-
-<span class="n">params0</span> <span class="o">=</span> <span class="n">smp</span><span class="o">.</span><span class="n">Params</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">params0</span> <span class="o">=</span> <span class="n">smp</span><span class="o">.</span><span class="n">Params</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
                      <span class="n">n0</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
                      <span class="n">kappa_within_site</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
                      <span class="n">site_lat</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> 
@@ -426,15 +437,22 @@ document.write(`
                      <span class="n">outlier_rate</span><span class="o">=</span><span class="mf">0.10</span><span class="p">,</span>
                      <span class="n">secular_method</span><span class="o">=</span><span class="s2">&quot;G&quot;</span><span class="p">,</span>
                      <span class="n">kappa_secular</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-
+</pre></div>
+</div>
+</div>
+</div>
+<p>Once the parameters are specified, we can just generate a random sample:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 
 <span class="n">df_sample</span> <span class="o">=</span> <span class="n">smp</span><span class="o">.</span><span class="n">generate_samples</span><span class="p">(</span><span class="n">params0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 15.8 ms, sys: 4.72 ms, total: 20.5 ms
-Wall time: 17 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 12 ms, sys: 5.88 ms, total: 17.9 ms
+Wall time: 17.2 ms
 </pre></div>
 </div>
 </div>
@@ -448,7 +466,7 @@ Wall time: 17 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/81e7eb0ab8abaae4284f5323454196e8554d015e21d3f91f3a7bd3f64bc80198.png" src="../_images/81e7eb0ab8abaae4284f5323454196e8554d015e21d3f91f3a7bd3f64bc80198.png" />
+<img alt="../_images/1c955abbaa54d403febf76f7ea1eae952275bd2cebbc0db271cacaa4baa86495.png" src="../_images/1c955abbaa54d403febf76f7ea1eae952275bd2cebbc0db271cacaa4baa86495.png" />
 </div>
 </div>
 </section>
