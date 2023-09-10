@@ -21,7 +21,7 @@ execute:
  - '*Parallel*'
  # - '*Figure1*'
  # - '*Figure2*'
- # - '*Figure3_hist*'
+ - '*Figure3_hist*'
  # - '*Figure3_intersection*'
  # - '*Figure3*'
  # - '*Figure4*'
