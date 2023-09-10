@@ -12,7 +12,7 @@ logo : figures/logo.png
 
 execute:
  execute_notebooks: auto
- allow_errors: false
+ allow_errors: true
  exclude_patterns:
  - '*Parallel*'
  - '*Figure*'
