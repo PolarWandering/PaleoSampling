@@ -16,6 +16,7 @@ execute:
  exclude_patterns:
  - '*Parallel*'
  - '*Figure*'
+ - '*kappa_table*'
 
 repository:
  url : https://github.com/PolarWandering/PaleoSampling
