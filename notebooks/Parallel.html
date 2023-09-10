@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Parallelization with Dask &#8212; Quantitative Analysis of Paleomagnetic Sampling Strategies</title>
   
@@ -410,6 +410,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-simulation">4. Run Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-outputs">5. Save outputs</a></li>
 </ul>
             </nav>
         </div>
@@ -423,7 +424,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="parallelization-with-dask">
 <h1>Parallelization with Dask<a class="headerlink" href="#parallelization-with-dask" title="Permalink to this heading">#</a></h1>
-<p>This notebook includes a series of experiments to make multiple samples in parallel using Dark.</p>
+<p>This notebook includes a series of experiments to make multiple samples in parallel using Dask. Many of the simulations carries for this work where carried in parallel and the setup was configures using Dask. We include here the code that was used to create this simulations.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -440,6 +441,7 @@ document.write(`
 </div>
 <section id="dask-setup">
 <h2>1. Dask Setup<a class="headerlink" href="#dask-setup" title="Permalink to this heading">#</a></h2>
+<p>In this case we decided to work with a total of <code class="docutils literal notranslate"><span class="pre">60</span></code> workers, each one of them carrying a different simulation for some given parameters.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">number_of_clusters</span> <span class="o">=</span> <span class="mi">60</span>
@@ -2427,10 +2429,10 @@ document.write(`
     </div>
 </div></div></div>
 </div>
+<p>Check to see if the threads are ready</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check to see if the threads are ready</span>
-<span class="n">dview</span> <span class="o">=</span> <span class="n">rc</span><span class="p">[:]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dview</span> <span class="o">=</span> <span class="n">rc</span><span class="p">[:]</span>
 <span class="nb">len</span><span class="p">(</span><span class="n">dview</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2444,6 +2446,7 @@ document.write(`
 </section>
 <section id="macro-function-definition">
 <h2>2. Macro function definition<a class="headerlink" href="#macro-function-definition" title="Permalink to this heading">#</a></h2>
+<p>We now define a function that is going to execute all the simulation with the desired parameters. In order to this to work in parallel, the class <code class="docutils literal notranslate"><span class="pre">Params</span></code> needs to be redefined inside the function. We further add a hash code to the simulation to keep track of them.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ipp_simulate_estimations</span><span class="p">(</span><span class="n">N</span><span class="p">,</span>
@@ -2510,6 +2513,7 @@ document.write(`
 </section>
 <section id="parameter-space-exploration">
 <h2>3. Parameter space exploration<a class="headerlink" href="#parameter-space-exploration" title="Permalink to this heading">#</a></h2>
+<p>We now set the different parameter choices used for the different simulations.</p>
 <section id="figure-1-heatmmap-with-no-outliers">
 <h3>3.1. Figure 1 - Heatmmap with no outliers<a class="headerlink" href="#figure-1-heatmmap-with-no-outliers" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
@@ -2852,6 +2856,7 @@ document.write(`
 </section>
 <section id="run-simulation">
 <h2>4. Run Simulation<a class="headerlink" href="#run-simulation" title="Permalink to this heading">#</a></h2>
+<p>We finally set and run all the simulations.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">task</span> <span class="o">=</span> <span class="n">dask_client</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">ipp_simulate_estimations</span><span class="p">,</span> 
@@ -2876,6 +2881,9 @@ document.write(`
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">{"model_id": "d8ed2abdbbc849c285e8436dccc4a09f", "version_major": 2, "version_minor": 0}</script></div>
 </div>
+</section>
+<section id="save-outputs">
+<h2>5. Save outputs<a class="headerlink" href="#save-outputs" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
@@ -2926,16 +2934,16 @@ document.write(`
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "conda-env-.conda-paleostats-py"
+            mode: "python"
         },
         kernelOptions: {
-            name: "conda-env-.conda-paleostats-py",
+            name: "python3",
             path: "./notebooks"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'conda-env-.conda-paleostats-py'</script>
+    <script>kernelName = 'python3'</script>
 
                 </article>
               
@@ -2996,6 +3004,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-simulation">4. Run Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-outputs">5. Save outputs</a></li>
 </ul>
   </nav></div>
 

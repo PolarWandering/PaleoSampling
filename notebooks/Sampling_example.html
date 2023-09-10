@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Example of sampling &#8212; Quantitative Analysis of Paleomagnetic Sampling Strategies</title>
   
@@ -415,6 +415,39 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>---------------------------------------------------------------------------
+ModuleNotFoundError                       Traceback (most recent call last)
+/tmp/ipykernel_2117/438021193.py in ?()
+----&gt; 1 import pmagpy.pmag as pmag
+      2 import pmagpy.ipmag as ipmag
+      3 import matplotlib.pyplot as plt
+      4 import smpsite as smp
+
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/__init__.py in ?()
+     20 
+     21 Thanks!
+     22 
+     23 &quot;&quot;&quot;.format(sys.version))
+---&gt; 24 from . import pmag
+     25 from . import ipmag
+     26 from . import pmagplotlib
+     27 from . import find_pmag_dir
+
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/pmag.py in ?()
+      5 import os
+      6 import string
+      7 import sys
+      8 import time
+----&gt; 9 
+     10 from past.utils import old_div
+     11 import numpy as np
+     12 from numpy import random
+
+ModuleNotFoundError: No module named &#39;past&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <p>We define a parameter class defined inside <code class="docutils literal notranslate"><span class="pre">smpsite</span></code> that allow us to specify all the parameters of interest at the same time. These parameters include:</p>
 <ul class="simple">
@@ -480,16 +513,16 @@ Wall time: 17.2 ms
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "conda-env-.conda-paleostats-py"
+            mode: "python"
         },
         kernelOptions: {
-            name: "conda-env-.conda-paleostats-py",
+            name: "python3",
             path: "./notebooks"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'conda-env-.conda-paleostats-py'</script>
+    <script>kernelName = 'python3'</script>
 
                 </article>
               
