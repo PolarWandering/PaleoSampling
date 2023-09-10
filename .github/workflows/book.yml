@@ -26,7 +26,7 @@ jobs:
       run: |
         pip install jupyter-book matplotlib numpy
         pip install pmagpy==4.2.106
-        pip install .-e ./smpsite
+        pip install -e ./smpsite
         
     # - name: Create environment with micromamba 🐍🖤
     #   uses: mamba-org/setup-micromamba@v1
