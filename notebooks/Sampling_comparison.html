@@ -491,132 +491,49 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">File</span> <span class="o">&lt;</span><span class="n">timed</span> <span class="n">exec</span><span class="o">&gt;</span><span class="p">:</span><span class="mi">1</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Unexpected exception formatting exception. Falling back to standard exception
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/IPython/core/magics/execution.py&quot;, line 1340, in time
+    exec(code, glob, local_ns)
+  File &quot;&lt;timed exec&gt;&quot;, line 1, in &lt;module&gt;
+  File &quot;/home/runner/work/PaleoSampling/PaleoSampling/smpsite/smpsite/estimate.py&quot;, line 135, in simulate_estimations
+    df_sample = generate_samples(params)
+  File &quot;/home/runner/work/PaleoSampling/PaleoSampling/smpsite/smpsite/sampling.py&quot;, line 76, in generate_samples
+    directional_secular = ipmag.fishrot(k=_kappa_secular,
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py&quot;, line 496, in fishrot
+    drot, irot = pmag.dodirot(d, i, dec, inc)
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/pmag.py&quot;, line 2451, in dodirot
+    d, irot = dogeo(D, I, Dbar, 90. - Ibar)
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/pmag.py&quot;, line 2371, in dogeo
+    X = dir2cart(Dir)  # get cartesian coordinates
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/pmag.py&quot;, line 2776, in dir2cart
+    np.sin(decs) * np.cos(incs), ints * np.sin(incs)]).transpose()
+KeyboardInterrupt
 
-<span class="nn">File ~/work/PaleoSampling/PaleoSampling/smpsite/smpsite/estimate.py:138,</span> in <span class="ni">simulate_estimations</span><span class="nt">(params, n_iters, ignore_outliers, seed)</span>
-<span class="g g-Whitespace">    </span><span class="mi">135</span> <span class="n">df_sample</span> <span class="o">=</span> <span class="n">generate_samples</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">137</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">138</span>     <span class="n">pole_estimate</span> <span class="o">=</span> <span class="n">estimate_pole</span><span class="p">(</span><span class="n">df_sample</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">ignore_outliers</span><span class="o">=</span><span class="n">ignore_outliers</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">139</span>     <span class="n">_iter</span> <span class="o">+=</span> <span class="mi">1</span>
-<span class="g g-Whitespace">    </span><span class="mi">140</span> <span class="k">except</span> <span class="n">NoPointsForMean</span><span class="p">:</span>
+During handling of the above exception, another exception occurred:
 
-<span class="nn">File ~/work/PaleoSampling/PaleoSampling/smpsite/smpsite/estimate.py:106,</span> in <span class="ni">estimate_pole</span><span class="nt">(df_sample, params, ignore_outliers)</span>
-<span class="g g-Whitespace">    </span><span class="mi">103</span> <span class="n">pole_inc</span> <span class="o">=</span> <span class="n">pole_estimate</span><span class="p">[</span><span class="s1">&#39;inc&#39;</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">105</span> <span class="c1"># Estimation of the VGP dispersion</span>
-<span class="ne">--&gt; </span><span class="mi">106</span> <span class="n">df_site</span><span class="p">[</span><span class="s2">&quot;Delta_pole&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_site</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="p">(</span><span class="mi">180</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">*</span> <span class="n">haversine_distances</span><span class="p">([(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">row</span><span class="o">.</span><span class="n">vgp_lat</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">vgp_long</span><span class="p">]),</span>
-<span class="g g-Whitespace">    </span><span class="mi">107</span>                                                                                      <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">pole_inc</span><span class="p">,</span> <span class="n">pole_dec</span><span class="p">])])[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> 
-<span class="g g-Whitespace">    </span><span class="mi">109</span> <span class="n">S2_total</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">df_site</span><span class="o">.</span><span class="n">Delta_pole</span><span class="o">.</span><span class="n">values</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">N</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">110</span> <span class="n">S2_vgp</span> <span class="o">=</span> <span class="n">S2_total</span> <span class="o">-</span> <span class="n">S2_within_total</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pandas/core/frame.py:10037,</span> in <span class="ni">DataFrame.apply</span><span class="nt">(self, func, axis, raw, result_type, args, by_row, **kwargs)</span>
-<span class="g g-Whitespace">  </span><span class="mi">10025</span> <span class="kn">from</span> <span class="nn">pandas.core.apply</span> <span class="kn">import</span> <span class="n">frame_apply</span>
-<span class="g g-Whitespace">  </span><span class="mi">10027</span> <span class="n">op</span> <span class="o">=</span> <span class="n">frame_apply</span><span class="p">(</span>
-<span class="g g-Whitespace">  </span><span class="mi">10028</span>     <span class="bp">self</span><span class="p">,</span>
-<span class="g g-Whitespace">  </span><span class="mi">10029</span>     <span class="n">func</span><span class="o">=</span><span class="n">func</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">  </span><span class="mi">10035</span>     <span class="n">kwargs</span><span class="o">=</span><span class="n">kwargs</span><span class="p">,</span>
-<span class="g g-Whitespace">  </span><span class="mi">10036</span> <span class="p">)</span>
-<span class="ne">&gt; </span><span class="mi">10037</span> <span class="k">return</span> <span class="n">op</span><span class="o">.</span><span class="n">apply</span><span class="p">()</span><span class="o">.</span><span class="n">__finalize__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;apply&quot;</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pandas/core/apply.py:831,</span> in <span class="ni">FrameApply.apply</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">828</span> <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">829</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply_raw</span><span class="p">()</span>
-<span class="ne">--&gt; </span><span class="mi">831</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply_standard</span><span class="p">()</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pandas/core/apply.py:957,</span> in <span class="ni">FrameApply.apply_standard</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">956</span> <span class="k">def</span> <span class="nf">apply_standard</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">957</span>     <span class="n">results</span><span class="p">,</span> <span class="n">res_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply_series_generator</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">959</span>     <span class="c1"># wrap results</span>
-<span class="g g-Whitespace">    </span><span class="mi">960</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">wrap_results</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">res_index</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pandas/core/apply.py:973,</span> in <span class="ni">FrameApply.apply_series_generator</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">970</span> <span class="k">with</span> <span class="n">option_context</span><span class="p">(</span><span class="s2">&quot;mode.chained_assignment&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">971</span>     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">series_gen</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">972</span>         <span class="c1"># ignore SettingWithCopy here in case the user mutates</span>
-<span class="ne">--&gt; </span><span class="mi">973</span>         <span class="n">results</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">974</span>         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">ABCSeries</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">975</span>             <span class="c1"># If we have a view on v, we need to make a copy because</span>
-<span class="g g-Whitespace">    </span><span class="mi">976</span>             <span class="c1">#  series_generator will swap out the underlying data</span>
-<span class="g g-Whitespace">    </span><span class="mi">977</span>             <span class="n">results</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="nn">File ~/work/PaleoSampling/PaleoSampling/smpsite/smpsite/estimate.py:106,</span> in <span class="ni">estimate_pole.&lt;locals&gt;.&lt;lambda&gt;</span><span class="nt">(row)</span>
-<span class="g g-Whitespace">    </span><span class="mi">103</span> <span class="n">pole_inc</span> <span class="o">=</span> <span class="n">pole_estimate</span><span class="p">[</span><span class="s1">&#39;inc&#39;</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">105</span> <span class="c1"># Estimation of the VGP dispersion</span>
-<span class="ne">--&gt; </span><span class="mi">106</span> <span class="n">df_site</span><span class="p">[</span><span class="s2">&quot;Delta_pole&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_site</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="p">(</span><span class="mi">180</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">*</span> <span class="n">haversine_distances</span><span class="p">([(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">row</span><span class="o">.</span><span class="n">vgp_lat</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">vgp_long</span><span class="p">]),</span>
-<span class="g g-Whitespace">    </span><span class="mi">107</span>                                                                                      <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">pole_inc</span><span class="p">,</span> <span class="n">pole_dec</span><span class="p">])])[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> 
-<span class="g g-Whitespace">    </span><span class="mi">109</span> <span class="n">S2_total</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">df_site</span><span class="o">.</span><span class="n">Delta_pole</span><span class="o">.</span><span class="n">values</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">N</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">110</span> <span class="n">S2_vgp</span> <span class="o">=</span> <span class="n">S2_total</span> <span class="o">-</span> <span class="n">S2_within_total</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/utils/_param_validation.py:211,</span> in <span class="ni">validate_params.&lt;locals&gt;.decorator.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">205</span> <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">206</span>     <span class="k">with</span> <span class="n">config_context</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">207</span>         <span class="n">skip_parameter_validation</span><span class="o">=</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">208</span>             <span class="n">prefer_skip_nested_validation</span> <span class="ow">or</span> <span class="n">global_skip_validation</span>
-<span class="g g-Whitespace">    </span><span class="mi">209</span>         <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">210</span>     <span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">211</span>         <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">212</span> <span class="k">except</span> <span class="n">InvalidParameterError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">213</span>     <span class="c1"># When the function is just a wrapper around an estimator, we allow</span>
-<span class="g g-Whitespace">    </span><span class="mi">214</span>     <span class="c1"># the function to delegate validation to the estimator, but we replace</span>
-<span class="g g-Whitespace">    </span><span class="mi">215</span>     <span class="c1"># the name of the estimator by the name of the function in the error</span>
-<span class="g g-Whitespace">    </span><span class="mi">216</span>     <span class="c1"># message to avoid confusion.</span>
-<span class="g g-Whitespace">    </span><span class="mi">217</span>     <span class="n">msg</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">218</span>         <span class="sa">r</span><span class="s2">&quot;parameter of \w+ must be&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">219</span>         <span class="sa">f</span><span class="s2">&quot;parameter of </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__qualname__</span><span class="si">}</span><span class="s2"> must be&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">220</span>         <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">),</span>
-<span class="g g-Whitespace">    </span><span class="mi">221</span>     <span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/metrics/pairwise.py:967,</span> in <span class="ni">haversine_distances</span><span class="nt">(X, Y)</span>
-<span class="g g-Whitespace">    </span><span class="mi">917</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Compute the Haversine distance between samples in X and Y.</span>
-<span class="g g-Whitespace">    </span><span class="mi">918</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">919</span><span class="sd"> The Haversine (or great circle) distance is the angular distance between</span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">    </span><span class="mi">963</span><span class="sd">        [11099.54035582,     0.        ]])</span>
-<span class="g g-Whitespace">    </span><span class="mi">964</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">965</span> <span class="kn">from</span> <span class="nn">..metrics</span> <span class="kn">import</span> <span class="n">DistanceMetric</span>
-<span class="ne">--&gt; </span><span class="mi">967</span> <span class="k">return</span> <span class="n">DistanceMetric</span><span class="o">.</span><span class="n">get_metric</span><span class="p">(</span><span class="s2">&quot;haversine&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">pairwise</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
-
-<span class="nn">File sklearn/metrics/_dist_metrics.pyx:828,</span> in <span class="ni">sklearn.metrics._dist_metrics.DistanceMetric64.pairwise</span><span class="nt">()</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/utils/validation.py:959,</span> in <span class="ni">check_array</span><span class="nt">(array, accept_sparse, accept_large_sparse, dtype, order, copy, force_all_finite, ensure_2d, allow_nd, ensure_min_samples, ensure_min_features, estimator, input_name)</span>
-<span class="g g-Whitespace">    </span><span class="mi">953</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">954</span>             <span class="s2">&quot;Found array with dim </span><span class="si">%d</span><span class="s2">. </span><span class="si">%s</span><span class="s2"> expected &lt;= 2.&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">955</span>             <span class="o">%</span> <span class="p">(</span><span class="n">array</span><span class="o">.</span><span class="n">ndim</span><span class="p">,</span> <span class="n">estimator_name</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">956</span>         <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">958</span>     <span class="k">if</span> <span class="n">force_all_finite</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">959</span>         <span class="n">_assert_all_finite</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">960</span>             <span class="n">array</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">961</span>             <span class="n">input_name</span><span class="o">=</span><span class="n">input_name</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">962</span>             <span class="n">estimator_name</span><span class="o">=</span><span class="n">estimator_name</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">963</span>             <span class="n">allow_nan</span><span class="o">=</span><span class="n">force_all_finite</span> <span class="o">==</span> <span class="s2">&quot;allow-nan&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">964</span>         <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">966</span> <span class="k">if</span> <span class="n">ensure_min_samples</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">967</span>     <span class="n">n_samples</span> <span class="o">=</span> <span class="n">_num_samples</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/sklearn/utils/validation.py:120,</span> in <span class="ni">_assert_all_finite</span><span class="nt">(X, allow_nan, msg_dtype, estimator_name, input_name)</span>
-<span class="g g-Whitespace">    </span><span class="mi">115</span> <span class="c1"># First try an O(n) time, O(1) space solution for the common case that</span>
-<span class="g g-Whitespace">    </span><span class="mi">116</span> <span class="c1"># everything is finite; fall back to O(n) space `np.isinf/isnan` or custom</span>
-<span class="g g-Whitespace">    </span><span class="mi">117</span> <span class="c1"># Cython implementation to prevent false positives and provide a detailed</span>
-<span class="g g-Whitespace">    </span><span class="mi">118</span> <span class="c1"># error message.</span>
-<span class="g g-Whitespace">    </span><span class="mi">119</span> <span class="k">with</span> <span class="n">np</span><span class="o">.</span><span class="n">errstate</span><span class="p">(</span><span class="n">over</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">120</span>     <span class="n">first_pass_isfinite</span> <span class="o">=</span> <span class="n">xp</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">xp</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">121</span> <span class="k">if</span> <span class="n">first_pass_isfinite</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">122</span>     <span class="k">return</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/numpy/core/fromnumeric.py:2313,</span> in <span class="ni">sum</span><span class="nt">(a, axis, dtype, out, keepdims, initial, where)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2310</span>         <span class="k">return</span> <span class="n">out</span>
-<span class="g g-Whitespace">   </span><span class="mi">2311</span>     <span class="k">return</span> <span class="n">res</span>
-<span class="ne">-&gt; </span><span class="mi">2313</span> <span class="k">return</span> <span class="n">_wrapreduction</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="p">,</span> <span class="s1">&#39;sum&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="n">keepdims</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2314</span>                       <span class="n">initial</span><span class="o">=</span><span class="n">initial</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="n">where</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/numpy/core/fromnumeric.py:88,</span> in <span class="ni">_wrapreduction</span><span class="nt">(obj, ufunc, method, axis, dtype, out, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">85</span>         <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">86</span>             <span class="k">return</span> <span class="n">reduction</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">,</span> <span class="o">**</span><span class="n">passkwargs</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">88</span> <span class="k">return</span> <span class="n">ufunc</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="o">**</span><span class="n">passkwargs</span><span class="p">)</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
+Traceback (most recent call last):
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/IPython/core/interactiveshell.py&quot;, line 2120, in showtraceback
+    stb = self.InteractiveTB.structured_traceback(
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/IPython/core/ultratb.py&quot;, line 1435, in structured_traceback
+    return FormattedTB.structured_traceback(
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/IPython/core/ultratb.py&quot;, line 1326, in structured_traceback
+    return VerboseTB.structured_traceback(
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/IPython/core/ultratb.py&quot;, line 1173, in structured_traceback
+    formatted_exception = self.format_exception_as_a_whole(etype, evalue, etb, number_of_lines_of_context,
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/IPython/core/ultratb.py&quot;, line 1063, in format_exception_as_a_whole
+    self.get_records(etb, number_of_lines_of_context, tb_offset) if etb else []
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/IPython/core/ultratb.py&quot;, line 1155, in get_records
+    FrameInfo(
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/IPython/core/ultratb.py&quot;, line 780, in __init__
+    ix = inspect.getsourcelines(frame)
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/inspect.py&quot;, line 1006, in getsourcelines
+    lines, lnum = findsource(object)
+  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/inspect.py&quot;, line 835, in findsource
+    raise OSError(&#39;could not get source code&#39;)
+OSError: could not get source code
 </pre></div>
 </div>
 </div>
