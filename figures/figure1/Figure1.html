@@ -426,7 +426,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2595/2142690695.py:4: DeprecationWarning: Please use `gaussian_filter` from the `scipy.ndimage` namespace, the `scipy.ndimage.filters` namespace is deprecated.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2094/2142690695.py:4: DeprecationWarning: Please use `gaussian_filter` from the `scipy.ndimage` namespace, the `scipy.ndimage.filters` namespace is deprecated.
   from scipy.ndimage.filters import gaussian_filter
 </pre></div>
 </div>
@@ -927,7 +927,18 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/e7c271c812e063f741f7b6290cc0f233ef0d6accd0dc0dee4e88d626ad7367b7.png" src="../../_images/e7c271c812e063f741f7b6290cc0f233ef0d6accd0dc0dee4e88d626ad7367b7.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df_pole</span> <span class="o">=</span> <span class="n">df_filter</span><span class="p">[</span><span class="n">df_filter</span><span class="o">.</span><span class="n">n0</span> <span class="o">&lt;=</span> <span class="mi">20</span><span class="p">]</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="s1">&#39;n0&#39;</span><span class="p">,</span> <span class="s1">&#39;error_angle_S&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">df_scatter</span> <span class="o">=</span> <span class="n">df_filter</span><span class="p">[</span><span class="n">df_filter</span><span class="o">.</span><span class="n">n0</span> <span class="o">&lt;=</span> <span class="mi">20</span><span class="p">]</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="s1">&#39;n0&#39;</span><span class="p">,</span> <span class="s1">&#39;error_vgp_scatter&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">plot_angle_error</span><span class="p">(</span><span class="n">df_pole</span><span class="p">,</span> 
+<span class="g g-Whitespace">      </span><span class="mi">5</span>                  <span class="n">df_scatter</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span>                  <span class="n">save_plot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="ne">TypeError</span>: pivot() takes 1 positional argument but 4 were given
+</pre></div>
+</div>
 </div>
 </div>
 </section>
@@ -1014,7 +1025,7 @@ document.write(`
       <td>1</td>
       <td>3.233462</td>
       <td>3.660093</td>
-      <td>3.6069201546789595</td>
+      <td>3.60692015467896</td>
       <td>-0.014528</td>
     </tr>
     <tr>
@@ -1093,7 +1104,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/950660ca10932923daa13e19cbe1acbe6f3154b9caf8fd722159cfe33c3591b0.png" src="../../_images/950660ca10932923daa13e19cbe1acbe6f3154b9caf8fd722159cfe33c3591b0.png" />
+<img alt="../../_images/2de4f68c4a9e2dc5396fb5438b63dd578c854f868a96a8ccf990449494d90f68.png" src="../../_images/2de4f68c4a9e2dc5396fb5438b63dd578c854f868a96a8ccf990449494d90f68.png" />
 </div>
 </div>
 </section>
@@ -1108,16 +1119,16 @@ document.write(`
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "conda-env-.conda-paleostats-py"
+            mode: "python"
         },
         kernelOptions: {
-            name: "conda-env-.conda-paleostats-py",
+            name: "python3",
             path: "./figures/figure1"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'conda-env-.conda-paleostats-py'</script>
+    <script>kernelName = 'python3'</script>
 
                 </article>
               

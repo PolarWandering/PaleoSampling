@@ -435,6 +435,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ERROR 1: PROJ: proj_create_from_database: Open of /srv/conda/envs/notebook/share/proj failed
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="setup">
@@ -491,49 +496,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Unexpected exception formatting exception. Falling back to standard exception
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
-  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/IPython/core/magics/execution.py&quot;, line 1340, in time
-    exec(code, glob, local_ns)
-  File &quot;&lt;timed exec&gt;&quot;, line 1, in &lt;module&gt;
-  File &quot;/home/runner/work/PaleoSampling/PaleoSampling/smpsite/smpsite/estimate.py&quot;, line 135, in simulate_estimations
-    df_sample = generate_samples(params)
-  File &quot;/home/runner/work/PaleoSampling/PaleoSampling/smpsite/smpsite/sampling.py&quot;, line 76, in generate_samples
-    directional_secular = ipmag.fishrot(k=_kappa_secular,
-  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py&quot;, line 496, in fishrot
-    drot, irot = pmag.dodirot(d, i, dec, inc)
-  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/pmag.py&quot;, line 2451, in dodirot
-    d, irot = dogeo(D, I, Dbar, 90. - Ibar)
-  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/pmag.py&quot;, line 2371, in dogeo
-    X = dir2cart(Dir)  # get cartesian coordinates
-  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/pmag.py&quot;, line 2776, in dir2cart
-    np.sin(decs) * np.cos(incs), ints * np.sin(incs)]).transpose()
-KeyboardInterrupt
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/IPython/core/interactiveshell.py&quot;, line 2120, in showtraceback
-    stb = self.InteractiveTB.structured_traceback(
-  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/IPython/core/ultratb.py&quot;, line 1435, in structured_traceback
-    return FormattedTB.structured_traceback(
-  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/IPython/core/ultratb.py&quot;, line 1326, in structured_traceback
-    return VerboseTB.structured_traceback(
-  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/IPython/core/ultratb.py&quot;, line 1173, in structured_traceback
-    formatted_exception = self.format_exception_as_a_whole(etype, evalue, etb, number_of_lines_of_context,
-  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/IPython/core/ultratb.py&quot;, line 1063, in format_exception_as_a_whole
-    self.get_records(etb, number_of_lines_of_context, tb_offset) if etb else []
-  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/IPython/core/ultratb.py&quot;, line 1155, in get_records
-    FrameInfo(
-  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/IPython/core/ultratb.py&quot;, line 780, in __init__
-    ix = inspect.getsourcelines(frame)
-  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/inspect.py&quot;, line 1006, in getsourcelines
-    lines, lnum = findsource(object)
-  File &quot;/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/inspect.py&quot;, line 835, in findsource
-    raise OSError(&#39;could not get source code&#39;)
-OSError: could not get source code
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 1min 29s, sys: 56.1 ms, total: 1min 29s
+Wall time: 1min 29s
 </pre></div>
 </div>
 </div>

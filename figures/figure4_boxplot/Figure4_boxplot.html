@@ -395,12 +395,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vgp-scatter">VGP scatter</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#total-samples-40">Total samples 40</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#total-samples-100">Total samples 100</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#total-samples-300">Total samples 300</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vgp-scatter">VGP scatter</a></li>
 </ul>
             </nav>
         </div>
@@ -785,7 +780,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_30949/3131951472.py:17: SettingWithCopyWarning: 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3098/4131771631.py:17: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame.
 Try using .loc[row_indexer,col_indexer] = value instead
 
@@ -793,7 +788,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
   df_[&quot;Sampling Strategy&quot;] = df_.apply(lambda row : rename_outlier_method(row.ignore_outliers), axis=1)
 </pre></div>
 </div>
-<img alt="../../_images/4e86ac699d92b3b01595a95e0a2e94cc6ef2b0d22053206b7f71f82d3eeb959c.png" src="../../_images/4e86ac699d92b3b01595a95e0a2e94cc6ef2b0d22053206b7f71f82d3eeb959c.png" />
+<img alt="../../_images/02816390e08d5b2d7fa9c400f50128b08e6a249ad37c7249b9b107f779c37e4d.png" src="../../_images/02816390e08d5b2d7fa9c400f50128b08e6a249ad37c7249b9b107f779c37e4d.png" />
 </div>
 </div>
 <section id="vgp-scatter">
@@ -859,7 +854,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1934/2634743452.py:19: SettingWithCopyWarning: 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3098/2634743452.py:19: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame.
 Try using .loc[row_indexer,col_indexer] = value instead
 
@@ -867,87 +862,9 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
   df_[&quot;Sampling Strategy&quot;] = df_.apply(lambda row : rename_outlier_method(row.ignore_outliers), axis=1)
 </pre></div>
 </div>
-<img alt="../../_images/1cd702fae52bf437eb1d7624d52584b93326bc3eee2e8d06c93e8dd0eece4155.png" src="../../_images/1cd702fae52bf437eb1d7624d52584b93326bc3eee2e8d06c93e8dd0eece4155.png" />
+<img alt="../../_images/81dbb6f6667a06dfea4d40964c719030d81508f4b78de5c7ab45124e82c52c13.png" src="../../_images/81dbb6f6667a06dfea4d40964c719030d81508f4b78de5c7ab45124e82c52c13.png" />
 </div>
 </div>
-<section id="total-samples-40">
-<h3>Total samples 40<a class="headerlink" href="#total-samples-40" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../outputs/fig1a_1000sim_total_Lean_40.csv&#39;</span><span class="p">)</span>
-
-<span class="n">df_</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;ignore_outliers&#39;</span><span class="p">]</span><span class="o">==</span><span class="kc">False</span><span class="p">]</span>
-
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
-<span class="c1"># create grouped boxplot </span>
-<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df_</span><span class="p">,</span>
-            <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;samples_per_sites&#39;</span><span class="p">,</span>
-            <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;error_angle&#39;</span><span class="p">,</span>
-            <span class="n">hue</span> <span class="o">=</span> <span class="s1">&#39;outlier_rate&#39;</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;$n_</span><span class="si">{tot}</span><span class="s2">$ ~ 40 samples&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;$n_{tot}$ ~ 40 samples&#39;)
-</pre></div>
-</div>
-<img alt="../../_images/386ec70c83a80aafc94278da1051927d6ed10b120a3ab6b32bcf338d2dabb008.png" src="../../_images/386ec70c83a80aafc94278da1051927d6ed10b120a3ab6b32bcf338d2dabb008.png" />
-</div>
-</div>
-</section>
-<section id="total-samples-100">
-<h3>Total samples 100<a class="headerlink" href="#total-samples-100" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../outputs/fig1a_1000sim_total_Lean_100.csv&#39;</span><span class="p">)</span>
-
-<span class="n">df_</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;ignore_outliers&#39;</span><span class="p">]</span><span class="o">==</span><span class="kc">False</span><span class="p">]</span>
-
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
-<span class="c1"># create grouped boxplot </span>
-<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df_</span><span class="p">,</span>
-            <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;samples_per_sites&#39;</span><span class="p">,</span>
-            <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;error_angle&#39;</span><span class="p">,</span>
-            <span class="n">hue</span> <span class="o">=</span> <span class="s1">&#39;outlier_rate&#39;</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;$n_</span><span class="si">{tot}</span><span class="s2">$ ~ 40 samples&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;$n_{tot}$ ~ 40 samples&#39;)
-</pre></div>
-</div>
-<img alt="../../_images/cc0aa2e61da550d257594e21579e89949090028c106cdce3501feeb5975e6f1c.png" src="../../_images/cc0aa2e61da550d257594e21579e89949090028c106cdce3501feeb5975e6f1c.png" />
-</div>
-</div>
-</section>
-<section id="total-samples-300">
-<h3>Total samples 300<a class="headerlink" href="#total-samples-300" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../outputs/fig1a_1000sim_total_Lean_300.csv&#39;</span><span class="p">)</span>
-
-<span class="n">df_</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;ignore_outliers&#39;</span><span class="p">]</span><span class="o">==</span><span class="kc">True</span><span class="p">]</span>
-
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
-<span class="c1"># create grouped boxplot </span>
-<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df_</span><span class="p">,</span>
-            <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;samples_per_sites&#39;</span><span class="p">,</span>
-            <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;error_angle&#39;</span><span class="p">,</span>
-            <span class="n">hue</span> <span class="o">=</span> <span class="s1">&#39;outlier_rate&#39;</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;$n_</span><span class="si">{tot}</span><span class="s2">$ ~ 300 samples&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;$n_{tot}$ ~ 300 samples&#39;)
-</pre></div>
-</div>
-<img alt="../../_images/823b6753ec0bf884b6878d8eddda02dc3d40de82144d3187cbcba791e968e678.png" src="../../_images/823b6753ec0bf884b6878d8eddda02dc3d40de82144d3187cbcba791e968e678.png" />
-</div>
-</div>
-</section>
 </section>
 </section>
 
@@ -1009,12 +926,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vgp-scatter">VGP scatter</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#total-samples-40">Total samples 40</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#total-samples-100">Total samples 100</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#total-samples-300">Total samples 300</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vgp-scatter">VGP scatter</a></li>
 </ul>
   </nav></div>
 
