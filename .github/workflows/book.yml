@@ -24,7 +24,7 @@ jobs:
         python-version: 3.9
     - name: Install dependencies manually
       run: |
-        pip install future matplotlib numpy cartopy pandas requests seaborn jupyter-book scikit-learn ipywidgets
+        pip install future matplotlib cartopy pandas requests seaborn jupyter-book scikit-learn ipywidgets
         # pip install jupyter-book matplotlib numpy pandas future cartopy
         pip install pmagpy==4.2.106
         pip install -e ./smpsite
