@@ -41,8 +41,8 @@ jobs:
     - name: Build the book 📘
       run: |
         jupyter-book build .
-      env:
-        PYTHON : /home/runner/micromamba/envs/paleosampling/bin/python
+      # env:
+      #   PYTHON : /home/runner/micromamba/envs/paleosampling/bin/python
     # Push the book's HTML to github-pages
     - name: GitHub Pages action
       uses: peaceiris/actions-gh-pages@v3
