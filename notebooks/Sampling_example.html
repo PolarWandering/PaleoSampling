@@ -415,72 +415,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pmagpy.pmag</span> <span class="k">as</span> <span class="nn">pmag</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">pmagpy.ipmag</span> <span class="k">as</span> <span class="nn">ipmag</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
-<span class="n">File</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">hostedtoolcache</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span><span class="mf">3.9.18</span><span class="o">/</span><span class="n">x64</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">pmagpy</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">24</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,):</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span><span class="s2"> You are running Python </span><span class="si">{}</span><span class="s2">.</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span><span class="s2"> This version of pmagpy is only compatible with Python 3.</span>
-<span class="s2">   (...)</span>
-<span class="g g-Whitespace">     </span><span class="mi">22</span><span class="s2"> </span>
-<span class="g g-Whitespace">     </span><span class="mi">23</span><span class="s2"> &quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">version</span><span class="p">))</span>
-<span class="ne">---&gt; </span><span class="mi">24</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">pmag</span>
-<span class="g g-Whitespace">     </span><span class="mi">25</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">ipmag</span>
-<span class="g g-Whitespace">     </span><span class="mi">26</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">pmagplotlib</span>
-
-<span class="n">File</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">hostedtoolcache</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span><span class="mf">3.9.18</span><span class="o">/</span><span class="n">x64</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">pmagpy</span><span class="o">/</span><span class="n">pmag</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">19</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="kn">from</span> <span class="nn">pmag_env</span> <span class="kn">import</span> <span class="n">set_env</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="ne">---&gt; </span><span class="mi">19</span> <span class="kn">import</span> <span class="nn">SPD.lib.leastsq_jacobian</span> <span class="k">as</span> <span class="nn">lib_k</span>
-<span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="n">WARNINGS</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;basemap&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;cartopy&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">}</span>
-<span class="g g-Whitespace">     </span><span class="mi">24</span> <span class="k">def</span> <span class="nf">get_version</span><span class="p">():</span>
-
-<span class="n">File</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">hostedtoolcache</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span><span class="mf">3.9.18</span><span class="o">/</span><span class="n">x64</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">SPD</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">11</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">#!/usr/bin/env python</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># __init__.py: -*- Python -*-  DESCRIPTIVE TEXT.</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="c1">#import os</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="c1">#print &#39;cwd&#39;, os.getcwd()</span>
-<span class="ne">---&gt; </span><span class="mi">11</span> <span class="kn">import</span> <span class="nn">SPD.spd</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="kn">import</span> <span class="nn">SPD.lib</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="n">SPD</span><span class="o">.</span><span class="n">magic_file</span> <span class="o">=</span> <span class="s1">&#39;SPD/magic_measurements.txt&#39;</span>
-
-<span class="n">File</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">hostedtoolcache</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span><span class="mf">3.9.18</span><span class="o">/</span><span class="n">x64</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">SPD</span><span class="o">/</span><span class="n">spd</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">30</span>
-<span class="g g-Whitespace">     </span><span class="mi">25</span> <span class="kn">import</span> <span class="nn">os</span>
-<span class="g g-Whitespace">     </span><span class="mi">26</span> <span class="c1">#import pylab</span>
-<span class="g g-Whitespace">     </span><span class="mi">27</span> <span class="c1">#import scipy</span>
-<span class="g g-Whitespace">     </span><span class="mi">28</span> <span class="c1">#from scipy import *</span>
-<span class="g g-Whitespace">     </span><span class="mi">29</span> <span class="c1">#import os</span>
-<span class="ne">---&gt; </span><span class="mi">30</span> <span class="kn">import</span> <span class="nn">SPD.lib.lib_arai_plot_statistics</span> <span class="k">as</span> <span class="nn">lib_arai</span>
-<span class="g g-Whitespace">     </span><span class="mi">31</span> <span class="c1">#import SPD.lib.lib_curvature as lib_k</span>
-<span class="g g-Whitespace">     </span><span class="mi">32</span> <span class="kn">import</span> <span class="nn">SPD.lib.leastsq_jacobian</span> <span class="k">as</span> <span class="nn">lib_k</span>
-
-<span class="n">File</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">hostedtoolcache</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span><span class="mf">3.9.18</span><span class="o">/</span><span class="n">x64</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">SPD</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">15</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">lib_arai_plot_statistics</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">lib_curvature</span>
-<span class="ne">---&gt; </span><span class="mi">15</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">leastsq_jacobian</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">lib_directional_statistics</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">lib_IZZI_MD</span>
-
-<span class="n">File</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">hostedtoolcache</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span><span class="mf">3.9.18</span><span class="o">/</span><span class="n">x64</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">SPD</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">leastsq_jacobian</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">6</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">past.utils</span> <span class="kn">import</span> <span class="n">old_div</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">numpy</span>
-<span class="ne">----&gt; </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">optimize</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="c1"># Coordinates of the 2D points                                                                                </span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="n">X</span> <span class="o">=</span> <span class="p">[</span>  <span class="mi">9</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="o">-</span><span class="mi">13</span><span class="p">,</span>  <span class="mi">10</span><span class="p">,</span>  <span class="mi">23</span><span class="p">,</span>   <span class="mi">0</span><span class="p">]</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;scipy&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <p>We define a parameter class defined inside <code class="docutils literal notranslate"><span class="pre">smpsite</span></code> that allow us to specify all the parameters of interest at the same time. These parameters include:</p>
 <ul class="simple">
@@ -506,23 +440,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">params0</span> <span class="o">=</span> <span class="n">smp</span><span class="o">.</span><span class="n">Params</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span>                      <span class="n">n0</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>                      <span class="n">kappa_within_site</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>                      <span class="n">site_lat</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> 
-<span class="g g-Whitespace">      </span><span class="mi">5</span>                      <span class="n">site_long</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span>                      <span class="n">outlier_rate</span><span class="o">=</span><span class="mf">0.10</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span>                      <span class="n">secular_method</span><span class="o">=</span><span class="s2">&quot;G&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span>                      <span class="n">kappa_secular</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;smp&#39; is not defined
-</pre></div>
-</div>
-</div>
 </div>
 <p>Once the parameters are specified, we can just generate a random sample:</p>
 <div class="cell docutils container">
@@ -534,11 +451,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">File</span> <span class="o">&lt;</span><span class="n">timed</span> <span class="n">exec</span><span class="o">&gt;</span><span class="p">:</span><span class="mi">1</span>
-
-<span class="ne">NameError</span>: name &#39;smp&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 18.7 ms, sys: 354 µs, total: 19.1 ms
+Wall time: 19.6 ms
 </pre></div>
 </div>
 </div>
@@ -552,16 +466,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">ipmag</span><span class="o">.</span><span class="n">plot_net</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">ipmag</span><span class="o">.</span><span class="n">plot_di</span><span class="p">(</span><span class="n">dec</span><span class="o">=</span><span class="n">df_sample</span><span class="o">.</span><span class="n">vgp_long</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">inc</span><span class="o">=</span><span class="n">df_sample</span><span class="o">.</span><span class="n">vgp_lat</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;plt&#39; is not defined
-</pre></div>
-</div>
+<img alt="../_images/65f0e2bcbab2c7dbdf7f00bfb4809806b8df4ace89593487a994a72300ee8b43.png" src="../_images/65f0e2bcbab2c7dbdf7f00bfb4809806b8df4ace89593487a994a72300ee8b43.png" />
 </div>
 </div>
 </section>
