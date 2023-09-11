@@ -20,7 +20,7 @@ You can open a cloud JupyterHub version of all the code in this repository and e
 
 Learn more about the Binder project in this [link](https://mybinder.readthedocs.io/en/latest/).
 
-The notebooks in this repository can be directly been access thought the following JupyterBook. This link opens a website
+The notebooks in this repository can be directly been access though the following JupyterBook. This link opens a website
 where all the notebooks can be visualized.
 
 [![Jupyter Book Badge](https://jupyterbook.org/badge.svg)](https://polarwandering.github.io/PaleoSampling/)
@@ -33,16 +33,16 @@ This repository includes a series of tools and code organized in different folde
 - `outputs`: It includes the simulated data from all the simulations used in the figures in `csv` format.
 - `smpsite`: Python package to run simulations and estimate poles and dispersion (see Installation for more information).
 
-We also provide with an `environment.yml` and `Makefile` for setup of the computational environment used for this project.
+We also provide an `environment.yml` and `Makefile` for setup of the computational environment used for this project.
 
 ### Installation
 
-All the notebooks inside this notebook can be executed after properly setting the environmnet. The `environment.yml` file can be used to
+All the notebooks inside this notebook can be executed after properly setting the environment. The `environment.yml` file can be used to
 install all the required dependencies. Beside some standard Python dependencies, the `environment.yml` file include the installation of
 `Pmagpy` using pip and the extra installation of the module `smpsite` (included in this repository). The package `smpsite` includes all the code used to make the simulations and compute the
 estimated poles.
 
-In order to install the environment, you can use conda or mamba (see [Managing Environments](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) for more information) with `conda env create -f environment.yml`. Alternativelly, we included a `Makefile` that allow to create the conda environment and install the associated iPython kernel so this environment can be accessible though Jupyter notebooks all at once. In order to do this, you just need to open a terminal where the repository is located and enter
+In order to install the environment, you can use conda or mamba (see [Managing Environments](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) for more information) with `conda env create -f environment.yml`. Alternatively, we included a `Makefile` that creates the conda environment and installs the associated iPython kernel so this environment can be accessible though Jupyter notebooks all at once. In order to use the Makefile, you need to open a terminal where the repository is located and enter
 ```
 make env
 ```
