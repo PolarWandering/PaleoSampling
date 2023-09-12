@@ -9,7 +9,6 @@
   "contributorsPerLine": 7,
   "contributors": [
     {
-
       "login": "facusapienza21",
       "name": "Facundo Sapienza",
       "avatar_url": "https://avatars.githubusercontent.com/u/39526081?v=4",
@@ -37,7 +36,8 @@
       "profile": "http://www.swanson-hysell.org",
       "contributions": [
         "review",
-        "doc"
+        "doc",
+        "ideas"
       ]
     }
   ]
