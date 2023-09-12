@@ -16,7 +16,9 @@
       "contributions": [
         "doc",
         "code",
-        "infra"
+        "infra",
+        "design",
+        "maintenance"
       ]
     },
     {
@@ -27,7 +29,9 @@
       "contributions": [
         "code",
         "bug",
-        "mentoring"
+        "mentoring",
+        "design",
+        "question"
       ]
     },
     {
