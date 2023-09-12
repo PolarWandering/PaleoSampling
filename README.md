@@ -18,7 +18,7 @@ You can open a cloud JupyterHub version of all the code in this repository and e
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/PolarWandering/PaleoSampling/HEAD)
 
-Learn more about the Binder project in this [link](https://mybinder.readthedocs.io/en/latest/).
+Learn more about the Binder project in this [link](https://mybinder.readthedocs.io/en/latest/). **Note that it will take a very long time to load.**
 
 The notebooks in this repository can be directly been access though the following JupyterBook. This link opens a website
 where all the notebooks can be visualized.
