@@ -9,7 +9,6 @@
   "contributorsPerLine": 7,
   "contributors": [
     {
-
       "login": "facusapienza21",
       "name": "Facundo Sapienza",
       "avatar_url": "https://avatars.githubusercontent.com/u/39526081?v=4",
@@ -27,8 +26,10 @@
       "profile": "https://github.com/LenGallo",
       "contributions": [
         "code",
-        "bug", 
-        "mentoring"
+        "bug",
+        "mentoring",
+        "design",
+        "question"
       ]
     },
     {
