@@ -68,6 +68,16 @@
         "design",
         "mentoring"
       ]
+    },
+    {
+      "login": "bramvaes",
+      "name": "Bram Vaes",
+      "avatar_url": "https://avatars.githubusercontent.com/u/94557078?v=4",
+      "profile": "https://www.uu.nl/medewerkers/BVaes",
+      "contributions": [
+        "design",
+        "ideas"
+      ]
     }
   ]
 }
