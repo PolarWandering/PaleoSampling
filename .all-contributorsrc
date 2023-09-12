@@ -37,7 +37,9 @@
       "profile": "http://www.swanson-hysell.org",
       "contributions": [
         "review",
-        "doc"
+        "doc",
+        "design",
+        "mentoring"
       ]
     },
     {
@@ -58,7 +60,9 @@
       "contributions": [
         "review",
         "doc",
-        "ideas"
+        "ideas",
+        "design",
+        "mentoring"
       ]
     }
   ]
