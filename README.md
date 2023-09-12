@@ -89,6 +89,13 @@ If you want to cite the software in this repository, you can instead use the fol
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/LenGallo"><img src="https://avatars.githubusercontent.com/u/29756069?v=4?s=100" width="100px;" alt="Leandro Gallo"/><br /><sub><b>Leandro Gallo</b></sub></a><br /><a href="#code-LenGallo" title="Code">💻</a> <a href="#bug-LenGallo" title="Bug reports">🐛</a></td>
+    </tr>
+  </tbody>
+</table>
 
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
