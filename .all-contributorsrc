@@ -41,6 +41,27 @@
         "review",
         "doc"
       ]
+    },
+    {
+      "login": "matdomeier",
+      "name": "matdomeier",
+      "avatar_url": "https://avatars.githubusercontent.com/u/40273197?v=4",
+      "profile": "https://github.com/matdomeier",
+      "contributions": [
+        "ideas",
+        "design"
+      ]
+    },
+    {
+      "login": "Swanson-Hysell",
+      "name": "Nick Swanson-Hysell",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4332322?v=4",
+      "profile": "http://www.swanson-hysell.org",
+      "contributions": [
+        "review",
+        "doc",
+        "ideas"
+      ]
     }
   ]
 }
