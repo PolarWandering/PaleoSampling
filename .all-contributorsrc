@@ -1,4 +1,22 @@
 {
   "projectName": "PaleoSampling",
-  "projectOwner": "PolarWandering"
+  "projectOwner": "PolarWandering",
+  "files": [
+    "README.md"
+  ],
+  "commitType": "docs",
+  "commitConvention": "angular",
+  "contributorsPerLine": 7,
+  "contributors": [
+    {
+      "login": "Swanson-Hysell",
+      "name": "Nick Swanson-Hysell",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4332322?v=4",
+      "profile": "http://www.swanson-hysell.org",
+      "contributions": [
+        "review",
+        "doc"
+      ]
+    }
+  ]
 }
