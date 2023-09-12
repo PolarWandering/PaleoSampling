@@ -68,7 +68,7 @@ environment can be accessed via Jupyter notebooks.
 
 ### How to cite 📖
 
-If you want to cite this work, please use this BibTex citation from [our latest preprint](https://gmd.copernicus.org/preprints/gmd-2023-120/):
+If you want to cite this work, please use this BibTex citation from [our latest preprint](https://www.authorea.com/doi/full/10.22541/essoar.168881772.25833701):
 ```
 @article{sapienza2023quantitative,
   title={Quantitative Analysis of Paleomagnetic Sampling Strategies},
