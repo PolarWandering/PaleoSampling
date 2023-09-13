@@ -57,27 +57,13 @@
       ]
     },
     {
-      "login": "Swanson-Hysell",
-      "name": "Nick Swanson-Hysell",
-      "avatar_url": "https://avatars.githubusercontent.com/u/4332322?v=4",
-      "profile": "http://www.swanson-hysell.org",
+      "login": "bramvaes",
+      "name": "Bram Vaes",
+      "avatar_url": "https://avatars.githubusercontent.com/u/94557078?v=4",
+      "profile": "https://www.uu.nl/medewerkers/BVaes",
       "contributions": [
-        "review",
-        "doc",
-        "ideas",
         "design",
-        "mentoring"
-      ]
-    },
-    {
-      "login": "matdomeier",
-      "name": "matdomeier",
-      "avatar_url": "https://avatars.githubusercontent.com/u/40273197?v=4",
-      "profile": "https://github.com/matdomeier",
-      "contributions": [
-        "ideas",
-        "design",
-        "mentoring"
+        "ideas"
       ]
     }
   ]
