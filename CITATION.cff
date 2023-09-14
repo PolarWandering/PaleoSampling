@@ -24,9 +24,14 @@ authors:
   - given-names: Bram
     family-names: Vaes
     email:  b.vaes@uu.nl
-    orcid: 'https://orcid.org/0000-0002-1407-302X'
+    orcid: 'https://orcid.org/0000-0001-6062-6804'
     affiliation: Department of Earth Sciences, Utrecht University, Utrecht, The Netherlands
-repository-code: 'https://orcid.org/0000-0001-6062-6804'
+  - given-names: Mathew
+    family-names: Domeier
+    email:  m.m.domeier@geo.uio.no
+    orcid: 'https://orcid.org/0000-0002-7647-6852'
+    affiliation: Centre for Planetary Habitability, University of Oslo, Norway
+repository-code: 'https://github.com/PolarWandering/PaleoSampling'
 keywords:
   - statistics
   - paleomagnetism
