@@ -6,6 +6,7 @@ parts:
   chapters:
     - file: notebooks/Sampling_example.ipynb
     - file: notebooks/Sampling_comparison.ipynb
+    - file: notebooks/DIY-Figure1.ipynb
     - file: notebooks/Parallel.ipynb
 - caption: Figures
   chapters:

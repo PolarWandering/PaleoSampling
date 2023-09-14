@@ -18,6 +18,7 @@ execute:
  - '*kappa_table*'
  # - '*Sampling_example*'
  - '*Sampling_comparison*'
+ # - *DIY-Figure1*
  - '*Parallel*'
  # - '*Figure1*'
  # - '*Figure2*'
