@@ -72,16 +72,31 @@ environment can be accessed via Jupyter notebooks.
 If you want to cite this work, please use this BibTex citation from [our latest preprint](https://www.authorea.com/doi/full/10.22541/essoar.168881772.25833701):
 ```
 @article{sapienza2023quantitative,
-  title={Quantitative Analysis of Paleomagnetic Sampling Strategies},
-  author={Sapienza, Facundo and Gallo, Leandro Cesar and Zhang, Yiming and Vaes, Bram and Domeier, Mathew and Swanson-Hysell, Nicholas L},
-  journal={Authorea Preprints},
-  year={2023},
-  publisher={Authorea}
+  title = {Quantitative Analysis of Paleomagnetic Sampling Strategies},
+  author = {Sapienza, Facundo and Gallo, Leandro Cesar and Zhang, Yiming and Vaes, Bram and Domeier, Mathew and Swanson-Hysell, Nicholas L},
+  journal = {Authorea Preprints},
+  year = {2023},
+  publisher = {Authorea}
 }
 ```
 If you want to cite the software in this repository, you can instead use the following DOI in Zenodo:
 
 [![DOI](https://zenodo.org/badge/595793364.svg)](https://zenodo.org/badge/latestdoi/595793364)
+
+or simply use the bibtex format 
+```
+@software{Sapienza_PaleoSampling,
+  author = {Sapienza, Facundo and Gallo, Leandro Cesar and Zhang, Yiming and Vaes, Bram and Domeier, Mathew and Swanson-Hysell, Nick},
+  title = {PaleoSampling},
+  month = sep,
+  year = 2023,
+  note = {{Quantitative Analysis of Paleomagnetic Sampling Strategies}},
+  publisher = {Zenodo},
+  version = {v1.0.0},
+  doi = {10.5281/zenodo.8347149},
+  url = {https://doi.org/10.5281/zenodo.8347149}
+}
+```
 
 
 ## Contributors
