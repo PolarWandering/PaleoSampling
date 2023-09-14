@@ -21,7 +21,12 @@ authors:
     email: yimingzhang@berkeley.edu
     orcid: 'https://orcid.org/0000-0002-1407-302X'
     affiliation: Department of Earth and Planetary Science, University of California, Berkeley, United States
-repository-code: 'https://github.com/PolarWandering/PaleoSampling'
+  - given-names: Bram
+    family-names: Vaes
+    email:  b.vaes@uu.nl
+    orcid: 'https://orcid.org/0000-0002-1407-302X'
+    affiliation: Department of Earth Sciences, Utrecht University, Utrecht, The Netherlands
+repository-code: 'https://orcid.org/0000-0001-6062-6804'
 keywords:
   - statistics
   - paleomagnetism
