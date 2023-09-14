@@ -43,7 +43,8 @@
         "review",
         "doc",
         "design",
-        "mentoring"
+        "mentoring",
+        "code"
       ]
     },
     {
@@ -66,7 +67,8 @@
         "doc",
         "ideas",
         "design",
-        "mentoring"
+        "mentoring",
+        "code"
       ]
     }
   ]
