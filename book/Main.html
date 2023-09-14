@@ -161,6 +161,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../notebooks/Sampling_comparison.html">Comparison of two sampling strategies</a></li>
 
 
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/DIY-Figure1.html">DIY Figure 1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../notebooks/Parallel.html">Parallelization with Dask</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Figures</span></p>
@@ -412,17 +413,19 @@ document.write(`
 <div class="cell_output docutils container">
 <p class="rubric">⚠️ New preprint available! ⚠️</p>
 <p>For a detailed description of the project, take a look at <a class="reference external" href="https://www.authorea.com/doi/full/10.22541/essoar.168881772.25833701">our preprint of a manuscript that is in revision at JGR</a>.</p>
-<p><a class="reference external" href="https://mybinder.org/v2/gh/PolarWandering/PaleoSampling/HEAD"><img alt="Binder" src="https://mybinder.org/badge_logo.svg" /></a> <a class="reference external" href="https://zenodo.org/badge/latestdoi/595793364"><img alt="DOI" src="https://zenodo.org/badge/595793364.svg" /></a></p>
-<p><a class="reference external" href="https://polarwandering.github.io/PaleoSampling/"><img alt="Jupyter Book Badge" src="https://jupyterbook.org/badge.svg" /></a> <a class="reference external" href="https://github.com/PolarWandering/PaleoSampling/actions/workflows/book.yml?query=branch%3Amain"><img alt="Build Status" src="https://github.com/PolarWandering/PaleoSampling/actions/workflows/book.yml/badge.svg?branch=main" /></a></p>
-<p><a class="reference external" href="./.github/workflows/book.yml"><img alt="GitHub Actions" src="https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&amp;logo=githubactions&amp;logoColor=white" /></a> <a class="reference external" href="./LICENSE"><img alt="Licence" src="https://img.shields.io/github/license/Ileriayo/markdown-badges?style=for-the-badge" /></a></p>
+<p><a class="reference external" href="https://mybinder.org/v2/gh/PolarWandering/PaleoSampling/HEAD"><img alt="Binder" src="https://mybinder.org/badge_logo.svg" /></a>
+<a class="reference external" href="https://zenodo.org/badge/latestdoi/595793364"><img alt="DOI" src="https://zenodo.org/badge/595793364.svg" /></a>
+<a class="reference external" href="https://polarwandering.github.io/PaleoSampling/"><img alt="Jupyter Book Badge" src="https://jupyterbook.org/badge.svg" /></a>
+<a class="reference external" href="https://github.com/PolarWandering/PaleoSampling/actions/workflows/book.yml?query=branch%3Amain"><img alt="Build Status" src="https://github.com/PolarWandering/PaleoSampling/actions/workflows/book.yml/badge.svg?branch=main" /></a>
+<a class="reference external" href="#contributors"><img alt="All Contributors" src="https://img.shields.io/github/all-contributors/PolarWandering/PaleoSampling?color=ee8449&amp;style=flat-square" /></a></p>
 <p class="rubric">Quantitative Analysis of Paleomagnetic Sampling Strategies</p>
 <p>This repository contains all the notebooks and code to reproduce the analysis for the different sampling procedures in order
 to estimate the precision of different strategies for estimating paleomagnetic poles and paleosecular variation of the magnetic field
 based on site magnetizations.</p>
 <p>You can open a cloud JupyterHub version of all the code in this repository and execute it using the following Binder link:</p>
 <p><a class="reference external" href="https://mybinder.org/v2/gh/PolarWandering/PaleoSampling/HEAD"><img alt="Binder" src="https://mybinder.org/badge_logo.svg" /></a></p>
-<p>Learn more about the Binder project in this <a class="reference external" href="https://mybinder.readthedocs.io/en/latest/">link</a>.</p>
-<p>The notebooks in this repository can be directly been access thought the following JupyterBook. This link opens a website
+<p>Learn more about the Binder project in this <a class="reference external" href="https://mybinder.readthedocs.io/en/latest/">link</a>. Note that it will take a very long time to load.</p>
+<p>The notebooks in this repository can be directly been access though the following JupyterBook. This link opens a website
 where all the notebooks can be visualized.</p>
 <p><a class="reference external" href="https://polarwandering.github.io/PaleoSampling/"><img alt="Jupyter Book Badge" src="https://jupyterbook.org/badge.svg" /></a></p>
 <p class="rubric">Organization</p>
@@ -433,13 +436,13 @@ where all the notebooks can be visualized.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">outputs</span></code>: It includes the simulated data from all the simulations used in the figures in <code class="docutils literal notranslate"><span class="pre">csv</span></code> format.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">smpsite</span></code>: Python package to run simulations and estimate poles and dispersion (see Installation for more information).</p></li>
 </ul>
-<p>We also provide with an <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> and <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> for setup of the computational environment used for this project.</p>
+<p>We also provide an <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> and <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> for setup of the computational environment used for this project.</p>
 <p class="rubric">Installation</p>
-<p>All the notebooks inside this notebook can be executed after properly setting the environmnet. The <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> file can be used to
+<p>All the notebooks inside this notebook can be executed after properly setting the environment. The <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> file can be used to
 install all the required dependencies. Beside some standard Python dependencies, the <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> file include the installation of
 <code class="docutils literal notranslate"><span class="pre">Pmagpy</span></code> using pip and the extra installation of the module <code class="docutils literal notranslate"><span class="pre">smpsite</span></code> (included in this repository). The package <code class="docutils literal notranslate"><span class="pre">smpsite</span></code> includes all the code used to make the simulations and compute the
 estimated poles.</p>
-<p>In order to install the environment, you can use conda or mamba (see <a class="reference external" href="https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html">Managing Environments</a> for more information) with <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">create</span> <span class="pre">-f</span> <span class="pre">environment.yml</span></code>. Alternativelly, we included a <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> that allow to create the conda environment and install the associated iPython kernel so this environment can be accessible though Jupyter notebooks all at once. In order to do this, you just need to open a terminal where the repository is located and enter</p>
+<p>In order to install the environment, you can use conda or mamba (see <a class="reference external" href="https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html">Managing Environments</a> for more information) with <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">create</span> <span class="pre">-f</span> <span class="pre">environment.yml</span></code>. Alternatively, we included a <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> that creates the conda environment and installs the associated iPython kernel so this environment can be accessible though Jupyter notebooks all at once. In order to use the Makefile, you need to open a terminal where the repository is located and enter</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">env</span>
 </pre></div>
 </div>
@@ -461,7 +464,7 @@ environment can be accessed via Jupyter notebooks.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">help</span></code>: Prints a short description of all available commands and their explanation.</p></li>
 </ul>
 <p class="rubric">How to cite 📖</p>
-<p>If you want to cite this work, please use this BibTex citation from <a class="reference external" href="https://gmd.copernicus.org/preprints/gmd-2023-120/">our latest preprint</a>:</p>
+<p>If you want to cite this work, please use this BibTex citation from <a class="reference external" href="https://www.authorea.com/doi/full/10.22541/essoar.168881772.25833701">our latest preprint</a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@article</span><span class="p">{</span><span class="n">sapienza2023quantitative</span><span class="p">,</span>
   <span class="n">title</span><span class="o">=</span><span class="p">{</span><span class="n">Quantitative</span> <span class="n">Analysis</span> <span class="n">of</span> <span class="n">Paleomagnetic</span> <span class="n">Sampling</span> <span class="n">Strategies</span><span class="p">},</span>
   <span class="n">author</span><span class="o">=</span><span class="p">{</span><span class="n">Sapienza</span><span class="p">,</span> <span class="n">Facundo</span> <span class="ow">and</span> <span class="n">Gallo</span><span class="p">,</span> <span class="n">Leandro</span> <span class="n">Cesar</span> <span class="ow">and</span> <span class="n">Zhang</span><span class="p">,</span> <span class="n">Yiming</span> <span class="ow">and</span> <span class="n">Vaes</span><span class="p">,</span> <span class="n">Bram</span> <span class="ow">and</span> <span class="n">Domeier</span><span class="p">,</span> <span class="n">Mathew</span> <span class="ow">and</span> <span class="n">Swanson</span><span class="o">-</span><span class="n">Hysell</span><span class="p">,</span> <span class="n">Nicholas</span> <span class="n">L</span><span class="p">},</span>
@@ -473,6 +476,25 @@ environment can be accessed via Jupyter notebooks.</p></li>
 </div>
 <p>If you want to cite the software in this repository, you can instead use the following DOI in Zenodo:</p>
 <p><a class="reference external" href="https://zenodo.org/badge/latestdoi/595793364"><img alt="DOI" src="https://zenodo.org/badge/595793364.svg" /></a></p>
+<p class="rubric">Contributors</p>
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="http://facusapienza.com"><img src="https://avatars.githubusercontent.com/u/39526081?v=4?s=100" width="100px;" alt="Facundo Sapienza"/><br /><sub><b>Facundo Sapienza</b></sub></a><br /><a href="#doc-facusapienza21" title="Documentation">📖</a> <a href="#code-facusapienza21" title="Code">💻</a> <a href="#infra-facusapienza21" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#design-facusapienza21" title="Design">🎨</a> <a href="#maintenance-facusapienza21" title="Maintenance">🚧</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/LenGallo"><img src="https://avatars.githubusercontent.com/u/29756069?v=4?s=100" width="100px;" alt="Leandro Gallo"/><br /><sub><b>Leandro Gallo</b></sub></a><br /><a href="#code-LenGallo" title="Code">💻</a> <a href="#bug-LenGallo" title="Bug reports">🐛</a> <a href="#mentoring-LenGallo" title="Mentoring">🧑‍🏫</a> <a href="#design-LenGallo" title="Design">🎨</a> <a href="#question-LenGallo" title="Answering Questions">💬</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://www.swanson-hysell.org"><img src="https://avatars.githubusercontent.com/u/4332322?v=4?s=100" width="100px;" alt="Nick Swanson-Hysell"/><br /><sub><b>Nick Swanson-Hysell</b></sub></a><br /><a href="#review-Swanson-Hysell" title="Reviewed Pull Requests">👀</a> <a href="#doc-Swanson-Hysell" title="Documentation">📖</a> <a href="#design-Swanson-Hysell" title="Design">🎨</a> <a href="#mentoring-Swanson-Hysell" title="Mentoring">🧑‍🏫</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/matdomeier"><img src="https://avatars.githubusercontent.com/u/40273197?v=4?s=100" width="100px;" alt="matdomeier"/><br /><sub><b>matdomeier</b></sub></a><br /><a href="#ideas-matdomeier" title="Ideas, Planning, & Feedback">🤔</a> <a href="#design-matdomeier" title="Design">🎨</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://www.uu.nl/medewerkers/BVaes"><img src="https://avatars.githubusercontent.com/u/94557078?v=4?s=100" width="100px;" alt="Bram Vaes"/><br /><sub><b>Bram Vaes</b></sub></a><br /><a href="#design-bramvaes" title="Design">🎨</a> <a href="#ideas-bramvaes" title="Ideas, Planning, & Feedback">🤔</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://duserzym.github.io/"><img src="https://avatars.githubusercontent.com/u/39976081?v=4?s=100" width="100px;" alt="Yiming Zhang"/><br /><sub><b>Yiming Zhang</b></sub></a><br /><a href="#ideas-duserzym" title="Ideas, Planning, & Feedback">🤔</a></td>
+    </tr>
+  </tbody>
+</table>
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 </div>
 </div>
 <div class="toctree-wrapper compound">

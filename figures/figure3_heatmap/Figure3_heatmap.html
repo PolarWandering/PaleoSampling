@@ -162,6 +162,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../notebooks/Sampling_comparison.html">Comparison of two sampling strategies</a></li>
 
 
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks/DIY-Figure1.html">DIY Figure 1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../notebooks/Parallel.html">Parallelization with Dask</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Figures</span></p>
@@ -787,367 +788,367 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
-  df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
-  df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
-  df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
-  df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
-  df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
-  df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
 </pre></div>
 </div>
@@ -1248,367 +1249,367 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
-  df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
-  df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
-/tmp/ipykernel_2138/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
+/tmp/ipykernel_2163/1095253769.py:5: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  df1 = df_subset[df.n0==1].sort_values(by=&quot;outlier_rate&quot;)
+/tmp/ipykernel_2163/1095253769.py:6: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
   df5 = df_subset[df.n0==5].sort_values(by=&quot;outlier_rate&quot;)
 </pre></div>
 </div>
