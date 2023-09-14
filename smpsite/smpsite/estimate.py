@@ -52,7 +52,7 @@ def S2_within_site(resultant_length, n_samples, lat, degrees=True):
 
 def estimate_pole(df_sample, params, ignore_outliers):
     '''
-    Function to estimate the Fisher estimate for the paloemagnetic pole
+    Function to estimate the Fisher estimate for the paleomagnetic pole
     Returns:
      - Pole coordinates
      - Number of samples (total)
@@ -101,6 +101,7 @@ def estimate_pole(df_sample, params, ignore_outliers):
     
     pole_dec = pole_estimate['dec']
     pole_inc = pole_estimate['inc']
+    pole_alpha95 = pole_estimate['alpha95']
     
     # Estimation of the VGP dispersion
     df_site["Delta_pole"] = df_site.apply(lambda row: (180/np.pi) * haversine_distances([(np.pi/180) * np.array([row.vgp_lat, row.vgp_long]),
@@ -113,14 +114,15 @@ def estimate_pole(df_sample, params, ignore_outliers):
             "pole_inc": pole_inc,
             "S2_vgp": S2_vgp, 
             "total_samples": df_site.n_samples.sum(), 
-            "samples_per_site": params.n0 }
+            "samples_per_site": params.n0,
+            "alpha95": pole_alpha95}
     
 
             
 def simulate_estimations(params, n_iters=100, ignore_outliers=False, seed=None):
     '''
     Given a sampling strategy (samples per site and total number of samples)
-    returns a DF with results of n_iters simulated poles.
+    returns a pandas DataFrame with results of n_iters simulated poles.
     '''
     
     poles = {'plong':[], 'plat':[], 'total_samples':[], 'samples_per_sites':[], 'S2_vgp': [] }

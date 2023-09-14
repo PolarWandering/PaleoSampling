@@ -38,7 +38,7 @@ class Params(NamedTuple):
 def generate_design(params): 
     '''
     Given the number of possible samples to collect and how many samples do we 
-    want per site, returns a list whose lenght is the number of sites and the repeated
+    want per site, returns a list whose length is the number of sites and the repeated
     number of samples per site
     '''
     equal_template = np.repeat(params.n0, params.N)
