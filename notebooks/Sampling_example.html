@@ -373,7 +373,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -389,6 +391,18 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-the-parameters-of-the-sample">Define the parameters of the sample</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-the-sample">Generate the sample</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-simulated-sample-data">Plot the simulated sample data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-pole-position-and-calculate-angular-error">Calculate pole position and calculate angular error</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-pole-position">Plot the pole position</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -398,7 +412,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="example-of-sampling">
+  <section class="tex2jax_ignore mathjax_ignore" id="example-of-sampling">
 <h1>Example of sampling<a class="headerlink" href="#example-of-sampling" title="Permalink to this heading">#</a></h1>
 <p>Here we illustrate an example of how to generate samples using our small Python package <code class="docutils literal notranslate"><span class="pre">smpsite</span></code>. Many of the sampling capabilities are directly imported from <code class="docutils literal notranslate"><span class="pre">pmagpy</span></code>.</p>
 <div class="cell docutils container">
@@ -416,21 +430,23 @@ document.write(`
 </div>
 </div>
 </div>
+<section id="define-the-parameters-of-the-sample">
+<h2>Define the parameters of the sample<a class="headerlink" href="#define-the-parameters-of-the-sample" title="Permalink to this heading">#</a></h2>
 <p>We define a parameter class defined inside <code class="docutils literal notranslate"><span class="pre">smpsite</span></code> that allow us to specify all the parameters of interest at the same time. These parameters include:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">N</span></code>: Total number of sites</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">n0</span></code>: Number of samples per site</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">kappa_within_site</span></code>: Concentration parameter of the Fisher distribution in each site</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kappa_within_site</span></code>: Concentration parameter of the Fisher distribution within each site</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">site_lat</span></code>: Latitude of the site</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">site_long</span></code>: Longitude of the site</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">outlier_rate</span></code>: Fraction of samples that are randomly taken from the uniform distribution in the sphere, with <code class="docutils literal notranslate"><span class="pre">0.0</span></code> representing no outliers and <code class="docutils literal notranslate"><span class="pre">1.0</span></code> representing all outliers.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">secular_method</span></code>: Method use to sample VGPs. It includes <code class="docutils literal notranslate"><span class="pre">G</span></code>, <code class="docutils literal notranslate"><span class="pre">tk03</span></code> and <code class="docutils literal notranslate"><span class="pre">Fisher</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">secular_method</span></code>: Method used to sample the VGPs. It includes <code class="docutils literal notranslate"><span class="pre">G</span></code>, <code class="docutils literal notranslate"><span class="pre">tk03</span></code> and <code class="docutils literal notranslate"><span class="pre">Fisher</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">kappa_secular</span></code>: In case of <code class="docutils literal notranslate"><span class="pre">secular_method=&quot;Fisher&quot;</span></code>, it specifies the concentration parameter of the Fisher distribution.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">params0</span> <span class="o">=</span> <span class="n">smp</span><span class="o">.</span><span class="n">Params</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-                     <span class="n">n0</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+                     <span class="n">n0</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
                      <span class="n">kappa_within_site</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
                      <span class="n">site_lat</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> 
                      <span class="n">site_long</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
@@ -441,34 +457,299 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Once the parameters are specified, we can just generate a random sample:</p>
+</section>
+<section id="generate-the-sample">
+<h2>Generate the sample<a class="headerlink" href="#generate-the-sample" title="Permalink to this heading">#</a></h2>
+<p>Once the parameters are specified, we can simulate the sample data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 
 <span class="n">df_sample</span> <span class="o">=</span> <span class="n">smp</span><span class="o">.</span><span class="n">generate_samples</span><span class="p">(</span><span class="n">params0</span><span class="p">)</span>
+<span class="n">df_sample</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 20.8 ms, sys: 4.15 ms, total: 25 ms
-Wall time: 22.7 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 21.2 ms, sys: 208 µs, total: 21.4 ms
+Wall time: 20.5 ms
 </pre></div>
 </div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sample_site</th>
+      <th>vgp_long</th>
+      <th>vgp_lat</th>
+      <th>vgp_dec</th>
+      <th>vgp_inc</th>
+      <th>is_outlier</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>126.657018</td>
+      <td>82.567616</td>
+      <td>5.984268</td>
+      <td>10.932745</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>127.014390</td>
+      <td>76.856329</td>
+      <td>10.467458</td>
+      <td>3.924856</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>91.215608</td>
+      <td>78.611284</td>
+      <td>11.548712</td>
+      <td>18.618003</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+      <td>103.137241</td>
+      <td>78.865732</td>
+      <td>10.929083</td>
+      <td>14.380461</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>68.461601</td>
+      <td>-57.543217</td>
+      <td>150.016322</td>
+      <td>5.433526</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
-</div>
+</section>
+<section id="plot-the-simulated-sample-data">
+<h2>Plot the simulated sample data<a class="headerlink" href="#plot-the-simulated-sample-data" title="Permalink to this heading">#</a></h2>
+<p>We can plot the declination and inclination of all of the simulated samples.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">ipmag</span><span class="o">.</span><span class="n">plot_net</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">ipmag</span><span class="o">.</span><span class="n">plot_di</span><span class="p">(</span><span class="n">dec</span><span class="o">=</span><span class="n">df_sample</span><span class="o">.</span><span class="n">vgp_long</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">inc</span><span class="o">=</span><span class="n">df_sample</span><span class="o">.</span><span class="n">vgp_lat</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">ipmag</span><span class="o">.</span><span class="n">plot_di</span><span class="p">(</span><span class="n">dec</span><span class="o">=</span><span class="n">df_sample</span><span class="o">.</span><span class="n">vgp_dec</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">inc</span><span class="o">=</span><span class="n">df_sample</span><span class="o">.</span><span class="n">vgp_inc</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;declination/inclination of samples&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/0032c9888d9636455283041e57cd990f3aa437c208e8fc07252ec8759eddb948.png" src="../_images/0032c9888d9636455283041e57cd990f3aa437c208e8fc07252ec8759eddb948.png" />
+<img alt="../_images/459734bef93807d725e72dedf8856e07e285d1ec66e1ec2b4caa85183aa99e86.png" src="../_images/459734bef93807d725e72dedf8856e07e285d1ec66e1ec2b4caa85183aa99e86.png" />
 </div>
 </div>
+<p>The declination/inclination can be plotted as colored them by site</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a color map based on unique &#39;sample_site&#39; values</span>
+<span class="n">unique_sites</span> <span class="o">=</span> <span class="n">df_sample</span><span class="p">[</span><span class="s1">&#39;sample_site&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">viridis</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">unique_sites</span><span class="p">)))</span>
+<span class="n">color_map</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">unique_sites</span><span class="p">,</span> <span class="n">colors</span><span class="p">))</span>
+
+<span class="n">ipmag</span><span class="o">.</span><span class="n">plot_net</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Use a set to track sites that have already been added to the legend</span>
+<span class="n">added_legend_sites</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+<span class="c1"># Iterate through the dataframe and plot each value with its unique color</span>
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df_sample</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="n">site</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;sample_site&#39;</span><span class="p">]</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="n">color_map</span><span class="p">[</span><span class="n">site</span><span class="p">]</span>
+    <span class="c1"># Using your given column names for declination and inclination</span>
+    <span class="n">ipmag</span><span class="o">.</span><span class="n">plot_di</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;vgp_dec&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;vgp_inc&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+    
+    <span class="c1"># If the site hasn&#39;t been added to the legend, add it</span>
+    <span class="k">if</span> <span class="n">site</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">added_legend_sites</span><span class="p">:</span>
+        <span class="c1"># Use marker=&#39;o&#39; for circles, linestyle=&#39;&#39; to remove line, and convert site to int for the label</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([],</span> <span class="p">[],</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="n">added_legend_sites</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">site</span><span class="p">)</span>
+
+<span class="c1"># Show the legend</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;sites&#39;</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;declination/inclination of samples</span><span class="se">\n</span><span class="s1">colored by site&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d4eb3b0ee77311976c28aa715ed72fdab5b0741c7076d363443dd71fb62e47d7.png" src="../_images/d4eb3b0ee77311976c28aa715ed72fdab5b0741c7076d363443dd71fb62e47d7.png" />
+</div>
+</div>
+</section>
+<section id="calculate-pole-position-and-calculate-angular-error">
+<h2>Calculate pole position and calculate angular error<a class="headerlink" href="#calculate-pole-position-and-calculate-angular-error" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean_pole</span> <span class="o">=</span> <span class="n">smp</span><span class="o">.</span><span class="n">estimate_pole</span><span class="p">(</span><span class="n">df_sample</span><span class="p">,</span> <span class="n">params0</span><span class="p">,</span> <span class="n">ignore_outliers</span><span class="o">=</span><span class="s2">&quot;True&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mean_pole</span><span class="p">)</span>
+<span class="n">angular_error</span> <span class="o">=</span> <span class="n">pmag</span><span class="o">.</span><span class="n">angle</span><span class="p">([</span><span class="n">mean_pole</span><span class="p">[</span><span class="s1">&#39;pole_dec&#39;</span><span class="p">],</span> <span class="n">mean_pole</span><span class="p">[</span><span class="s1">&#39;pole_inc&#39;</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">90</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The angular error is: &#39;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">angular_error</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="mi">1</span><span class="p">),</span> <span class="s1">&#39;degrees&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;pole_dec&#39;: 112.27111493549442, &#39;pole_inc&#39;: 87.17580406361836, &#39;S2_vgp&#39;: 256.91462433304014, &#39;total_samples&#39;: 48.0, &#39;samples_per_site&#39;: 5}
+The angular error is:  2.8 degrees
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plot-the-pole-position">
+<h2>Plot the pole position<a class="headerlink" href="#plot-the-pole-position" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">map_axis</span> <span class="o">=</span> <span class="n">ipmag</span><span class="o">.</span><span class="n">make_orthographic_map</span><span class="p">(</span><span class="n">central_longitude</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">central_latitude</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">ipmag</span><span class="o">.</span><span class="n">plot_pole</span><span class="p">(</span><span class="n">map_axis</span><span class="p">,</span> <span class="n">mean_pole</span><span class="p">[</span><span class="s1">&#39;pole_dec&#39;</span><span class="p">],</span> <span class="n">mean_pole</span><span class="p">[</span><span class="s1">&#39;pole_inc&#39;</span><span class="p">],</span> <span class="n">mean_pole</span><span class="p">[</span><span class="s1">&#39;alpha95&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Mean Pole&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:6195: DeprecationWarning: invalid escape sequence \d
+  pattern = re.compile(&#39;[4][-]\d&#39;)
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:6202: DeprecationWarning: invalid escape sequence \d
+  pattern = re.compile(&#39;[7][-]\d&#39;)
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:7886: DeprecationWarning: invalid escape sequence \h
+  sf.write(&#39;\hline\n&#39;)
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:7891: DeprecationWarning: invalid escape sequence \h
+  f.write(&#39;\hline\n&#39;)
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:7896: DeprecationWarning: invalid escape sequence \h
+  fI.write(&#39;\hline\n&#39;)
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:7902: DeprecationWarning: invalid escape sequence \h
+  cr.write(&#39;\hline\n&#39;)
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:7908: DeprecationWarning: invalid escape sequence \h
+  fsp.write(&#39;\hline\n&#39;)
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:7942: DeprecationWarning: invalid escape sequence \h
+  f.write(&#39;\hline\n&#39;)
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:7943: DeprecationWarning: invalid escape sequence \h
+  sf.write(&#39;\hline\n&#39;)
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:7944: DeprecationWarning: invalid escape sequence \h
+  fI.write(&#39;\hline\n&#39;)
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:7946: DeprecationWarning: invalid escape sequence \h
+  cr.write(&#39;\hline\n&#39;)
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:7948: DeprecationWarning: invalid escape sequence \h
+  fsp.write(&#39;\hline\n&#39;)
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:8060: DeprecationWarning: invalid escape sequence \h
+  f.write(&#39;\hline\n&#39;)
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:8061: DeprecationWarning: invalid escape sequence \h
+  sf.write(&#39;\hline\n&#39;)
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:8062: DeprecationWarning: invalid escape sequence \h
+  fI.write(&#39;\hline\n&#39;)
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:8063: DeprecationWarning: invalid escape sequence \e
+  f.write(&#39;\end{longtable}\n&#39;)
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:8064: DeprecationWarning: invalid escape sequence \e
+  sf.write(&#39;\end{longtable}\n&#39;)
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:8065: DeprecationWarning: invalid escape sequence \e
+  fI.write(&#39;\end{longtable}\n&#39;)
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:8066: DeprecationWarning: invalid escape sequence \e
+  f.write(&#39;\end{document}\n&#39;)
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:8067: DeprecationWarning: invalid escape sequence \e
+  sf.write(&#39;\end{document}\n&#39;)
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:8068: DeprecationWarning: invalid escape sequence \e
+  fI.write(&#39;\end{document}\n&#39;)
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:8070: DeprecationWarning: invalid escape sequence \h
+  fsp.write(&#39;\hline\n&#39;)
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:8071: DeprecationWarning: invalid escape sequence \e
+  fsp.write(&#39;\end{longtable}\n&#39;)
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:8072: DeprecationWarning: invalid escape sequence \e
+  fsp.write(&#39;\end{document}\n&#39;)
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:8074: DeprecationWarning: invalid escape sequence \h
+  cr.write(&#39;\hline\n&#39;)
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:8075: DeprecationWarning: invalid escape sequence \e
+  cr.write(&#39;\end{longtable}\n&#39;)
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:8076: DeprecationWarning: invalid escape sequence \e
+  cr.write(&#39;\end{document}\n&#39;)
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:11626: DeprecationWarning: invalid escape sequence \w
+  &#39;LP-*[\w]*-ARM&#39;)]
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:11633: DeprecationWarning: invalid escape sequence \s
+  cond = spec_df.method_codes.str.contains(&#39;(^|[\s\:])LT-PTRM&#39;)
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:12483: DeprecationWarning: invalid escape sequence \d
+  directions_out.write(&#39;\documentclass{article}\n&#39;)
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:12489: DeprecationWarning: invalid escape sequence \e
+  directions_out.write(&#39;\end{document}\n&#39;)
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:12504: DeprecationWarning: invalid escape sequence \d
+  intensities_out.write(&#39;\documentclass{article}\n&#39;)
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:12510: DeprecationWarning: invalid escape sequence \e
+  intensities_out.write(&#39;\end{document}\n&#39;)
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:12542: DeprecationWarning: invalid escape sequence \d
+  info_out.write(&#39;\documentclass{article}\n&#39;)
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:12548: DeprecationWarning: invalid escape sequence \e
+  info_out.write(&#39;\end{document}\n&#39;)
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:12605: DeprecationWarning: invalid escape sequence \d
+  info_out.write(&#39;\documentclass{article}\n&#39;)
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:12617: DeprecationWarning: invalid escape sequence \e
+  info_out.write(&#39;\end{landscape}\n&#39;)
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:12618: DeprecationWarning: invalid escape sequence \e
+  info_out.write(&#39;\end{document}\n&#39;)
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:12681: DeprecationWarning: invalid escape sequence \d
+  info_out.write(&#39;\documentclass{article}\n&#39;)
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:12689: DeprecationWarning: invalid escape sequence \e
+  info_out.write(&#39;\end{document}\n&#39;)
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:13658: DeprecationWarning: invalid escape sequence \c
+  plt.ylabel(&#39;$\chi$ ($\mu$SI)&#39;)
+/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:13678: DeprecationWarning: invalid escape sequence \c
+  plt.ylabel(&#39;$\chi$ ($\mu$SI)&#39;)
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">map_axis</span> <span class="o">=</span> <span class="n">ipmag</span><span class="o">.</span><span class="n">make_orthographic_map</span><span class="p">(</span><span class="n">central_longitude</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">central_latitude</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">ipmag</span><span class="o">.</span><span class="n">plot_pole</span><span class="p">(</span><span class="n">map_axis</span><span class="p">,</span> <span class="n">mean_pole</span><span class="p">[</span><span class="s1">&#39;pole_dec&#39;</span><span class="p">],</span> <span class="n">mean_pole</span><span class="p">[</span><span class="s1">&#39;pole_inc&#39;</span><span class="p">],</span> <span class="n">mean_pole</span><span class="p">[</span><span class="s1">&#39;alpha95&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Mean Pole&#39;</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:1868,</span> in <span class="ni">make_orthographic_map</span><span class="nt">(central_longitude, central_latitude, figsize, add_land, land_color, land_edge_color, add_ocean, ocean_color, grid_lines, lat_grid, lon_grid)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1866</span>     <span class="k">return</span>
+<span class="g g-Whitespace">   </span><span class="mi">1867</span> <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1868</span> <span class="n">map_projection</span> <span class="o">=</span> <span class="n">LowerThresholdOrthographic</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1869</span>     <span class="n">central_longitude</span><span class="o">=</span><span class="n">central_longitude</span><span class="p">,</span> <span class="n">central_latitude</span><span class="o">=</span><span class="n">central_latitude</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1870</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">map_projection</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1871</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_global</span><span class="p">()</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/cartopy/crs.py:2069,</span> in <span class="ni">Orthographic.__init__</span><span class="nt">(self, central_longitude, central_latitude, globe)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2067</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x_limits</span> <span class="o">=</span> <span class="n">mins</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">maxs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">2068</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y_limits</span> <span class="o">=</span> <span class="n">mins</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">maxs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="ne">-&gt; </span><span class="mi">2069</span> <span class="bp">self</span><span class="o">.</span><span class="n">threshold</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_x_limits</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mf">0.02</span>
+
+<span class="ne">AttributeError</span>: can&#39;t set attribute
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 800x800 with 0 Axes&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -529,6 +810,24 @@ Wall time: 22.7 ms
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-the-parameters-of-the-sample">Define the parameters of the sample</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-the-sample">Generate the sample</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-simulated-sample-data">Plot the simulated sample data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-pole-position-and-calculate-angular-error">Calculate pole position and calculate angular error</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-pole-position">Plot the pole position</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
