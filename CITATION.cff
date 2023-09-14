@@ -9,13 +9,18 @@ authors:
   - given-names: Facundo
     family-names: Sapienza
     email: fsapienza@berkeley.edu
-    affiliation: UC Berkeley
+    affiliation: Department of Statistics, University of California, Berkeley, United States
     orcid: 'https://orcid.org/0000-0003-4252-7161'
   - given-names: Leandro Cesar
     family-names: Gallo
     email: l.c.gallo@geo.uio.no
     orcid: 'https://orcid.org/0000-0002-8124-7536'
-    affiliation: The Center for Earth Evolution and Dynamics
+    affiliation: Centre for Planetary Habitability, University of Oslo, Norway
+  - given-names: Yiming
+    family-names: Zhang
+    email: yimingzhang@berkeley.edu
+    orcid: 'https://orcid.org/0000-0002-1407-302X'
+    affiliation: Department of Earth and Planetary Science, University of California, Berkeley, United States
 repository-code: 'https://github.com/PolarWandering/PaleoSampling'
 keywords:
   - statistics
