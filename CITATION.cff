@@ -31,6 +31,11 @@ authors:
     email:  m.m.domeier@geo.uio.no
     orcid: 'https://orcid.org/0000-0002-7647-6852'
     affiliation: Centre for Planetary Habitability, University of Oslo, Norway
+  - given-names: Nick
+    family-names: Swanson-Hysell
+    email:  swanson-hysell@berkeley.edu
+    orcid: 'https://orcid.org/0000-0003-3215-4648'
+    affiliation: Department of Earth and Planetary Science, University of California, Berkeley, United States
 repository-code: 'https://github.com/PolarWandering/PaleoSampling'
 keywords:
   - statistics
