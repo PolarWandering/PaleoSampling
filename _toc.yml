@@ -6,7 +6,7 @@ parts:
   chapters:
     - file: notebooks/Sampling_example.ipynb
     - file: notebooks/Sampling_comparison.ipynb
-    - file: notebooks/Parallel.ipynb
+    - file: notebooks/DIY-Figure1.ipynb
 - caption: Figures
   chapters:
     - file: figures/figure1/Figure1.ipynb
@@ -15,7 +15,9 @@ parts:
     - file: figures/figure3_intersection/Figure3_intersection.ipynb
     - file: figures/figure3_heatmap/Figure3_heatmap.ipynb
     - file: figures/figure4_boxplot/Figure4_boxplot.ipynb
-
+- caption: Appendix
+  chapters:
+    - file: notebooks/Parallel.ipynb
 
 
 
