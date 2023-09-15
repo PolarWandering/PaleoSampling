@@ -20,7 +20,27 @@ class NoPointsForMean(Exception):
     pass
 
 def robust_fisher_mean(decs, incs):
+    """
+    Compute the Fisher mean of declinations and inclinations.
     
+    Uses the `ipmag.fisher_mean()` function for calculations if there's more than one sample. 
+    For a single sample, simply return its coordinates.
+    
+    Args:
+        decs (list[float]): List of declination values.
+        incs (list[float]): List of inclination values.
+        
+    Returns:
+        dict: Dictionary containing:
+            - vgp_dec (float): Mean declination.
+            - vgp_inc (float): Mean inclination.
+            - n_samples (int): Number of samples.
+            - resultant_length (float): Resultant vector length.
+            
+    Raises:
+        AssertionError: If input declinations and inclinations have different lengths.
+        NoPointsForMean: If no data points are provided.
+    """
     assert len(decs) == len(incs)
     
     if len(decs) == 0:
