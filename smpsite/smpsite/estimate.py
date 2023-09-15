@@ -132,11 +132,30 @@ def estimate_pole(df_sample, params, ignore_outliers):
     
 
             
-def simulate_estimations(params, n_iters=100, ignore_outliers=False, seed=None):
-    '''
-    Given a sampling strategy (samples per site and total number of samples)
-    returns a pandas DataFrame with results of n_iters simulated poles.
-    '''
+def simulate_estimations(params, n_iters=100, ignore_outliers="False", seed=None):
+    """
+    Simulate the estimation of paleomagnetic poles over multiple iterations using specified parameters.
+    
+    This function simulates the pole estimation process by generating sample datasets and
+    calculating the paleomagnetic pole for each dataset. The pole estimation for each dataset is 
+    performed using the estimate_pole() function.
+    
+    Args:
+        params (object): Configuration parameters for the simulation.
+        n_iters (int, optional): Number of simulation iterations. Default is 100.
+        ignore_outliers (str, optional): Strategy to handle outliers. Options are:
+            - "True": Ignore all outliers.
+            - "False": Use all data including outliers.
+            - "vandamme": Use the Vandamme method for outlier handling. 
+            Defaults to "False".
+        seed (int, optional): Seed for random number generator. If specified, ensures 
+            reproducibility. Default is None.
+        
+    Returns:
+        pd.DataFrame: DataFrame containing the simulated pole estimates over the iterations.
+            Columns include pole declination (longitude), pole inclination (latitude), VGP 
+            dispersion, total number of samples, samples per site, and other related data.
+    """
     
     poles = {'plong':[], 'plat':[], 'total_samples':[], 'samples_per_sites':[], 'S2_vgp': [] }
     
