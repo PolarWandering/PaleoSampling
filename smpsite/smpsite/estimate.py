@@ -51,13 +51,26 @@ def S2_within_site(resultant_length, n_samples, lat, degrees=True):
 
 
 def estimate_pole(df_sample, params, ignore_outliers):
-    '''
-    Function to estimate the Fisher estimate for the paleomagnetic pole
+    """
+    Calculate the paleomagnetic pole using sample data (grouped by site) and a specified outlier strategy.
+    
+    Args:
+        df_sample (pd.DataFrame): Sample data containing sample directional data and is_outlier column.
+        params (object): Configuration parameters for the sampling strategy.
+        ignore_outliers (str): Strategy to handle outliers ("True", "False", or "vandamme").
+        
     Returns:
-     - Pole coordinates
-     - Number of samples (total)
-     - Number of samples per site.
-    '''
+        dict: Dictionary containing:
+            - pole_dec (float): Longitude of the estimated pole.
+            - pole_inc (float): Latitude of the estimated pole.
+            - S2_vgp (float): VGP dispersion.
+            - total_samples (int): Total number of samples used.
+            - samples_per_site (int): Number of samples per site.
+            - alpha95 (float): Alpha-95 value of the Fisher mean for the pole.
+            
+    Raises:
+        AssertionError: If provided outlier strategy is not supported.
+    """
     
     # Outliers at the site-leve, if True, we discard the outliers at the site-level
     # Outliers at the VGP-level: we consider all the directions within each site, and after tranform to VGP, 
