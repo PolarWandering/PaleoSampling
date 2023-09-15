@@ -240,7 +240,22 @@ def simulate_estimations(params, n_iters=100, ignore_outliers="False", seed=None
 
 def summary_simulations(df_tot):
     """
-    Create summary statistics of simulations
+    Generate summary statistics for simulation results.
+
+    This function processes the output DataFrame from `simulate_estimations()`, summarizing 
+    the error angles of the simulation.
+
+    Args:
+        df_tot (pd.DataFrame): DataFrame produced by `simulate_estimations()` containing 
+                               simulated pole data and parameters.
+    
+    Returns:
+        pd.DataFrame: A DataFrame with summary statistics including mean, median, percentiles 
+                      of error angle.
+    
+    Raises:
+        AssertionError: If any attribute in the simulation DataFrame has multiple unique 
+                        values.
     """
     
     stats = dict(df_tot['error_angle'].describe(percentiles=[.05, .25, .50, .75, .95]))
