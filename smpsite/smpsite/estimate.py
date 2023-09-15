@@ -41,7 +41,19 @@ def robust_fisher_mean(decs, incs):
 
 def S2_within_site(resultant_length, n_samples, lat, degrees=True):
     """
-    Calculation of S^2 within site
+    Calculate within-site dispersion (S^2) for sample directions.
+    
+    Args:
+        resultant_length (float): Resultant length of the sample directions.
+        n_samples (int): Number of samples within the site.
+        lat (float): Latitude of the site.
+        degrees (bool, optional): If True, latitude is in degrees. Default is True.
+        
+    Returns:
+        float: Calculated within-site dispersion (S^2).
+        
+    Raises:
+        AssertionError: If computed kappa (k_wi) is negative.
     """
     if n_samples == 1:
         return 0.0
