@@ -21,7 +21,7 @@ jobs:
           pip install future matplotlib cartopy pandas requests seaborn jupyter-book scikit-learn ipywidgets
           pip install pmagpy==4.2.106
           pip install -e ./smpsite
-          pip install flake8 pytest
+          pip install flake8 pytest pytest-cov
       - name: Lint with flake8
         run: |
           # stop the build if there are Python syntax errors or undefined names
