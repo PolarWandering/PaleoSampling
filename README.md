@@ -11,6 +11,7 @@ For a detailed description of the project, take a look at [our preprint of a man
 [![All Contributors](https://img.shields.io/github/all-contributors/PolarWandering/PaleoSampling?color=ee8449&style=flat-square)](#contributors)
 
 
+
 ## Quantitative Analysis of Paleomagnetic Sampling Strategies
 
 This repository contains all the notebooks and code to reproduce the analysis for the different sampling procedures in order
