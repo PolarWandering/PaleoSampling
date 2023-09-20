@@ -6,6 +6,8 @@ For a detailed description of the project, take a look at [our preprint of a man
 [![DOI](https://zenodo.org/badge/595793364.svg)](https://zenodo.org/badge/latestdoi/595793364) 
 [![Jupyter Book Badge](https://jupyterbook.org/badge.svg)](https://polarwandering.github.io/PaleoSampling/) 
 [![Build Status](https://github.com/PolarWandering/PaleoSampling/actions/workflows/book.yml/badge.svg?branch=main)](https://github.com/PolarWandering/PaleoSampling/actions/workflows/book.yml?query=branch%3Amain)
+![Tests Passing](https://github.com/github/docs/actions/workflows/test.yml/badge.svg)
+[![codecov](https://codecov.io/gh/PolarWandering/PaleoSampling/graph/badge.svg?token=L3WO0AEN90)](https://codecov.io/gh/PaleoWandering/PaleoSampling)
 [![All Contributors](https://img.shields.io/github/all-contributors/PolarWandering/PaleoSampling?color=ee8449&style=flat-square)](#contributors)
 
 
