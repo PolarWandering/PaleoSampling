@@ -3,11 +3,12 @@
 For a detailed description of the project, take a look at [our preprint of a manuscript that is in revision at JGR](https://www.authorea.com/doi/full/10.22541/essoar.168881772.25833701).
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/PolarWandering/PaleoSampling/HEAD) 
-[![DOI](https://zenodo.org/badge/595793364.svg)](https://zenodo.org/badge/latestdoi/595793364) 
 [![Jupyter Book Badge](https://jupyterbook.org/badge.svg)](https://polarwandering.github.io/PaleoSampling/) 
 [![Build Status](https://github.com/PolarWandering/PaleoSampling/actions/workflows/book.yml/badge.svg?branch=main)](https://github.com/PolarWandering/PaleoSampling/actions/workflows/book.yml?query=branch%3Amain)
 ![Tests Passing](https://github.com/github/docs/actions/workflows/test.yml/badge.svg)
 [![codecov](https://codecov.io/gh/PolarWandering/PaleoSampling/graph/badge.svg?token=8BCZXZV5JP)](https://codecov.io/gh/PolarWandering/PaleoSampling)
+[![DOI](https://zenodo.org/badge/595793364.svg)](https://zenodo.org/badge/latestdoi/595793364) 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![All Contributors](https://img.shields.io/github/all-contributors/PolarWandering/PaleoSampling?color=ee8449&style=flat-square)](#contributors)
 
 
