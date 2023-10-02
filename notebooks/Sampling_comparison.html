@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Comparison of two sampling strategies &#8212; Quantitative Analysis of Paleomagnetic Sampling Strategies</title>
+    <title>Comparison of different sampling approaches &#8212; Quantitative Analysis of Paleomagnetic Sampling Strategies</title>
   
   
   
@@ -171,9 +171,7 @@ const thebe_selector_output = ".output, .cell_output"
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Analysis</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Sampling_example.html">Example of sampling</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Comparison of two sampling strategies</a></li>
-
-
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Comparison of different sampling approaches</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DIY-Figure1.html">DIY Figure 1</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Figures</span></p>
@@ -402,7 +400,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Comparison of two sampling strategies</h1>
+    <h1>Comparison of different sampling approaches</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -412,11 +410,27 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Comparison of two sampling strategies</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-python-packages">Import Python packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-parameters">Define parameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enter-parameters-that-are-the-same-in-both-sampling-strategies">Enter parameters that are the same in both sampling strategies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enter-sites-and-samples-per-site-for-approach-1">Enter sites and samples per site for approach 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enter-sites-and-samples-per-site-for-approach-2">Enter sites and samples per site for approach 2</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assign-parameters-for-each-approach">Assign parameters for each approach</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-the-simulations-with-the-chosen-parameters">Generate the simulations with the chosen parameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chose-the-outlier-detection-strategy">Chose the outlier detection strategy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chose-number-of-iterations">Chose number of iterations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-simulations">Run the simulations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assess-the-simulated-results">Assess the simulated results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-rmse">Calculate RMSE</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-error-angle-percentile">Calculate error angle percentile</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-distribution-of-error-angles">Plot distribution of error angles</a></li>
+</ul>
+</li>
+</ul>
             </nav>
         </div>
     </div>
@@ -427,9 +441,20 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="comparison-of-two-sampling-strategies">
-<h1>Comparison of two sampling strategies<a class="headerlink" href="#comparison-of-two-sampling-strategies" title="Permalink to this heading">#</a></h1>
-<p>In this notebook we compare two sampling strategies for estimating true pole.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="comparison-of-different-sampling-approaches">
+<h1>Comparison of different sampling approaches<a class="headerlink" href="#comparison-of-different-sampling-approaches" title="Permalink to this heading">#</a></h1>
+<p>This notebook enables comparison of different sampling approaches for estimating pole position in the presence of secular variation of the geomagnetic field and within site scatter. You can use this notebook to make a comparison similar to that shown below from Figure 3s of Sapienza et al. (2023) while providing your own parameters.</p>
+<table style="border-collapse: collapse; border: none;">
+    <tr>
+        <td style="border: none;"><img src="../figures/figure3_histogram/Figure3a.png" width="500"></td>
+        <td style="border: none; vertical-align: bottom; width: 300px;">
+            <b>Figure 3a:</b> Comparison between two different sampling strategies to determine a mean paleomagnetic pole position in the presence of outliers for a fixed number of total samples (n = 100). The red histograms and curve are strategy 1 where we have one sample per site (n0 = 1), one hundred sites (N = 100) and we use the Vandamme filter. The blue histograms and curve are strategy 2 where n0 = 5, (N = 20) and we filter all the outliers (perfect detection algorithm) for (a) p_outlier = 0.10.
+        </td>
+    </tr>
+</table>
+<p>These tools can help guide decisions about the tradeoffs between the number of site (<span class="math notranslate nohighlight">\(N\)</span>) and the number of samples per site (<span class="math notranslate nohighlight">\(n_0\)</span>) while evaluating or designing a study.</p>
+<section id="import-python-packages">
+<h2>Import Python packages<a class="headerlink" href="#import-python-packages" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -449,94 +474,273 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ERROR 1: PROJ: proj_create_from_database: Open of /srv/conda/envs/notebook/share/proj failed
-</pre></div>
-</div>
-</div>
 </div>
 </section>
-<section id="setup">
-<h1>Setup<a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h1>
-<p>Our goal is to estimate the paleomagnetic pole <span class="math notranslate nohighlight">\(\mu\)</span> for a given period of time or age. For doing so, we are going to recollec a number <span class="math notranslate nohighlight">\(n\)</span> samples from <span class="math notranslate nohighlight">\(N\)</span> different sites. For each site, consequence of secular variation, we are not observing directly <span class="math notranslate nohighlight">\(\mu\)</span>, but instead <span class="math notranslate nohighlight">\(\mu_i\)</span> as a result of secular variations of the magnetic field. If we compute the Fisher mean <span class="math notranslate nohighlight">\(\hat \mu_i\)</span> (the hat symbol will be used always for statistical inferences, in opposition to the <em>true</em> value of the pole), then we hope that the new Fisher mean <span class="math notranslate nohighlight">\(\hat \mu\)</span> of the <span class="math notranslate nohighlight">\(\hat \mu_i\)</span>s will give us a estimate for the paleomagnetic poles that will average out the secular variation. The question we are trying to address here is what is the best recollection design of the sample poles that will lead to a better estimation of the final paleomagnetic pole <span class="math notranslate nohighlight">\(\mu\)</span>.</p>
-<p>We are going to compare two different strategies for estimating the paleomagnetic pole <span class="math notranslate nohighlight">\(\mu\)</span>:</p>
+<section id="define-parameters">
+<h2>Define parameters<a class="headerlink" href="#define-parameters" title="Permalink to this heading">#</a></h2>
+<p>The data generation model requires that the following parameters are given:</p>
 <ul class="simple">
-<li><p>Method 1: Compute the Fisher mean of ALL the sample points afor each site and then compute a second Fisher mean of these site vgps to obtain a final estimation of the true paleomagnetic pole.</p></li>
-<li><p>Method 2: Assume we are perfectly able to detect outliers, so we can repeat Method 1 after removing those sample points that are clearly ourliers.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">site_lat</span></code> is the latitude of the study site (between 0 and 90º)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">outlier_rate</span></code> which is the fraction of samples that are spurious (between 0.0 [0% outliers] and 1.0 [100% outliers])</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kappa_within_site</span></code> Fisher precision parameter (<span class="math notranslate nohighlight">\(\kappa\)</span>) for the samples within a site</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">secular_method</span></code> is the method used to estimate secular variation with the options being <code class="docutils literal notranslate"><span class="pre">&quot;G&quot;</span></code> (model G), <code class="docutils literal notranslate"><span class="pre">&quot;tk03&quot;</span></code> (TK03), or <code class="docutils literal notranslate"><span class="pre">&quot;Fisher&quot;</span></code> (Fisher distribution). If <code class="docutils literal notranslate"><span class="pre">&quot;Fisher&quot;</span></code> is chosen, a <code class="docutils literal notranslate"><span class="pre">kappa_secular</span></code> needs to be defined which is the Fisher precision parameter associated with secular variation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">N</span></code> number of sites</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n0</span></code> number of samples per site</p></li>
 </ul>
-<p>Since we want to know what is the choice of <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(N\)</span> that will lead to the best estimation of the paleomagnetic pole, we are going to compare these two methods for different strategies.</p>
-</section>
-<section id="simulation">
-<h1>Simulation<a class="headerlink" href="#simulation" title="Permalink to this heading">#</a></h1>
-<p>We first set the parameter for the two simulations. We do this by defining an object class <code class="docutils literal notranslate"><span class="pre">Params</span></code> that has been implemented inside the package <code class="docutils literal notranslate"><span class="pre">smpsite</span></code>.</p>
+<section id="enter-parameters-that-are-the-same-in-both-sampling-strategies">
+<h3>Enter parameters that are the same in both sampling strategies<a class="headerlink" href="#enter-parameters-that-are-the-same-in-both-sampling-strategies" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">latitude</span></code>, <code class="docutils literal notranslate"><span class="pre">outlier_rate</span></code>, <code class="docutils literal notranslate"><span class="pre">kappa_within_site</span></code>, and <code class="docutils literal notranslate"><span class="pre">secular_method</span></code> make sense to define across both sampling strategies that are being compared. Let’s define them in the cell below (<strong>you can change these values to match those that are the best estimates for your study</strong>):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">angular_dispersio_within_site</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># degrees</span>
-<span class="n">kappa_within_site</span> <span class="o">=</span> <span class="n">smp</span><span class="o">.</span><span class="n">angular2kappa</span><span class="p">(</span><span class="n">angular_dispersio_within_site</span><span class="p">)</span>
-<span class="n">latitude</span> <span class="o">=</span> <span class="mi">30</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># enter the values for the scenario you are exploring</span>
+<span class="n">site_lat</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">site_long</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">outlier_rate</span> <span class="o">=</span> <span class="mf">0.10</span>
-<span class="n">n_iters</span> <span class="o">=</span> <span class="mi">1000</span>
-
-<span class="n">params1</span> <span class="o">=</span> <span class="n">smp</span><span class="o">.</span><span class="n">Params</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span>
-                     <span class="n">n0</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                     <span class="n">kappa_within_site</span><span class="o">=</span><span class="n">kappa_within_site</span><span class="p">,</span>
-                     <span class="n">site_lat</span><span class="o">=</span><span class="n">latitude</span><span class="p">,</span> 
-                     <span class="n">site_long</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-                     <span class="n">outlier_rate</span><span class="o">=</span><span class="n">outlier_rate</span><span class="p">,</span>
-                     <span class="n">secular_method</span><span class="o">=</span><span class="s2">&quot;G&quot;</span><span class="p">,</span>
-                     <span class="n">kappa_secular</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-
-<span class="n">params2</span> <span class="o">=</span> <span class="n">smp</span><span class="o">.</span><span class="n">Params</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
-                     <span class="n">n0</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-                     <span class="n">kappa_within_site</span><span class="o">=</span><span class="n">kappa_within_site</span><span class="p">,</span>
-                     <span class="n">site_lat</span><span class="o">=</span><span class="n">latitude</span><span class="p">,</span> 
-                     <span class="n">site_long</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-                     <span class="n">outlier_rate</span><span class="o">=</span><span class="n">outlier_rate</span><span class="p">,</span>
-                     <span class="n">secular_method</span><span class="o">=</span><span class="s2">&quot;G&quot;</span><span class="p">,</span>
-                     <span class="n">kappa_secular</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-
-<span class="k">assert</span> <span class="n">params1</span><span class="o">.</span><span class="n">N</span> <span class="o">*</span> <span class="n">params1</span><span class="o">.</span><span class="n">n0</span> <span class="o">==</span> <span class="n">params2</span><span class="o">.</span><span class="n">N</span> <span class="o">*</span> <span class="n">params2</span><span class="o">.</span><span class="n">n0</span><span class="p">,</span> <span class="s2">&quot;The two methods don&#39;t have the same number of total samples.&quot;</span>
+<span class="n">kappa_within_site</span> <span class="o">=</span> <span class="mi">60</span>
+<span class="n">secular_method</span> <span class="o">=</span> <span class="s2">&quot;G&quot;</span>
 </pre></div>
 </div>
 </div>
 </div>
+</section>
+<section id="enter-sites-and-samples-per-site-for-approach-1">
+<h3>Enter sites and samples per site for approach 1<a class="headerlink" href="#enter-sites-and-samples-per-site-for-approach-1" title="Permalink to this heading">#</a></h3>
+<p>Now we can set how many sites and samples per sites for approach 1 (say 100 sites with 1 sample each for a total of 100 samples):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># enter the number of sites for approach 1</span>
+<span class="n">N_approach1</span> <span class="o">=</span> <span class="mi">100</span> 
+<span class="c1"># enter the number of samples per site for approach 1</span>
+<span class="n">n0_approach1</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="enter-sites-and-samples-per-site-for-approach-2">
+<h3>Enter sites and samples per site for approach 2<a class="headerlink" href="#enter-sites-and-samples-per-site-for-approach-2" title="Permalink to this heading">#</a></h3>
+<p>Now we can set how many sites and samples per sites for approach 2 (say 20 sites with 5 samples each for a total of 100 samples):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># enter the number of sites for approach 2</span>
+<span class="n">N_approach2</span> <span class="o">=</span> <span class="mi">20</span> 
+<span class="c1"># enter the number of samples per site for approach 2</span>
+<span class="n">n0_approach2</span> <span class="o">=</span> <span class="mi">5</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="assign-parameters-for-each-approach">
+<h2>Assign parameters for each approach<a class="headerlink" href="#assign-parameters-for-each-approach" title="Permalink to this heading">#</a></h2>
+<p>We will create a parameters object that has these values assigned for approach 1 (<code class="docutils literal notranslate"><span class="pre">params1</span></code>) and for approach 2 (<code class="docutils literal notranslate"><span class="pre">params2</span></code>). Nothing needs to be changed in the code cell below as it will take the values that are defined above.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">params1</span> <span class="o">=</span> <span class="n">smp</span><span class="o">.</span><span class="n">Params</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="n">N_approach1</span><span class="p">,</span>
+                     <span class="n">n0</span><span class="o">=</span><span class="n">n0_approach1</span><span class="p">,</span>
+                     <span class="n">kappa_within_site</span><span class="o">=</span><span class="n">kappa_within_site</span><span class="p">,</span>
+                     <span class="n">site_lat</span><span class="o">=</span><span class="n">site_lat</span><span class="p">,</span> 
+                     <span class="n">site_long</span><span class="o">=</span><span class="n">site_long</span><span class="p">,</span>
+                     <span class="n">outlier_rate</span><span class="o">=</span><span class="n">outlier_rate</span><span class="p">,</span>
+                     <span class="n">secular_method</span><span class="o">=</span><span class="n">secular_method</span><span class="p">,</span>
+                     <span class="n">kappa_secular</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="n">params2</span> <span class="o">=</span> <span class="n">smp</span><span class="o">.</span><span class="n">Params</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="n">N_approach2</span><span class="p">,</span>
+                     <span class="n">n0</span><span class="o">=</span><span class="n">n0_approach2</span><span class="p">,</span>
+                     <span class="n">kappa_within_site</span><span class="o">=</span><span class="n">kappa_within_site</span><span class="p">,</span>
+                     <span class="n">site_lat</span><span class="o">=</span><span class="n">site_lat</span><span class="p">,</span> 
+                     <span class="n">site_long</span><span class="o">=</span><span class="n">site_long</span><span class="p">,</span>
+                     <span class="n">outlier_rate</span><span class="o">=</span><span class="n">outlier_rate</span><span class="p">,</span>
+                     <span class="n">secular_method</span><span class="o">=</span><span class="n">secular_method</span><span class="p">,</span>
+                     <span class="n">kappa_secular</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="generate-the-simulations-with-the-chosen-parameters">
+<h2>Generate the simulations with the chosen parameters<a class="headerlink" href="#generate-the-simulations-with-the-chosen-parameters" title="Permalink to this heading">#</a></h2>
+<section id="chose-the-outlier-detection-strategy">
+<h3>Chose the outlier detection strategy<a class="headerlink" href="#chose-the-outlier-detection-strategy" title="Permalink to this heading">#</a></h3>
+<p>There are three options for outlier detection:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;True&quot;</span></code> This choice corresponds to perfect outlier detection. Recall that the outliers are generated at the sample level. One can envision that with 6 samples per site and a 10% outlier rate that it would be straight forward to be able to filter out outliers by looking for site level consistency.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;False&quot;</span></code> This choice corresponds to no outlier detection. All samples are used regardless of their position in calculating the site level means without filtering.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;vandamme&quot;</span></code> This choice corresponds to using the Vandamme (1994) filter to detect outlier directions. This approach provides a quantitative way to filter outliers for a 1 sample per site sampling strategy</p></li>
+</ul>
+<p>We need to assign an outlier detection strategy for approach 1 and approach 2. In the versions of these approaches given above where approach 1 is 50 sites with 1 sample per site and approach 2 is 10 sites with 5 samples per site, the approach could be taken of using the <code class="docutils literal notranslate"><span class="pre">vandamme</span></code> method for approach 1 and the <code class="docutils literal notranslate"><span class="pre">True</span></code> perfect outlier detection method for approach 2.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#assign &quot;True&quot; or &quot;False&quot; or &quot;vandamme&quot; for approach 1</span>
+<span class="n">approach1_outlier_method</span> <span class="o">=</span> <span class="s2">&quot;vandamme&quot;</span>
+
+<span class="c1">#assign &quot;True&quot; or &quot;False&quot; or &quot;vandamme&quot; for approach 2</span>
+<span class="n">approach2_outlier_method</span> <span class="o">=</span> <span class="s2">&quot;True&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="chose-number-of-iterations">
+<h3>Chose number of iterations<a class="headerlink" href="#chose-number-of-iterations" title="Permalink to this heading">#</a></h3>
+<p>Before the simulations are run, the number of times the poles are simulated needs to be specified with the <code class="docutils literal notranslate"><span class="pre">n_iters</span></code> variable. Something like 1000 should do a decent job showing the resulting distribution. We used <code class="docutils literal notranslate"><span class="pre">n_iters</span> <span class="pre">=</span> <span class="pre">1000</span></code> in Sapienza et al. 2023.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#change the number of iterations if you want</span>
+<span class="n">n_iters</span> <span class="o">=</span> <span class="mi">1000</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="run-the-simulations">
+<h3>Run the simulations<a class="headerlink" href="#run-the-simulations" title="Permalink to this heading">#</a></h3>
+<p>The simulations take a while to run (and will take longer for large values of <code class="docutils literal notranslate"><span class="pre">n_inters</span></code>)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 
-<span class="n">df_more_sites</span> <span class="o">=</span> <span class="n">smp</span><span class="o">.</span><span class="n">simulate_estimations</span><span class="p">(</span><span class="n">params1</span><span class="p">,</span> <span class="n">n_iters</span><span class="o">=</span><span class="n">n_iters</span><span class="p">,</span> <span class="n">ignore_outliers</span><span class="o">=</span><span class="s2">&quot;vandamme&quot;</span><span class="p">)</span>
-<span class="n">df_less_sites</span> <span class="o">=</span> <span class="n">smp</span><span class="o">.</span><span class="n">simulate_estimations</span><span class="p">(</span><span class="n">params2</span><span class="p">,</span> <span class="n">n_iters</span><span class="o">=</span><span class="n">n_iters</span><span class="p">,</span> <span class="n">ignore_outliers</span><span class="o">=</span><span class="s2">&quot;True&quot;</span><span class="p">)</span>
+<span class="n">approach_1_estimates</span> <span class="o">=</span> <span class="n">smp</span><span class="o">.</span><span class="n">simulate_estimations</span><span class="p">(</span><span class="n">params1</span><span class="p">,</span> <span class="n">n_iters</span><span class="o">=</span><span class="n">n_iters</span><span class="p">,</span> <span class="n">ignore_outliers</span><span class="o">=</span><span class="n">approach1_outlier_method</span><span class="p">)</span>
+<span class="n">approach_2_estimates</span> <span class="o">=</span> <span class="n">smp</span><span class="o">.</span><span class="n">simulate_estimations</span><span class="p">(</span><span class="n">params2</span><span class="p">,</span> <span class="n">n_iters</span><span class="o">=</span><span class="n">n_iters</span><span class="p">,</span> <span class="n">ignore_outliers</span><span class="o">=</span><span class="n">approach2_outlier_method</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 1min 29s, sys: 56.1 ms, total: 1min 29s
-Wall time: 1min 29s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 1min 32s, sys: 336 ms, total: 1min 33s
+Wall time: 1min 33s
 </pre></div>
 </div>
 </div>
 </div>
+</section>
+</section>
+<section id="assess-the-simulated-results">
+<h2>Assess the simulated results<a class="headerlink" href="#assess-the-simulated-results" title="Permalink to this heading">#</a></h2>
+<section id="calculate-rmse">
+<h3>Calculate RMSE<a class="headerlink" href="#calculate-rmse" title="Permalink to this heading">#</a></h3>
+<p>The root mean square error of all of the simulations combined can be calculated for a given approach.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">approach_1_rmse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">approach_1_estimates</span><span class="o">.</span><span class="n">error_angle</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mf">.5</span>
+<span class="n">approach_2_rmse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">approach_2_estimates</span><span class="o">.</span><span class="n">error_angle</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mf">.5</span>
 
-<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df_more_sites</span><span class="o">.</span><span class="n">error_angle</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#e84118&#39;</span><span class="p">,</span> <span class="n">stat</span><span class="o">=</span><span class="s1">&#39;probability&#39;</span><span class="p">,</span> <span class="n">binwidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">binrange</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.7</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df_less_sites</span><span class="o">.</span><span class="n">error_angle</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#0097e6&#39;</span><span class="p">,</span> <span class="n">stat</span><span class="o">=</span><span class="s1">&#39;probability&#39;</span><span class="p">,</span> <span class="n">binwidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">binrange</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.7</span><span class="p">)</span>
-
-<span class="n">textstr</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">((</span>
-<span class="sa">r</span><span class="s1">&#39;$RMSE Method 1=</span><span class="si">%.2f</span><span class="s1">$ (more sites)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">df_more_sites</span><span class="o">.</span><span class="n">error_angle</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mf">.5</span><span class="p">,</span> <span class="p">),</span>
-<span class="sa">r</span><span class="s1">&#39;$RMSE Method 2=</span><span class="si">%.2f</span><span class="s1">$ (less sites)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">df_less_sites</span><span class="o">.</span><span class="n">error_angle</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mf">.5</span><span class="p">,</span> <span class="p">)))</span>
-<span class="n">props</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">boxstyle</span><span class="o">=</span><span class="s1">&#39;round&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;wheat&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="c1"># place a text box in upper left in axes coords</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.65</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="n">textstr</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">axes</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span>
-        <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">bbox</span><span class="o">=</span><span class="n">props</span><span class="p">);</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The RMSE for approach 1 is: &#39;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">approach_1_rmse</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="s1">&#39;º&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The RMSE for approach 2 is: &#39;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">approach_2_rmse</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="s1">&#39;º&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/812d29482720779fbdbbc93f51b4ab4e62faed7830bf6d65e89c8c3c06d0e98a.png" src="../_images/812d29482720779fbdbbc93f51b4ab4e62faed7830bf6d65e89c8c3c06d0e98a.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The RMSE for approach 1 is:  1.9 º
+The RMSE for approach 2 is:  3.4 º
+</pre></div>
 </div>
 </div>
+</div>
+</section>
+<section id="calculate-error-angle-percentile">
+<h3>Calculate error angle percentile<a class="headerlink" href="#calculate-error-angle-percentile" title="Permalink to this heading">#</a></h3>
+<p>Rather than assessing the mean error, it could be informative to investigate the percentile of the resulting error angles. Calculating the 95 percentile assesses what the error angle is that 95% of the simulations are for the parameters of a given scenario.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">approach_1_95_percentile</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">approach_1_estimates</span><span class="o">.</span><span class="n">error_angle</span><span class="p">,</span><span class="mi">95</span><span class="p">)</span>
+<span class="n">approach_2_95_percentile</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">approach_2_estimates</span><span class="o">.</span><span class="n">error_angle</span><span class="p">,</span><span class="mi">95</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The 95 percentile error angle for approach 1 is: &#39;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">approach_1_95_percentile</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="s1">&#39;º&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The 95 percentile error angle for approach 2 is: &#39;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">approach_2_95_percentile</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="s1">&#39;º&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The 95 percentile error angle for approach 1 is:  3.3 º
+The 95 percentile error angle for approach 2 is:  6.1 º
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plot-distribution-of-error-angles">
+<h3>Plot distribution of error angles<a class="headerlink" href="#plot-distribution-of-error-angles" title="Permalink to this heading">#</a></h3>
+<p>The distribution of the error angles from the two approaches can be plotted. First, let’s extract the parameters associated with each approach to plot on the figure.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">annotation_text</span><span class="p">(</span><span class="n">approach_name</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">outlier_method</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate annotation text based on provided parameters and outlier detection method.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        approach_name (str): The name of the approach (e.g. &quot;Approach 1&quot;).</span>
+<span class="sd">        params (object): An object containing attributes related to simulation parameters.</span>
+<span class="sd">        outlier_method (str): The name of the outlier detection method (&quot;vandamme&quot;, &quot;True&quot;, or &quot;False&quot;).</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        str: A formatted annotation string containing simulation parameters and outlier method.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">outlier_method</span> <span class="o">==</span> <span class="s2">&quot;vandamme&quot;</span><span class="p">:</span>
+        <span class="n">outlier_method</span> <span class="o">=</span> <span class="s2">&quot;Vandamme&quot;</span>
+    <span class="k">elif</span> <span class="n">outlier_method</span> <span class="o">==</span> <span class="s2">&quot;True&quot;</span><span class="p">:</span>
+        <span class="n">outlier_method</span> <span class="o">=</span> <span class="s2">&quot;perfect&quot;</span>
+    <span class="k">elif</span> <span class="n">outlier_method</span> <span class="o">==</span> <span class="s2">&quot;False&quot;</span><span class="p">:</span>
+        <span class="n">outlier_method</span> <span class="o">=</span> <span class="s2">&quot;none&quot;</span>
+    
+    <span class="c1"># Display the specified params1 attributes in the annotation box</span>
+    <span class="n">annotation_text</span> <span class="o">=</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">approach_name</span><span class="si">}</span><span class="s1">:</span><span class="se">\n</span><span class="s1">&#39;</span>
+                    <span class="sa">f</span><span class="s1">&#39;number of sites = </span><span class="si">{</span><span class="n">params</span><span class="o">.</span><span class="n">N</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span>
+                    <span class="sa">f</span><span class="s1">&#39;samples per site = </span><span class="si">{</span><span class="n">params</span><span class="o">.</span><span class="n">n0</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span>
+                    <span class="sa">f</span><span class="s1">&#39;within site kappa = </span><span class="si">{</span><span class="n">params</span><span class="o">.</span><span class="n">kappa_within_site</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span>
+                    <span class="sa">f</span><span class="s1">&#39;site latitude = </span><span class="si">{</span><span class="n">params</span><span class="o">.</span><span class="n">site_lat</span><span class="si">}</span><span class="s1">º</span><span class="se">\n</span><span class="s1">&#39;</span>
+                    <span class="sa">f</span><span class="s1">&#39;outlier rate = </span><span class="si">{</span><span class="n">params</span><span class="o">.</span><span class="n">outlier_rate</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span>
+                    <span class="sa">f</span><span class="s1">&#39;secular variation model = </span><span class="si">{</span><span class="n">params</span><span class="o">.</span><span class="n">secular_method</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span>
+                    <span class="sa">f</span><span class="s1">&#39;outlier detection = </span><span class="si">{</span><span class="n">outlier_method</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">annotation_text</span>
+
+<span class="n">annotation_text_approach1</span> <span class="o">=</span> <span class="n">annotation_text</span><span class="p">(</span><span class="s1">&#39;Approach 1&#39;</span><span class="p">,</span> <span class="n">params1</span><span class="p">,</span> <span class="n">approach1_outlier_method</span><span class="p">)</span>
+<span class="n">annotation_text_approach2</span> <span class="o">=</span> <span class="n">annotation_text</span><span class="p">(</span><span class="s1">&#39;Approach 2&#39;</span><span class="p">,</span> <span class="n">params2</span><span class="p">,</span> <span class="n">approach2_outlier_method</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can make the plot showing histograms of the error angle for each approach.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the 99.9 percentile for each approach to set axes x scale</span>
+<span class="n">percentile_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">approach_1_estimates</span><span class="o">.</span><span class="n">error_angle</span><span class="p">,</span> <span class="mf">99.9</span><span class="p">)</span>
+<span class="n">percentile_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">approach_2_estimates</span><span class="o">.</span><span class="n">error_angle</span><span class="p">,</span> <span class="mf">99.9</span><span class="p">)</span>
+
+<span class="c1"># Find the maximum value between the two percentiles and round up to nearest integer</span>
+<span class="n">max_x_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">percentile_1</span><span class="p">,</span> <span class="n">percentile_2</span><span class="p">))</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">approach_1_estimates</span><span class="o">.</span><span class="n">error_angle</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#e84118&#39;</span><span class="p">,</span> 
+             <span class="n">stat</span><span class="o">=</span><span class="s1">&#39;probability&#39;</span><span class="p">,</span> <span class="n">binwidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">binrange</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_x_value</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.7</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">approach_2_estimates</span><span class="o">.</span><span class="n">error_angle</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#0097e6&#39;</span><span class="p">,</span> 
+             <span class="n">stat</span><span class="o">=</span><span class="s1">&#39;probability&#39;</span><span class="p">,</span> <span class="n">binwidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">binrange</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_x_value</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.7</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;error angle (º)&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">rmse</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="p">[</span><span class="n">approach_1_rmse</span><span class="p">,</span> <span class="n">approach_2_rmse</span><span class="p">]):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">rmse</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;RMSE = </span><span class="si">{</span><span class="n">rmse</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">rmse</span><span class="p">,</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mf">0.95</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">textcoords</span><span class="o">=</span><span class="s1">&#39;offset points&#39;</span><span class="p">,</span> 
+                <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+<span class="n">props</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">boxstyle</span><span class="o">=</span><span class="s1">&#39;round&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;wheat&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.98</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="n">annotation_text_approach1</span><span class="p">,</span> 
+             <span class="n">transform</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">bbox</span><span class="o">=</span><span class="n">props</span><span class="p">)</span> 
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.98</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="n">annotation_text_approach2</span><span class="p">,</span> 
+             <span class="n">transform</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">bbox</span><span class="o">=</span><span class="n">props</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/6482b49f911a40fb840fedb4a013ef22af97a2e90b0168b65cd7d206311f5d03.png" src="../_images/6482b49f911a40fb840fedb4a013ef22af97a2e90b0168b65cd7d206311f5d03.png" />
+</div>
+</div>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -602,11 +806,27 @@ Wall time: 1min 29s
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Comparison of two sampling strategies</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-python-packages">Import Python packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-parameters">Define parameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enter-parameters-that-are-the-same-in-both-sampling-strategies">Enter parameters that are the same in both sampling strategies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enter-sites-and-samples-per-site-for-approach-1">Enter sites and samples per site for approach 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enter-sites-and-samples-per-site-for-approach-2">Enter sites and samples per site for approach 2</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assign-parameters-for-each-approach">Assign parameters for each approach</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-the-simulations-with-the-chosen-parameters">Generate the simulations with the chosen parameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chose-the-outlier-detection-strategy">Chose the outlier detection strategy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chose-number-of-iterations">Chose number of iterations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-simulations">Run the simulations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assess-the-simulated-results">Assess the simulated results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-rmse">Calculate RMSE</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-error-angle-percentile">Calculate error angle percentile</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-distribution-of-error-angles">Plot distribution of error angles</a></li>
+</ul>
+</li>
+</ul>
   </nav></div>
 
 </div></div>
