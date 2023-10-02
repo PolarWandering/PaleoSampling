@@ -4,3 +4,8 @@
 *.csv
 *.png
 *.pdf
+smpsite/smpsite.egg-info/top_level.txt
+smpsite/smpsite.egg-info/SOURCES.txt
+smpsite/smpsite.egg-info/requires.txt
+smpsite/smpsite.egg-info/PKG-INFO
+smpsite/smpsite.egg-info/dependency_links.txt
