@@ -20,7 +20,27 @@ class NoPointsForMean(Exception):
     pass
 
 def robust_fisher_mean(decs, incs):
+    """
+    Compute the Fisher mean of declinations and inclinations.
     
+    Uses the `ipmag.fisher_mean()` function for calculations if there's more than one sample. 
+    For a single sample, simply return its coordinates.
+    
+    Args:
+        decs (list[float]): List of declination values.
+        incs (list[float]): List of inclination values.
+        
+    Returns:
+        dict: Dictionary containing:
+            - vgp_dec (float): Mean declination.
+            - vgp_inc (float): Mean inclination.
+            - n_samples (int): Number of samples.
+            - resultant_length (float): Resultant vector length.
+            
+    Raises:
+        AssertionError: If input declinations and inclinations have different lengths.
+        NoPointsForMean: If no data points are provided.
+    """
     assert len(decs) == len(incs)
     
     if len(decs) == 0:
@@ -41,7 +61,19 @@ def robust_fisher_mean(decs, incs):
 
 def S2_within_site(resultant_length, n_samples, lat, degrees=True):
     """
-    Calculation of S^2 within site
+    Calculate within-site dispersion (S^2) for sample directions.
+    
+    Args:
+        resultant_length (float): Resultant length of the sample directions.
+        n_samples (int): Number of samples within the site.
+        lat (float): Latitude of the site.
+        degrees (bool, optional): If True, latitude is in degrees. Default is True.
+        
+    Returns:
+        float: Calculated within-site dispersion (S^2).
+        
+    Raises:
+        AssertionError: If computed kappa (k_wi) is negative.
     """
     if n_samples == 1:
         return 0.0
@@ -51,13 +83,26 @@ def S2_within_site(resultant_length, n_samples, lat, degrees=True):
 
 
 def estimate_pole(df_sample, params, ignore_outliers):
-    '''
-    Function to estimate the Fisher estimate for the paloemagnetic pole
+    """
+    Calculate the paleomagnetic pole using sample data (grouped by site) and a specified outlier strategy.
+    
+    Args:
+        df_sample (pd.DataFrame): Sample data containing sample directional data and is_outlier column.
+        params (object): Configuration parameters for the sampling strategy.
+        ignore_outliers (str): Strategy to handle outliers ("True", "False", or "vandamme").
+        
     Returns:
-     - Pole coordinates
-     - Number of samples (total)
-     - Number of samples per site.
-    '''
+        dict: Dictionary containing:
+            - pole_dec (float): Longitude of the estimated pole.
+            - pole_inc (float): Latitude of the estimated pole.
+            - S2_vgp (float): VGP dispersion.
+            - total_samples (int): Total number of samples used.
+            - samples_per_site (int): Number of samples per site.
+            - alpha95 (float): Alpha-95 value of the Fisher mean for the pole.
+            
+    Raises:
+        AssertionError: If provided outlier strategy is not supported.
+    """
     
     # Outliers at the site-leve, if True, we discard the outliers at the site-level
     # Outliers at the VGP-level: we consider all the directions within each site, and after tranform to VGP, 
@@ -101,6 +146,7 @@ def estimate_pole(df_sample, params, ignore_outliers):
     
     pole_dec = pole_estimate['dec']
     pole_inc = pole_estimate['inc']
+    pole_alpha95 = pole_estimate['alpha95']
     
     # Estimation of the VGP dispersion
     df_site["Delta_pole"] = df_site.apply(lambda row: (180/np.pi) * haversine_distances([(np.pi/180) * np.array([row.vgp_lat, row.vgp_long]),
@@ -113,15 +159,35 @@ def estimate_pole(df_sample, params, ignore_outliers):
             "pole_inc": pole_inc,
             "S2_vgp": S2_vgp, 
             "total_samples": df_site.n_samples.sum(), 
-            "samples_per_site": params.n0 }
+            "samples_per_site": params.n0,
+            "alpha95": pole_alpha95}
     
 
             
 def simulate_estimations(params, n_iters=100, ignore_outliers="False", seed=None):
-    '''
-    Given a sampling strategy (samples per site and total number of samples)
-    returns a DF with results of n_iters simulated poles.
-    '''
+    """
+    Simulate the estimation of paleomagnetic poles over multiple iterations using specified parameters.
+    
+    This function simulates the pole estimation process by generating sample datasets and
+    calculating the paleomagnetic pole for each dataset. The pole estimation for each dataset is 
+    performed using the estimate_pole() function.
+    
+    Args:
+        params (object): Configuration parameters for the simulation.
+        n_iters (int, optional): Number of simulation iterations. Default is 100.
+        ignore_outliers (str, optional): Strategy to handle outliers. Options are:
+            - "True": Ignore all outliers.
+            - "False": Use all data including outliers.
+            - "vandamme": Use the Vandamme method for outlier handling. 
+            Defaults to "False".
+        seed (int, optional): Seed for random number generator. If specified, ensures 
+            reproducibility. Default is None.
+        
+    Returns:
+        pd.DataFrame: DataFrame containing the simulated pole estimates over the iterations.
+            Columns include pole declination (longitude), pole inclination (latitude), VGP 
+            dispersion, total number of samples, samples per site, and other related data.
+    """
     
     poles = {'plong':[], 'plat':[], 'total_samples':[], 'samples_per_sites':[], 'S2_vgp': [] }
     
@@ -174,7 +240,22 @@ def simulate_estimations(params, n_iters=100, ignore_outliers="False", seed=None
 
 def summary_simulations(df_tot):
     """
-    Create summary statistics of simulations
+    Generate summary statistics for simulation results.
+
+    This function processes the output DataFrame from `simulate_estimations()`, summarizing 
+    the error angles of the simulation.
+
+    Args:
+        df_tot (pd.DataFrame): DataFrame produced by `simulate_estimations()` containing 
+                               simulated pole data and parameters.
+    
+    Returns:
+        pd.DataFrame: A DataFrame with summary statistics including mean, median, percentiles 
+                      of error angle.
+    
+    Raises:
+        AssertionError: If any attribute in the simulation DataFrame has multiple unique 
+                        values.
     """
     
     stats = dict(df_tot['error_angle'].describe(percentiles=[.05, .25, .50, .75, .95]))
