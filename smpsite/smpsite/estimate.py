@@ -117,7 +117,7 @@ def estimate_pole(df_sample, params, ignore_outliers):
     
 
             
-def simulate_estimations(params, n_iters=100, ignore_outliers=False, seed=None):
+def simulate_estimations(params, n_iters=100, ignore_outliers="False", seed=None):
     '''
     Given a sampling strategy (samples per site and total number of samples)
     returns a DF with results of n_iters simulated poles.
