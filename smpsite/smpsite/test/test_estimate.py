@@ -26,7 +26,7 @@ def test_robust_fisher_mean_multiple():
 def test_estimate():
 
     # Read sample data created with these params
-    df = pd.read_csv('./smpsite/test/data/df1.csv')
+    df = pd.read_csv('./smpsite/smpsite/test/data/df1.csv')
 
     _res = smp.estimate_pole(df, params0, ignore_outliers="True")
 
