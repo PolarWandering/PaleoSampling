@@ -4,3 +4,4 @@
 *.csv
 *.png
 *.pdf
+*egg-info*

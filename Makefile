@@ -7,7 +7,7 @@ env :
 	conda env create -f environment.yml 
 	conda activate paleosampling
 	conda install ipykernel
-	python -m ipykernel install --user --name make-env --display-name "IPython - PaleoSampling"
+	python -m ipykernel install --user --name paleosampling --display-name "IPython - PaleoSampling"
     
     
 .PHONY : help
