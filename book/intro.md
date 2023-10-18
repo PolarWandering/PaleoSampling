@@ -18,11 +18,11 @@ This JupyterBook contains notebooks to analyze different sampling procedures in 
 DIY Figure 1 📈
 ^^^
 
-```{image} ../figures/figure1/Figure1.png
+```{image} ../figures/logo.png
 :width: 200
 ```
 
-This notebook enables a researcher to compute the mean error associated with paleopole estimation given different sampling strategies. It enables generation of a "do-it-yourself" version of Figure 1 of Sapienza et al. 2023 using the theoretical approximation.
+This notebook enables a researcher to compute the mean error associated with paleopole estimation given different sampling strategies. It generates a "do-it-yourself" version of Figure 1 of Sapienza et al. 2023 using the theoretical approximation.
 
 :::
 
@@ -38,7 +38,7 @@ Sampling strategy comparison ✏️
 :width: 250
 ```
 
-This notebook compares two sampling strategies to compute the distribution of the errors associated with paleopole estimation through simulation given different parameters such as: number of samples per site, outlier rate, and within-site precision. It enables the user to generate comparisons such as in Figure 3 of Sapienza et al. 2023 with their own parameter choices.
+Compare the distribution of paleopole estimation errors for two sampling strategies through simulation. The user can vary parameters (e.g. # of samples per site, outlier rate, and within-site precision) to make their own version of Sapienza et al. 2023 Figure 3.
 :::
 
 ::::
