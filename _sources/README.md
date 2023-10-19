@@ -41,7 +41,7 @@ We also provide an `environment.yml` and `Makefile` for setup of the computation
 
 ### Installation
 
-All the notebooks inside this notebook can be executed after properly setting the environment. The `environment.yml` file can be used to
+All the notebooks inside this repository can be executed after properly setting the environment. The `environment.yml` file can be used to
 install all the required dependencies. Beside some standard Python dependencies, the `environment.yml` file include the installation of
 `Pmagpy` using pip and the extra installation of the module `smpsite` (included in this repository). The package `smpsite` includes all the code used to make the simulations and compute the
 estimated poles.
@@ -78,14 +78,19 @@ environment can be accessed via Jupyter notebooks.
 
 ### How to cite 📖
 
-If you want to cite this work, please use this BibTex citation from [our latest preprint](https://www.authorea.com/doi/full/10.22541/essoar.168881772.25833701):
+If you want to cite this work, the citation is:
+
+Sapienza, F., Gallo, L. C., Zhang, Y., Vaes, B., Domeier, M., & Swanson-Hysell, N. L. (2023). Quantitative Analysis of Paleomagnetic Sampling Strategies. Journal of Geophysical Research: Solid Earth, 128, e2023JB027211. https://doi.org/10.1029/2023JB027211
+
+You can use this BibTex citation:
 ```
-@article{sapienza2023quantitative,
-  title = {Quantitative Analysis of Paleomagnetic Sampling Strategies},
-  author = {Sapienza, Facundo and Gallo, Leandro Cesar and Zhang, Yiming and Vaes, Bram and Domeier, Mathew and Swanson-Hysell, Nicholas L},
-  journal = {Authorea Preprints},
-  year = {2023},
-  publisher = {Authorea}
+@article{Sapienza2023_Quantitative,
+author = {Sapienza, F. and Gallo, L. C. and Zhang, Y. and Vaes, B. and Domeier, M. and Swanson-Hysell, N. L.},
+title = {Quantitative Analysis of Paleomagnetic Sampling Strategies},
+journal = {Journal of Geophysical Research: Solid Earth},
+pages = {e2023JB027211},
+keywords = {Paleomagnetism, Paleopole estimation, Secular variation, Error quantification},
+doi = {https://doi.org/10.1029/2023JB027211},
 }
 ```
 If you want to cite the software in this repository, you can instead use the following DOI in Zenodo:
