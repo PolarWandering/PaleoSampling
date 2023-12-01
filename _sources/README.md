@@ -1,6 +1,5 @@
-### ⚠️ New preprint available! ⚠️
-
-For a detailed description of the project, take a look at [our preprint of a manuscript that is in revision at JGR](https://www.authorea.com/doi/full/10.22541/essoar.168881772.25833701).
+For a detailed description of the project, take a look at [our publication at the Journal of Geophysical Research Solid Earth](https://www.authorea.com/doi/full/10.22541/essoar.168881772.25833701). 
+Take also a look to our article highlighted in Eos: [Should I Stay or Should I Go…To Another Paleomagnetic Site?](https://eos.org/editor-highlights/should-i-stay-or-should-i-goto-another-paleomagnetic-site) by  Daniel Pastor-Galán.
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/PolarWandering/PaleoSampling/HEAD) 
 [![Jupyter Book Badge](https://jupyterbook.org/badge.svg)](https://polarwandering.github.io/PaleoSampling/) 
