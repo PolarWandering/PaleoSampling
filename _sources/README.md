@@ -1,5 +1,6 @@
-For a detailed description of the project, take a look at [our publication at the Journal of Geophysical Research Solid Earth](https://www.authorea.com/doi/full/10.22541/essoar.168881772.25833701). 
-Take also a look to our article highlighted in Eos: [Should I Stay or Should I Go…To Another Paleomagnetic Site?](https://eos.org/editor-highlights/should-i-stay-or-should-i-goto-another-paleomagnetic-site) by  Daniel Pastor-Galán.
+### ⚠️ New preprint available! ⚠️
+
+For a detailed description of the project, take a look at [our preprint of a manuscript that is in revision at JGR](https://www.authorea.com/doi/full/10.22541/essoar.168881772.25833701).
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/PolarWandering/PaleoSampling/HEAD) 
 [![Jupyter Book Badge](https://jupyterbook.org/badge.svg)](https://polarwandering.github.io/PaleoSampling/) 
@@ -40,7 +41,7 @@ We also provide an `environment.yml` and `Makefile` for setup of the computation
 
 ### Installation
 
-All the notebooks inside this repository can be executed after properly setting the environment. The `environment.yml` file can be used to
+All the notebooks inside this notebook can be executed after properly setting the environment. The `environment.yml` file can be used to
 install all the required dependencies. Beside some standard Python dependencies, the `environment.yml` file include the installation of
 `Pmagpy` using pip and the extra installation of the module `smpsite` (included in this repository). The package `smpsite` includes all the code used to make the simulations and compute the
 estimated poles.
@@ -64,50 +65,45 @@ or
 ```
 pip install -e smpsite
 ```
-if you are working in developer mode.
+if you are working in developer mode. 
 
 
 ### Makefile
 
 The current repository contains a `Makefile` that allows the user to run different routines on the code. You can move in a terminal to the
-path to this repository and use the following commands to trigger their respective actions.
-- `make env`: Creates the conda environment associated with the `environment.yml` file and then creates the respective iPython kernel such that the
-environment can be accessed via Jupyter notebooks.
-- `make help`: Prints a short description of all available commands and their explanation.
+path to this repository and use the following commands to trigger their respective actions. 
+- `make env`: Creates the conda environment associated with the `environment.yml` file and then creates the respective iPython kernel such that the 
+environment can be accessed via Jupyter notebooks. 
+- `make help`: Prints a short description of all available commands and their explanation. 
 
 ### How to cite 📖
 
-If you want to cite this work, the citation is:
-
-Sapienza, F., Gallo, L. C., Zhang, Y., Vaes, B., Domeier, M., & Swanson-Hysell, N. L. (2023). Quantitative Analysis of Paleomagnetic Sampling Strategies. Journal of Geophysical Research: Solid Earth, 128, e2023JB027211. https://doi.org/10.1029/2023JB027211
-
-You can use this BibTex citation:
+If you want to cite this work, please use this BibTex citation from [our latest preprint](https://www.authorea.com/doi/full/10.22541/essoar.168881772.25833701):
 ```
-@article{Sapienza2023_Quantitative,
-author = {Sapienza, F. and Gallo, L. C. and Zhang, Y. and Vaes, B. and Domeier, M. and Swanson-Hysell, N. L.},
-title = {Quantitative Analysis of Paleomagnetic Sampling Strategies},
-journal = {Journal of Geophysical Research: Solid Earth},
-pages = {e2023JB027211},
-keywords = {Paleomagnetism, Paleopole estimation, Secular variation, Error quantification},
-doi = {https://doi.org/10.1029/2023JB027211},
+@article{sapienza2023quantitative,
+  title = {Quantitative Analysis of Paleomagnetic Sampling Strategies},
+  author = {Sapienza, Facundo and Gallo, Leandro Cesar and Zhang, Yiming and Vaes, Bram and Domeier, Mathew and Swanson-Hysell, Nicholas L},
+  journal = {Authorea Preprints},
+  year = {2023},
+  publisher = {Authorea}
 }
 ```
 If you want to cite the software in this repository, you can instead use the following DOI in Zenodo:
 
 [![DOI](https://zenodo.org/badge/595793364.svg)](https://zenodo.org/badge/latestdoi/595793364)
 
-or simply use the bibtex format
+or simply use the bibtex format 
 ```
 @software{Sapienza_PaleoSampling,
- author = {Sapienza, Facundo and Gallo, Leandro Cesar and Zhang, Yiming and Vaes, Bram and Domeier, Mathew and Swanson-Hysell, Nick},
- title = {PaleoSampling},
- month = sep,
- year = 2023,
- note = {{Quantitative Analysis of Paleomagnetic Sampling Strategies}},
- publisher = {Zenodo},
- version = {v1.0.0},
- doi = {10.5281/zenodo.8347149},
- url = {https://doi.org/10.5281/zenodo.8347149}
+  author = {Sapienza, Facundo and Gallo, Leandro Cesar and Zhang, Yiming and Vaes, Bram and Domeier, Mathew and Swanson-Hysell, Nick},
+  title = {PaleoSampling},
+  month = sep,
+  year = 2023,
+  note = {{Quantitative Analysis of Paleomagnetic Sampling Strategies}},
+  publisher = {Zenodo},
+  version = {v1.0.0},
+  doi = {10.5281/zenodo.8347149},
+  url = {https://doi.org/10.5281/zenodo.8347149}
 }
 ```
 
@@ -120,7 +116,7 @@ or simply use the bibtex format
 <table>
   <tbody>
     <tr>
-      <td align="center" valign="top" width="14.28%"><a href="http://facusapienza.org"><img src="https://avatars.githubusercontent.com/u/39526081?v=4?s=100" width="100px;" alt="Facundo Sapienza"/><br /><sub><b>Facundo Sapienza</b></sub></a><br /><a href="#doc-facusapienza21" title="Documentation">📖</a> <a href="#code-facusapienza21" title="Code">💻</a> <a href="#infra-facusapienza21" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#design-facusapienza21" title="Design">🎨</a> <a href="#maintenance-facusapienza21" title="Maintenance">🚧</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://facusapienza.com"><img src="https://avatars.githubusercontent.com/u/39526081?v=4?s=100" width="100px;" alt="Facundo Sapienza"/><br /><sub><b>Facundo Sapienza</b></sub></a><br /><a href="#doc-facusapienza21" title="Documentation">📖</a> <a href="#code-facusapienza21" title="Code">💻</a> <a href="#infra-facusapienza21" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#design-facusapienza21" title="Design">🎨</a> <a href="#maintenance-facusapienza21" title="Maintenance">🚧</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/LenGallo"><img src="https://avatars.githubusercontent.com/u/29756069?v=4?s=100" width="100px;" alt="Leandro Gallo"/><br /><sub><b>Leandro Gallo</b></sub></a><br /><a href="#code-LenGallo" title="Code">💻</a> <a href="#bug-LenGallo" title="Bug reports">🐛</a> <a href="#mentoring-LenGallo" title="Mentoring">🧑‍🏫</a> <a href="#design-LenGallo" title="Design">🎨</a> <a href="#question-LenGallo" title="Answering Questions">💬</a></td>
       <td align="center" valign="top" width="14.28%"><a href="http://www.swanson-hysell.org"><img src="https://avatars.githubusercontent.com/u/4332322?v=4?s=100" width="100px;" alt="Nick Swanson-Hysell"/><br /><sub><b>Nick Swanson-Hysell</b></sub></a><br /><a href="#review-Swanson-Hysell" title="Reviewed Pull Requests">👀</a> <a href="#doc-Swanson-Hysell" title="Documentation">📖</a> <a href="#design-Swanson-Hysell" title="Design">🎨</a> <a href="#mentoring-Swanson-Hysell" title="Mentoring">🧑‍🏫</a> <a href="#code-Swanson-Hysell" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/matdomeier"><img src="https://avatars.githubusercontent.com/u/40273197?v=4?s=100" width="100px;" alt="matdomeier"/><br /><sub><b>matdomeier</b></sub></a><br /><a href="#ideas-matdomeier" title="Ideas, Planning, & Feedback">🤔</a> <a href="#design-matdomeier" title="Design">🎨</a></td>
