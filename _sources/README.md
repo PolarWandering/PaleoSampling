@@ -1,4 +1,4 @@
-For a detailed description of the project, take a look at [publication at JGR: Solid Earth]([https://www.authorea.com/doi/full/10.22541/essoar.168881772.25833701](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2023JB027211)).
+For a detailed description of the project, take a look at [publication at JGR: Solid Earth](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2023JB027211).
 This publication was also highlighted in Eos. Take a look to the article [Should I Stay or Should I Go…To Another Paleomagnetic Site?](https://eos.org/editor-highlights/should-i-stay-or-should-i-goto-another-paleomagnetic-site) by Daniel Pastor-Galán.
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/PolarWandering/PaleoSampling/HEAD) 
