@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Quantitative Analysis of Paleomagnetic Sampling Strategies &#8212; Quantitative Analysis of Paleomagnetic Sampling Strategies</title>
+    <title>Installation &#8212; Quantitative Analysis of Paleomagnetic Sampling Strategies</title>
   
   
   
@@ -62,9 +62,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'book/Main';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/installation';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="DIY Figure 1" href="../notebooks/DIY-Figure1.html" />
+    <link rel="prev" title="Quantitative Analysis of Paleomagnetic Sampling Strategies" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -167,8 +169,8 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Installation</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Installation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Analysis</span></p>
 <ul class="nav bd-sidenav">
@@ -234,37 +236,6 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<div class="dropdown dropdown-launch-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
-    <i class="fas fa-rocket"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="https://mybinder.org/v2/gh/PolarWandering/PaleoSampling/HEAD/v2/gh/PolarWandering/PaleoSampling/main?urlpath=tree/book/Main.ipynb" target="_blank"
-   class="btn btn-sm dropdown-item"
-   title="Launch onBinder"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="btn__text-container">Binder</span>
-</a>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-
-
 <div class="dropdown dropdown-source-buttons">
   <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
     <i class="fab fa-github"></i>
@@ -290,7 +261,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/PolarWandering/PaleoSampling/issues/new?title=Issue%20on%20page%20%2Fbook/Main.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/PolarWandering/PaleoSampling/issues/new?title=Issue%20on%20page%20%2Fbook/installation.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -320,7 +291,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/book/Main.ipynb" target="_blank"
+      <li><a href="../_sources/book/installation.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -330,7 +301,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.ipynb</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -391,7 +362,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -402,11 +375,19 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Quantitative Analysis of Paleomagnetic Sampling Strategies</h1>
+    <h1>Installation</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#makefile">Makefile</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -416,50 +397,9 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="quantitative-analysis-of-paleomagnetic-sampling-strategies">
-<h1>Quantitative Analysis of Paleomagnetic Sampling Strategies<a class="headerlink" href="#quantitative-analysis-of-paleomagnetic-sampling-strategies" title="Permalink to this heading">#</a></h1>
-<p><em>Authors: F Sapienza, L. C. Gallo, Y. Zhang, B. Vaes, M. Domeier, N. L. Swanson-Hysell</em></p>
-<p><a class="reference external" href="https://github.com/PolarWandering/PaleoSampling.git"><img alt="GitHub" src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&amp;logo=github&amp;logoColor=white" /></a></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Markdown</span><span class="p">,</span> <span class="n">display</span>
-
-<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s2">&quot;../README.md&quot;</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<p class="rubric">⚠️ New preprint available! ⚠️</p>
-<p>For a detailed description of the project, take a look at <a class="reference external" href="https://www.authorea.com/doi/full/10.22541/essoar.168881772.25833701">our preprint of a manuscript that is in revision at JGR</a>.</p>
-<p><a class="reference external" href="https://mybinder.org/v2/gh/PolarWandering/PaleoSampling/HEAD"><img alt="Binder" src="https://mybinder.org/badge_logo.svg" /></a>
-<a class="reference external" href="https://polarwandering.github.io/PaleoSampling/"><img alt="Jupyter Book Badge" src="https://jupyterbook.org/badge.svg" /></a>
-<a class="reference external" href="https://github.com/PolarWandering/PaleoSampling/actions/workflows/book.yml?query=branch%3Amain"><img alt="Build Status" src="https://github.com/PolarWandering/PaleoSampling/actions/workflows/book.yml/badge.svg?branch=main" /></a>
-<img alt="Tests Passing" src="https://github.com/github/docs/actions/workflows/test.yml/badge.svg" />
-<a class="reference external" href="https://codecov.io/gh/PolarWandering/PaleoSampling"><img alt="codecov" src="https://codecov.io/gh/PolarWandering/PaleoSampling/graph/badge.svg?token=8BCZXZV5JP" /></a>
-<a class="reference external" href="https://zenodo.org/badge/latestdoi/595793364"><img alt="DOI" src="https://zenodo.org/badge/595793364.svg" /></a>
-<a class="reference external" href="https://opensource.org/licenses/MIT"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" /></a>
-<a class="reference external" href="#contributors"><img alt="All Contributors" src="https://img.shields.io/github/all-contributors/PolarWandering/PaleoSampling?color=ee8449&amp;style=flat-square" /></a></p>
-<p class="rubric">Quantitative Analysis of Paleomagnetic Sampling Strategies</p>
-<p>This repository contains all the notebooks and code to reproduce the analysis for the different sampling procedures in order
-to estimate the precision of different strategies for estimating paleomagnetic poles and paleosecular variation of the magnetic field
-based on site magnetizations.</p>
-<p>You can open a cloud JupyterHub version of all the code in this repository and execute it using the following Binder link:</p>
-<p><a class="reference external" href="https://mybinder.org/v2/gh/PolarWandering/PaleoSampling/HEAD"><img alt="Binder" src="https://mybinder.org/badge_logo.svg" /></a></p>
-<p>Learn more about the Binder project in this <a class="reference external" href="https://mybinder.readthedocs.io/en/latest/">link</a>. Note that it will take a very long time to load.</p>
-<p>The notebooks in this repository can be directly been access though the following JupyterBook. This link opens a website
-where all the notebooks can be visualized.</p>
-<p><a class="reference external" href="https://polarwandering.github.io/PaleoSampling/"><img alt="Jupyter Book Badge" src="https://jupyterbook.org/badge.svg" /></a></p>
-<p class="rubric">Organization</p>
-<p>This repository includes a series of tools and code organized in different folders:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">notebooks</span></code>: It includes Jupyter Notebooks with examples of different sampling procedures and the code to parallelize the simulations using Dask (<code class="docutils literal notranslate"><span class="pre">Parallel.ipynb</span></code>).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">figures</span></code>: It includes all the Jupyter Notebooks to generate the figures in the paper.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">outputs</span></code>: It includes the simulated data from all the simulations used in the figures in <code class="docutils literal notranslate"><span class="pre">csv</span></code> format.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">smpsite</span></code>: Python package to run simulations and estimate poles and dispersion (see Installation for more information).</p></li>
-</ul>
-<p>We also provide an <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> and <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> for setup of the computational environment used for this project.</p>
-<p class="rubric">Installation</p>
-<p>All the notebooks inside this notebook can be executed after properly setting the environment. The <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> file can be used to
+  <section id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h1>
+<p>All the notebooks inside this JupyterBook can be executed after properly setting the environment. The <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> file in the <a class="reference external" href="https://github.com/PolarWandering/PaleoSampling">GitHub repository</a> can be used to
 install all the required dependencies. Beside some standard Python dependencies, the <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> file include the installation of
 <code class="docutils literal notranslate"><span class="pre">Pmagpy</span></code> using pip and the extra installation of the module <code class="docutils literal notranslate"><span class="pre">smpsite</span></code> (included in this repository). The package <code class="docutils literal notranslate"><span class="pre">smpsite</span></code> includes all the code used to make the simulations and compute the
 estimated poles.</p>
@@ -468,7 +408,7 @@ estimated poles.</p>
 </pre></div>
 </div>
 <p>This will allow you to execute this environment directly from Jupyter notebooks.</p>
-<p>Alternatively, we included a <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> that creates the conda environment and installs the associated iPython kernel so this environment can be accessible though Jupyter notebooks all at once. In order to use the Makefile, you need to open a terminal where the repository is located and enter</p>
+<p>Alternatively, we included a <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> in the <a class="reference external" href="https://github.com/PolarWandering/PaleoSampling">GitHub repository</a> that creates the conda environment and installs the associated iPython kernel so this environment can be accessible though Jupyter notebooks all at once. In order to use the Makefile, you need to open a terminal where the repository is located and enter</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">env</span>
 </pre></div>
 </div>
@@ -481,62 +421,16 @@ estimated poles.</p>
 </pre></div>
 </div>
 <p>if you are working in developer mode.</p>
-<p class="rubric">Makefile</p>
-<p>The current repository contains a <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> that allows the user to run different routines on the code. You can move in a terminal to the
+<section id="makefile">
+<h2>Makefile<a class="headerlink" href="#makefile" title="Permalink to this heading">#</a></h2>
+<p>The current <a class="reference external" href="https://github.com/PolarWandering/PaleoSampling">repository</a> contains a <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> that allows the user to run different routines on the code. You can move in a terminal to the
 path to this repository and use the following commands to trigger their respective actions.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">env</span></code>: Creates the conda environment associated with the <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> file and then creates the respective iPython kernel such that the
 environment can be accessed via Jupyter notebooks.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">help</span></code>: Prints a short description of all available commands and their explanation.</p></li>
 </ul>
-<p class="rubric">How to cite 📖</p>
-<p>If you want to cite this work, please use this BibTex citation from <a class="reference external" href="https://www.authorea.com/doi/full/10.22541/essoar.168881772.25833701">our latest preprint</a>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@article</span><span class="p">{</span><span class="n">sapienza2023quantitative</span><span class="p">,</span>
-  <span class="n">title</span> <span class="o">=</span> <span class="p">{</span><span class="n">Quantitative</span> <span class="n">Analysis</span> <span class="n">of</span> <span class="n">Paleomagnetic</span> <span class="n">Sampling</span> <span class="n">Strategies</span><span class="p">},</span>
-  <span class="n">author</span> <span class="o">=</span> <span class="p">{</span><span class="n">Sapienza</span><span class="p">,</span> <span class="n">Facundo</span> <span class="ow">and</span> <span class="n">Gallo</span><span class="p">,</span> <span class="n">Leandro</span> <span class="n">Cesar</span> <span class="ow">and</span> <span class="n">Zhang</span><span class="p">,</span> <span class="n">Yiming</span> <span class="ow">and</span> <span class="n">Vaes</span><span class="p">,</span> <span class="n">Bram</span> <span class="ow">and</span> <span class="n">Domeier</span><span class="p">,</span> <span class="n">Mathew</span> <span class="ow">and</span> <span class="n">Swanson</span><span class="o">-</span><span class="n">Hysell</span><span class="p">,</span> <span class="n">Nicholas</span> <span class="n">L</span><span class="p">},</span>
-  <span class="n">journal</span> <span class="o">=</span> <span class="p">{</span><span class="n">Authorea</span> <span class="n">Preprints</span><span class="p">},</span>
-  <span class="n">year</span> <span class="o">=</span> <span class="p">{</span><span class="mi">2023</span><span class="p">},</span>
-  <span class="n">publisher</span> <span class="o">=</span> <span class="p">{</span><span class="n">Authorea</span><span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>If you want to cite the software in this repository, you can instead use the following DOI in Zenodo:</p>
-<p><a class="reference external" href="https://zenodo.org/badge/latestdoi/595793364"><img alt="DOI" src="https://zenodo.org/badge/595793364.svg" /></a></p>
-<p>or simply use the bibtex format</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@software</span><span class="p">{</span><span class="n">Sapienza_PaleoSampling</span><span class="p">,</span>
-  <span class="n">author</span> <span class="o">=</span> <span class="p">{</span><span class="n">Sapienza</span><span class="p">,</span> <span class="n">Facundo</span> <span class="ow">and</span> <span class="n">Gallo</span><span class="p">,</span> <span class="n">Leandro</span> <span class="n">Cesar</span> <span class="ow">and</span> <span class="n">Zhang</span><span class="p">,</span> <span class="n">Yiming</span> <span class="ow">and</span> <span class="n">Vaes</span><span class="p">,</span> <span class="n">Bram</span> <span class="ow">and</span> <span class="n">Domeier</span><span class="p">,</span> <span class="n">Mathew</span> <span class="ow">and</span> <span class="n">Swanson</span><span class="o">-</span><span class="n">Hysell</span><span class="p">,</span> <span class="n">Nick</span><span class="p">},</span>
-  <span class="n">title</span> <span class="o">=</span> <span class="p">{</span><span class="n">PaleoSampling</span><span class="p">},</span>
-  <span class="n">month</span> <span class="o">=</span> <span class="n">sep</span><span class="p">,</span>
-  <span class="n">year</span> <span class="o">=</span> <span class="mi">2023</span><span class="p">,</span>
-  <span class="n">note</span> <span class="o">=</span> <span class="p">{{</span><span class="n">Quantitative</span> <span class="n">Analysis</span> <span class="n">of</span> <span class="n">Paleomagnetic</span> <span class="n">Sampling</span> <span class="n">Strategies</span><span class="p">}},</span>
-  <span class="n">publisher</span> <span class="o">=</span> <span class="p">{</span><span class="n">Zenodo</span><span class="p">},</span>
-  <span class="n">version</span> <span class="o">=</span> <span class="p">{</span><span class="n">v1</span><span class="mf">.0.0</span><span class="p">},</span>
-  <span class="n">doi</span> <span class="o">=</span> <span class="p">{</span><span class="mf">10.5281</span><span class="o">/</span><span class="n">zenodo</span><span class="mf">.8347149</span><span class="p">},</span>
-  <span class="n">url</span> <span class="o">=</span> <span class="p">{</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">doi</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mf">10.5281</span><span class="o">/</span><span class="n">zenodo</span><span class="mf">.8347149</span><span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p class="rubric">Contributors</p>
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-<table>
-  <tbody>
-    <tr>
-      <td align="center" valign="top" width="14.28%"><a href="http://facusapienza.com"><img src="https://avatars.githubusercontent.com/u/39526081?v=4?s=100" width="100px;" alt="Facundo Sapienza"/><br /><sub><b>Facundo Sapienza</b></sub></a><br /><a href="#doc-facusapienza21" title="Documentation">📖</a> <a href="#code-facusapienza21" title="Code">💻</a> <a href="#infra-facusapienza21" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#design-facusapienza21" title="Design">🎨</a> <a href="#maintenance-facusapienza21" title="Maintenance">🚧</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/LenGallo"><img src="https://avatars.githubusercontent.com/u/29756069?v=4?s=100" width="100px;" alt="Leandro Gallo"/><br /><sub><b>Leandro Gallo</b></sub></a><br /><a href="#code-LenGallo" title="Code">💻</a> <a href="#bug-LenGallo" title="Bug reports">🐛</a> <a href="#mentoring-LenGallo" title="Mentoring">🧑‍🏫</a> <a href="#design-LenGallo" title="Design">🎨</a> <a href="#question-LenGallo" title="Answering Questions">💬</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="http://www.swanson-hysell.org"><img src="https://avatars.githubusercontent.com/u/4332322?v=4?s=100" width="100px;" alt="Nick Swanson-Hysell"/><br /><sub><b>Nick Swanson-Hysell</b></sub></a><br /><a href="#review-Swanson-Hysell" title="Reviewed Pull Requests">👀</a> <a href="#doc-Swanson-Hysell" title="Documentation">📖</a> <a href="#design-Swanson-Hysell" title="Design">🎨</a> <a href="#mentoring-Swanson-Hysell" title="Mentoring">🧑‍🏫</a> <a href="#code-Swanson-Hysell" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/matdomeier"><img src="https://avatars.githubusercontent.com/u/40273197?v=4?s=100" width="100px;" alt="matdomeier"/><br /><sub><b>matdomeier</b></sub></a><br /><a href="#ideas-matdomeier" title="Ideas, Planning, & Feedback">🤔</a> <a href="#design-matdomeier" title="Design">🎨</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://www.uu.nl/medewerkers/BVaes"><img src="https://avatars.githubusercontent.com/u/94557078?v=4?s=100" width="100px;" alt="Bram Vaes"/><br /><sub><b>Bram Vaes</b></sub></a><br /><a href="#design-bramvaes" title="Design">🎨</a> <a href="#ideas-bramvaes" title="Ideas, Planning, & Feedback">🤔</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://duserzym.github.io/"><img src="https://avatars.githubusercontent.com/u/39976081?v=4?s=100" width="100px;" alt="Yiming Zhang"/><br /><sub><b>Yiming Zhang</b></sub></a><br /><a href="#ideas-duserzym" title="Ideas, Planning, & Feedback">🤔</a></td>
-    </tr>
-  </tbody>
-</table>
-<!-- markdownlint-restore -->
-<!-- prettier-ignore-end -->
-<!-- ALL-CONTRIBUTORS-LIST:END -->
-</div>
-</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -569,12 +463,44 @@ environment can be accessed via Jupyter notebooks.</p></li>
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Quantitative Analysis of Paleomagnetic Sampling Strategies</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../notebooks/DIY-Figure1.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">DIY Figure 1</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#makefile">Makefile</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
