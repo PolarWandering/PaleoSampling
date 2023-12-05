@@ -1,12 +1,15 @@
 format: jb-book
-root: book/Main
+root: book/intro
 
 parts:
+- caption: Installation
+  chapters:
+    - file: book/installation
 - caption: Analysis
   chapters:
-    - file: notebooks/Sampling_example.ipynb
-    - file: notebooks/Sampling_comparison.ipynb
     - file: notebooks/DIY-Figure1.ipynb
+    - file: notebooks/Sampling_comparison.ipynb
+    - file: notebooks/Sampling_example.ipynb
 - caption: Figures
   chapters:
     - file: figures/figure1/Figure1.ipynb
