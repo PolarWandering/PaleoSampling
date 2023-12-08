@@ -418,8 +418,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-parameters">Model parameters</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#figure">Figure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-python-packages">Import Python packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-parameters-of-the-study-location">The parameters of the study location</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-number-of-sites-and-samples-per-site-to-be-evaluated">The number of sites and samples per site to be evaluated</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-analysis">Run the analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-error-angle-estimates">Plot the error angle estimates</a></li>
 </ul>
             </nav>
         </div>
@@ -431,9 +434,21 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="diy-figure-1">
+  <section class="tex2jax_ignore mathjax_ignore" id="diy-figure-1">
 <h1>DIY Figure 1<a class="headerlink" href="#diy-figure-1" title="Permalink to this heading">#</a></h1>
-<p>In this notebook, we show how to use the theoretical approximation to obtain accurate estimates of the angular error for the paleopole estimation for different choices of parameters. A full simulation will be more expensive to run, but our simulations showed that theoretical approximations and numerical simulations differ at most <span class="math notranslate nohighlight">\(1\%\)</span> from each other when there are no outliers in the sample.</p>
+<p>In this <em>Do It Yourself (DIY) Figure 1</em> notebook, one can use the theoretical approximation developed in Sapienza et al. 2023 to change the parameter choices from those illustrated in Figure 1 of the paper associated with pole position estimation. This notebook thereby enables a researcher to obtain estimates of the angular error for the paleopole estimation for the latitude and the estimated within site precision that fits their study.</p>
+<table style="border-collapse: collapse; border: none;">
+    <tr>
+        <td style="border: none;"><img src="https://github.com/PolarWandering/PaleoSampling/blob/b894fcdc15dc64ab46cd16cf297572dbc280abbd/figures/figure1/Figure1.png?raw=true" width="500"></td>
+        <td style="border: none; vertical-align: bottom; width: 300px;">
+            <b>Figure 1:</b> Root mean square error (RMSE) in degrees between site mean poles and the true GAD pole (top panel) and between-site VGP dispersion (bottom panel) as a function of different combinations of the total number of sites N and the number of samples per site n0. For this diagram, we use a paleolatitude of 30° (κb ≈ 35), poutlier = 0, and κw = 50. The white dashed lines represent isolines where the total number of samples n is constant, and the black lines represent isolines with constant net mean error angle. Each point-wise estimate of the mean error (i.e., each box) is based on the results of 10,000 simulations. While these simulations represent secular variation using model G, similar results emerge from using the TK03 model (Tauxe & Kent, 2004). <b>This notebook allows you to recreate the top panel using the theoretical approximation</b>
+        </td>
+    </tr>
+</table>
+<p>A full simulation would be more computationally expensive to run (i.e. take a long time), but our simulations showed that theoretical approximations and numerical simulations differ at most <span class="math notranslate nohighlight">\(1\%\)</span> from each other when there are no outliers in the sample. Therefore, the theoretical approximation is used here.</p>
+<section id="import-python-packages">
+<h2>Import Python packages<a class="headerlink" href="#import-python-packages" title="Permalink to this heading">#</a></h2>
+<p>Run this cell to get the Python tools needed for the notebook.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -443,7 +458,6 @@ document.write(`
 <span class="kn">import</span> <span class="nn">matplotlib.colors</span> <span class="k">as</span> <span class="nn">colors</span>
 <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">product</span>
 
-
 <span class="kn">import</span> <span class="nn">smpsite</span> <span class="k">as</span> <span class="nn">smp</span>
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
@@ -451,26 +465,44 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2348/2909491422.py:4: DeprecationWarning: Please use `gaussian_filter` from the `scipy.ndimage` namespace, the `scipy.ndimage.filters` namespace is deprecated.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2348/2317696597.py:4: DeprecationWarning: Please use `gaussian_filter` from the `scipy.ndimage` namespace, the `scipy.ndimage.filters` namespace is deprecated.
   from scipy.ndimage.filters import gaussian_filter
 </pre></div>
 </div>
 </div>
 </div>
-<section id="model-parameters">
-<h2>Model parameters<a class="headerlink" href="#model-parameters" title="Permalink to this heading">#</a></h2>
-<p>We first select the parameters we want to compare.</p>
+</section>
+<section id="the-parameters-of-the-study-location">
+<h2>The parameters of the study location<a class="headerlink" href="#the-parameters-of-the-study-location" title="Permalink to this heading">#</a></h2>
+<p>The first step is to provide the latitude (<code class="docutils literal notranslate"><span class="pre">site_lat</span></code>) and longitude (<code class="docutils literal notranslate"><span class="pre">site_long</span></code>) of the study location (the latitude is what matters).</p>
+<p>You also need to provide an estimate of <span class="math notranslate nohighlight">\(\kappa\)</span> which is the Fisher precision parameter for the sample directions within the individual sites of your study. If the directional estimates within a given site are expected to be tightly grouped, this <code class="docutils literal notranslate"><span class="pre">kappa_within_site</span></code> value will be higher. If they are expected to be more scattered it will be lower.</p>
+<p><strong>Change the values below to match the study for which you are interested in exploring sampling strategies</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">site_lat</span> <span class="o">=</span> <span class="mi">30</span>             <span class="c1"># Site latitude</span>
 <span class="n">site_long</span> <span class="o">=</span> <span class="mi">0</span>             <span class="c1"># Site longitude</span>
 <span class="n">kappa_within_site</span> <span class="o">=</span> <span class="mi">50</span>    <span class="c1"># Concentration parameter kappa in each site</span>
-
-<span class="n">N_max</span><span class="p">,</span> <span class="n">n0_max</span> <span class="o">=</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">20</span>    <span class="c1"># Maximum values of sites and samples per site</span>
 </pre></div>
 </div>
 </div>
 </div>
+</section>
+<section id="the-number-of-sites-and-samples-per-site-to-be-evaluated">
+<h2>The number of sites and samples per site to be evaluated<a class="headerlink" href="#the-number-of-sites-and-samples-per-site-to-be-evaluated" title="Permalink to this heading">#</a></h2>
+<p>The maximum number of sites (<code class="docutils literal notranslate"><span class="pre">N_max</span></code>) and the maximum number of samples per site (<code class="docutils literal notranslate"><span class="pre">n0_max</span></code>) can be set. In Figure 1 of the paper, <code class="docutils literal notranslate"><span class="pre">N_max``</span> <span class="pre">was</span> <span class="pre">40</span> <span class="pre">and</span> </code>n0_max`` was 20. At values of very high site numbers and/or sample numbers there can be an issue with the code that will result in an error (so keep the values less than a few hundred).</p>
+<p><strong>Change the values below to be the number of sites (from 1 to <code class="docutils literal notranslate"><span class="pre">N_max</span></code>) and number of samples per site (1 to <code class="docutils literal notranslate"><span class="pre">n0_max</span></code>) that you want to explore in the analysis</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N_max</span> <span class="o">=</span> <span class="mi">80</span> <span class="c1"># Maximum values of sites (can go up to ~300)</span>
+<span class="n">n0_max</span> <span class="o">=</span> <span class="mi">8</span>  <span class="c1"># Maximum values of samples per site</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="run-the-analysis">
+<h2>Run the analysis<a class="headerlink" href="#run-the-analysis" title="Permalink to this heading">#</a></h2>
+<p>The code below will conduct the analysis giving an estimate of the angular mean angular error between estimated poles for a given number of sites and within site samples.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a template data frames with all the combinations of number of sites and samples per site</span>
@@ -491,7 +523,7 @@ document.write(`
                                                                                       <span class="n">kappa_secular</span><span class="o">=</span><span class="kc">None</span><span class="p">)),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="n">df</span><span class="p">[</span><span class="s2">&quot;error_angle_theoretical&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">smp</span><span class="o">.</span><span class="n">kappa2angular</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">error_kappa_theoretical</span><span class="p">)),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -522,48 +554,48 @@ document.write(`
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>1</td>
-      <td>18.528499</td>
-      <td>19.134249</td>
+      <th>635</th>
+      <td>76</td>
+      <td>8</td>
+      <td>2297.266890</td>
+      <td>1.694923</td>
     </tr>
     <tr>
-      <th>1</th>
-      <td>2</td>
-      <td>1</td>
-      <td>35.056998</td>
-      <td>13.793211</td>
+      <th>636</th>
+      <td>77</td>
+      <td>8</td>
+      <td>2327.494086</td>
+      <td>1.680234</td>
     </tr>
     <tr>
-      <th>2</th>
-      <td>3</td>
-      <td>1</td>
-      <td>52.585497</td>
-      <td>11.204579</td>
+      <th>637</th>
+      <td>78</td>
+      <td>8</td>
+      <td>2357.721282</td>
+      <td>1.665545</td>
     </tr>
     <tr>
-      <th>3</th>
-      <td>4</td>
-      <td>1</td>
-      <td>70.113995</td>
-      <td>9.690172</td>
+      <th>638</th>
+      <td>79</td>
+      <td>8</td>
+      <td>2387.948478</td>
+      <td>1.652216</td>
     </tr>
     <tr>
-      <th>4</th>
-      <td>5</td>
-      <td>1</td>
-      <td>87.642494</td>
-      <td>8.676167</td>
+      <th>639</th>
+      <td>80</td>
+      <td>8</td>
+      <td>2418.175674</td>
+      <td>1.644090</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
 </section>
-<section id="figure">
-<h2>Figure<a class="headerlink" href="#figure" title="Permalink to this heading">#</a></h2>
-<p>We define a function that will make the heatmap.</p>
+<section id="plot-the-error-angle-estimates">
+<h2>Plot the error angle estimates<a class="headerlink" href="#plot-the-error-angle-estimates" title="Permalink to this heading">#</a></h2>
+<p>The cell below defines a function that will plot the pole angle estimates and then makes that plot. Run the cell below to visualize the results for your chosen parameters.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">find_nearest</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">a0</span><span class="p">):</span>
@@ -577,11 +609,12 @@ document.write(`
 <span class="k">def</span> <span class="nf">plot_angle_error</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
     
     <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-    <span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
     
-    <span class="n">caxes</span>    <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">inset_axes</span><span class="p">([</span><span class="mf">1.04</span><span class="p">,</span> <span class="mf">0.26</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">])</span>
+    <span class="n">caxes</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">inset_axes</span><span class="p">([</span><span class="mf">1.04</span><span class="p">,</span> <span class="mf">0.26</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">])</span>
     
-    <span class="k">def</span> <span class="nf">contour_plot</span><span class="p">(</span><span class="n">df_</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">cax</span><span class="p">,</span> <span class="n">bounds</span><span class="p">,</span> <span class="n">cmap</span><span class="p">,</span> <span class="n">cbar_title</span><span class="p">,</span> <span class="n">make_levels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">make_contours</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color_max</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="mi">40</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">contour_plot</span><span class="p">(</span><span class="n">df_</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">cax</span><span class="p">,</span> <span class="n">bounds</span><span class="p">,</span> <span class="n">cmap</span><span class="p">,</span> <span class="n">cbar_title</span><span class="p">,</span> <span class="n">make_levels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">make_contours</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+                     <span class="n">color_max</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="mi">40</span><span class="p">):</span>
     
         <span class="n">X</span> <span class="o">=</span> <span class="n">df_</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span>
         <span class="n">Y</span> <span class="o">=</span> <span class="n">df_</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span>
@@ -598,7 +631,7 @@ document.write(`
 
         <span class="k">if</span> <span class="n">make_levels</span><span class="p">:</span>
             <span class="n">N</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span>
-            <span class="n">levels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">100.0</span><span class="p">,</span> <span class="mi">310</span><span class="p">,</span> <span class="mf">40.</span><span class="p">)])</span>
+            <span class="n">levels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">100.0</span><span class="p">,</span> <span class="mi">1010</span><span class="p">,</span> <span class="mf">40.</span><span class="p">)])</span>
             <span class="n">IsoNLines</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="n">levels</span><span class="p">)</span>
             <span class="n">ax</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">IsoNLines</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 
@@ -608,11 +641,11 @@ document.write(`
             <span class="n">ContourLines</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="n">bounds</span><span class="p">)</span>  
             <span class="n">ax</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">ContourLines</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">])</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">40</span><span class="p">])</span>
+        <span class="c1"># ax.set_xlim([1, n0_max])</span>
+        <span class="c1"># ax.set_ylim([0, N_max])</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">15</span><span class="p">])</span>
+        <span class="c1"># ax.set_xticks([1,2,3,4,5,6,7,10,15])</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
     
@@ -629,20 +662,18 @@ document.write(`
                  <span class="n">cbar_title</span><span class="o">=</span><span class="s2">&quot;RMSE for pole estimation (degrees)&quot;</span><span class="p">,</span>
                  <span class="n">color_max</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> 
                  <span class="n">ticks</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_pivot</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;n0&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;error_angle_theoretical&#39;</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Number of samples per site&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Number of sites&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+    
+<span class="n">df_pivot</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;n0&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;error_angle_theoretical&#39;</span><span class="p">)</span>
 
 <span class="n">plot_angle_error</span><span class="p">(</span><span class="n">df_pivot</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/e6870d900c8441ae0058144e0adbe802c17230315cb2d11f063bd6eb7ae35869.png" src="../_images/e6870d900c8441ae0058144e0adbe802c17230315cb2d11f063bd6eb7ae35869.png" />
+<img alt="../_images/6362a150a54afbc678de0ca048233bc4557a069cbbe352edfd23ba31e76a7249.png" src="../_images/6362a150a54afbc678de0ca048233bc4557a069cbbe352edfd23ba31e76a7249.png" />
 </div>
 </div>
 </section>
@@ -711,8 +742,11 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-parameters">Model parameters</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#figure">Figure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-python-packages">Import Python packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-parameters-of-the-study-location">The parameters of the study location</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-number-of-sites-and-samples-per-site-to-be-evaluated">The number of sites and samples per site to be evaluated</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-analysis">Run the analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-error-angle-estimates">Plot the error angle estimates</a></li>
 </ul>
   </nav></div>
 
