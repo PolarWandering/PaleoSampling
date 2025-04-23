@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Comparison of different sampling approaches &#8212; Quantitative Analysis of Paleomagnetic Sampling Strategies</title>
   
@@ -15,53 +14,49 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/Sampling_comparison';</script>
@@ -78,28 +73,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -121,12 +111,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -142,6 +140,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="../book/intro.html">
@@ -160,7 +160,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -207,7 +218,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -216,14 +227,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -248,14 +259,14 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://mybinder.org/v2/gh/PolarWandering/PaleoSampling/HEAD/v2/gh/PolarWandering/PaleoSampling/main?urlpath=tree/notebooks/Sampling_comparison.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onBinder"
+   title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="../_static/images/logo_binder.svg">
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
   </span>
 <span class="btn__text-container">Binder</span>
 </a>
@@ -379,10 +390,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -390,14 +401,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -447,10 +458,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="comparison-of-different-sampling-approaches">
-<h1>Comparison of different sampling approaches<a class="headerlink" href="#comparison-of-different-sampling-approaches" title="Permalink to this heading">#</a></h1>
+<h1>Comparison of different sampling approaches<a class="headerlink" href="#comparison-of-different-sampling-approaches" title="Link to this heading">#</a></h1>
 <p>This notebook enables comparison of different sampling approaches for estimating pole position in the presence of secular variation of the geomagnetic field and within site scatter. You can use this notebook to make a comparison similar to that shown below from Figure 3s of Sapienza et al. (2023) while providing your own parameters.</p>
 <table style="border-collapse: collapse; border: none;">
     <tr>
@@ -462,20 +473,20 @@ document.write(`
 </table>
 <p>These tools can help guide decisions about the tradeoffs between the number of site (<span class="math notranslate nohighlight">\(N\)</span>) and the number of samples per site (<span class="math notranslate nohighlight">\(n_0\)</span>) while evaluating or designing a study.</p>
 <section id="import-python-packages">
-<h2>Import Python packages<a class="headerlink" href="#import-python-packages" title="Permalink to this heading">#</a></h2>
+<h2>Import Python packages<a class="headerlink" href="#import-python-packages" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
 
-<span class="kn">import</span> <span class="nn">pmagpy.pmag</span> <span class="k">as</span> <span class="nn">pmag</span>
-<span class="kn">import</span> <span class="nn">pmagpy.ipmag</span> <span class="k">as</span> <span class="nn">ipmag</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pmagpy.pmag</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pmag</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pmagpy.ipmag</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ipmag</span>
 
-<span class="kn">import</span> <span class="nn">smpsite</span> <span class="k">as</span> <span class="nn">smp</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">smpsite</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">smp</span>
 
-<span class="kn">import</span> <span class="nn">warnings</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span> 
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
@@ -485,7 +496,7 @@ document.write(`
 </div>
 </section>
 <section id="define-parameters">
-<h2>Define parameters<a class="headerlink" href="#define-parameters" title="Permalink to this heading">#</a></h2>
+<h2>Define parameters<a class="headerlink" href="#define-parameters" title="Link to this heading">#</a></h2>
 <p>The data generation model requires that the following parameters are given:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">site_lat</span></code> is the latitude of the study site (between 0 and 90º)</p></li>
@@ -496,7 +507,7 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">n0</span></code> number of samples per site</p></li>
 </ul>
 <section id="enter-parameters-that-are-the-same-in-both-sampling-strategies">
-<h3>Enter parameters that are the same in both sampling strategies<a class="headerlink" href="#enter-parameters-that-are-the-same-in-both-sampling-strategies" title="Permalink to this heading">#</a></h3>
+<h3>Enter parameters that are the same in both sampling strategies<a class="headerlink" href="#enter-parameters-that-are-the-same-in-both-sampling-strategies" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">latitude</span></code>, <code class="docutils literal notranslate"><span class="pre">outlier_rate</span></code>, <code class="docutils literal notranslate"><span class="pre">kappa_within_site</span></code>, and <code class="docutils literal notranslate"><span class="pre">secular_method</span></code> make sense to define across both sampling strategies that are being compared. Let’s define them in the cell below (<strong>you can change these values to match those that are the best estimates for your study</strong>):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -512,7 +523,7 @@ document.write(`
 </div>
 </section>
 <section id="enter-sites-and-samples-per-site-for-approach-1">
-<h3>Enter sites and samples per site for approach 1<a class="headerlink" href="#enter-sites-and-samples-per-site-for-approach-1" title="Permalink to this heading">#</a></h3>
+<h3>Enter sites and samples per site for approach 1<a class="headerlink" href="#enter-sites-and-samples-per-site-for-approach-1" title="Link to this heading">#</a></h3>
 <p>Now we can set how many sites and samples per sites for approach 1 (say 100 sites with 1 sample each for a total of 100 samples):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -526,7 +537,7 @@ document.write(`
 </div>
 </section>
 <section id="enter-sites-and-samples-per-site-for-approach-2">
-<h3>Enter sites and samples per site for approach 2<a class="headerlink" href="#enter-sites-and-samples-per-site-for-approach-2" title="Permalink to this heading">#</a></h3>
+<h3>Enter sites and samples per site for approach 2<a class="headerlink" href="#enter-sites-and-samples-per-site-for-approach-2" title="Link to this heading">#</a></h3>
 <p>Now we can set how many sites and samples per sites for approach 2 (say 20 sites with 5 samples each for a total of 100 samples):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -541,7 +552,7 @@ document.write(`
 </section>
 </section>
 <section id="assign-parameters-for-each-approach">
-<h2>Assign parameters for each approach<a class="headerlink" href="#assign-parameters-for-each-approach" title="Permalink to this heading">#</a></h2>
+<h2>Assign parameters for each approach<a class="headerlink" href="#assign-parameters-for-each-approach" title="Link to this heading">#</a></h2>
 <p>We will create a parameters object that has these values assigned for approach 1 (<code class="docutils literal notranslate"><span class="pre">params1</span></code>) and for approach 2 (<code class="docutils literal notranslate"><span class="pre">params2</span></code>). Nothing needs to be changed in the code cell below as it will take the values that are defined above.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -568,9 +579,9 @@ document.write(`
 </div>
 </section>
 <section id="generate-the-simulations-with-the-chosen-parameters">
-<h2>Generate the simulations with the chosen parameters<a class="headerlink" href="#generate-the-simulations-with-the-chosen-parameters" title="Permalink to this heading">#</a></h2>
+<h2>Generate the simulations with the chosen parameters<a class="headerlink" href="#generate-the-simulations-with-the-chosen-parameters" title="Link to this heading">#</a></h2>
 <section id="chose-the-outlier-detection-strategy">
-<h3>Chose the outlier detection strategy<a class="headerlink" href="#chose-the-outlier-detection-strategy" title="Permalink to this heading">#</a></h3>
+<h3>Chose the outlier detection strategy<a class="headerlink" href="#chose-the-outlier-detection-strategy" title="Link to this heading">#</a></h3>
 <p>There are three options for outlier detection:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">&quot;True&quot;</span></code> This choice corresponds to perfect outlier detection. Recall that the outliers are generated at the sample level. One can envision that with 6 samples per site and a 10% outlier rate that it would be straight forward to be able to filter out outliers by looking for site level consistency.</p></li>
@@ -591,7 +602,7 @@ document.write(`
 </div>
 </section>
 <section id="chose-number-of-iterations">
-<h3>Chose number of iterations<a class="headerlink" href="#chose-number-of-iterations" title="Permalink to this heading">#</a></h3>
+<h3>Chose number of iterations<a class="headerlink" href="#chose-number-of-iterations" title="Link to this heading">#</a></h3>
 <p>Before the simulations are run, the number of times the poles are simulated needs to be specified with the <code class="docutils literal notranslate"><span class="pre">n_iters</span></code> variable. Something like 1000 should do a decent job showing the resulting distribution. We used <code class="docutils literal notranslate"><span class="pre">n_iters</span> <span class="pre">=</span> <span class="pre">1000</span></code> in Sapienza et al. 2023.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -603,7 +614,7 @@ document.write(`
 </div>
 </section>
 <section id="run-the-simulations">
-<h3>Run the simulations<a class="headerlink" href="#run-the-simulations" title="Permalink to this heading">#</a></h3>
+<h3>Run the simulations<a class="headerlink" href="#run-the-simulations" title="Link to this heading">#</a></h3>
 <p>The simulations take a while to run (and will take longer for large values of <code class="docutils literal notranslate"><span class="pre">n_inters</span></code>)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -624,9 +635,9 @@ Wall time: 1min 33s
 </section>
 </section>
 <section id="assess-the-simulated-results">
-<h2>Assess the simulated results<a class="headerlink" href="#assess-the-simulated-results" title="Permalink to this heading">#</a></h2>
+<h2>Assess the simulated results<a class="headerlink" href="#assess-the-simulated-results" title="Link to this heading">#</a></h2>
 <section id="calculate-rmse">
-<h3>Calculate RMSE<a class="headerlink" href="#calculate-rmse" title="Permalink to this heading">#</a></h3>
+<h3>Calculate RMSE<a class="headerlink" href="#calculate-rmse" title="Link to this heading">#</a></h3>
 <p>The root mean square error of all of the simulations combined can be calculated for a given approach.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -647,7 +658,7 @@ The RMSE for approach 2 is:  3.4 º
 </div>
 </section>
 <section id="calculate-error-angle-percentile">
-<h3>Calculate error angle percentile<a class="headerlink" href="#calculate-error-angle-percentile" title="Permalink to this heading">#</a></h3>
+<h3>Calculate error angle percentile<a class="headerlink" href="#calculate-error-angle-percentile" title="Link to this heading">#</a></h3>
 <p>Rather than assessing the mean error, it could be informative to investigate the percentile of the resulting error angles. Calculating the 95 percentile assesses what the error angle is that 95% of the simulations are for the parameters of a given scenario.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -668,11 +679,11 @@ The 95 percentile error angle for approach 2 is:  6.1 º
 </div>
 </section>
 <section id="plot-distribution-of-error-angles">
-<h3>Plot distribution of error angles<a class="headerlink" href="#plot-distribution-of-error-angles" title="Permalink to this heading">#</a></h3>
+<h3>Plot distribution of error angles<a class="headerlink" href="#plot-distribution-of-error-angles" title="Link to this heading">#</a></h3>
 <p>The distribution of the error angles from the two approaches can be plotted. First, let’s extract the parameters associated with each approach to plot on the figure.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">annotation_text</span><span class="p">(</span><span class="n">approach_name</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">outlier_method</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">annotation_text</span><span class="p">(</span><span class="n">approach_name</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">outlier_method</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generate annotation text based on provided parameters and outlier detection method.</span>
 <span class="sd">    </span>
@@ -778,7 +789,7 @@ The 95 percentile error angle for approach 2 is:  6.1 º
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -807,6 +818,7 @@ The 95 percentile error angle for approach 2 is:  6.1 º
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -882,8 +894,8 @@ By Facundo Sapienza
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

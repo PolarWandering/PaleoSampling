@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Example of sampling &#8212; Quantitative Analysis of Paleomagnetic Sampling Strategies</title>
   
@@ -15,53 +14,49 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/Sampling_example';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -76,28 +71,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -119,12 +109,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -140,6 +138,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="../book/intro.html">
@@ -158,7 +158,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -205,7 +216,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -214,14 +225,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -246,14 +257,14 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://mybinder.org/v2/gh/PolarWandering/PaleoSampling/HEAD/v2/gh/PolarWandering/PaleoSampling/main?urlpath=tree/notebooks/Sampling_example.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onBinder"
+   title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="../_static/images/logo_binder.svg">
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
   </span>
 <span class="btn__text-container">Binder</span>
 </a>
@@ -377,10 +388,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -388,14 +399,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -430,19 +441,19 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="example-of-sampling">
-<h1>Example of sampling<a class="headerlink" href="#example-of-sampling" title="Permalink to this heading">#</a></h1>
+<h1>Example of sampling<a class="headerlink" href="#example-of-sampling" title="Link to this heading">#</a></h1>
 <p>Here we illustrate an example of how to generate samples using our small Python package <code class="docutils literal notranslate"><span class="pre">smpsite</span></code>. Many of the sampling capabilities are directly imported from <code class="docutils literal notranslate"><span class="pre">pmagpy</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pmagpy.pmag</span> <span class="k">as</span> <span class="nn">pmag</span>
-<span class="kn">import</span> <span class="nn">pmagpy.ipmag</span> <span class="k">as</span> <span class="nn">ipmag</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">smpsite</span> <span class="k">as</span> <span class="nn">smp</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pmagpy.pmag</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pmag</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pmagpy.ipmag</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ipmag</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">smpsite</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">smp</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">666</span><span class="p">)</span>
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
@@ -451,7 +462,7 @@ document.write(`
 </div>
 </div>
 <section id="define-the-parameters-of-the-sample">
-<h2>Define the parameters of the sample<a class="headerlink" href="#define-the-parameters-of-the-sample" title="Permalink to this heading">#</a></h2>
+<h2>Define the parameters of the sample<a class="headerlink" href="#define-the-parameters-of-the-sample" title="Link to this heading">#</a></h2>
 <p>We define a parameter class defined inside <code class="docutils literal notranslate"><span class="pre">smpsite</span></code> that allow us to specify all the parameters of interest at the same time. These parameters include:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">N</span></code>: Total number of sites</p></li>
@@ -479,7 +490,7 @@ document.write(`
 </div>
 </section>
 <section id="generate-the-sample">
-<h2>Generate the sample<a class="headerlink" href="#generate-the-sample" title="Permalink to this heading">#</a></h2>
+<h2>Generate the sample<a class="headerlink" href="#generate-the-sample" title="Link to this heading">#</a></h2>
 <p>Once the parameters are specified, we can simulate the sample data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -491,8 +502,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 17.9 ms, sys: 876 µs, total: 18.8 ms
-Wall time: 17.6 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 16.6 ms, sys: 1.05 ms, total: 17.6 ms
+Wall time: 17.1 ms
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -573,7 +584,7 @@ Wall time: 17.6 ms
 </div>
 </section>
 <section id="plot-the-simulated-sample-data">
-<h2>Plot the simulated sample data<a class="headerlink" href="#plot-the-simulated-sample-data" title="Permalink to this heading">#</a></h2>
+<h2>Plot the simulated sample data<a class="headerlink" href="#plot-the-simulated-sample-data" title="Link to this heading">#</a></h2>
 <p>We can plot the declination and inclination of all of the simulated samples.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -586,7 +597,7 @@ Wall time: 17.6 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/7a98104eec81c361601ba6b47c43d0cf7ba110fdb0d2d7fa2b6351d6359a8118.png" src="../_images/7a98104eec81c361601ba6b47c43d0cf7ba110fdb0d2d7fa2b6351d6359a8118.png" />
+<img alt="../_images/47f57c4fdec3c73f8316ad26af0f4288f5aaef92980f0f61630479a004fcb2ab.png" src="../_images/47f57c4fdec3c73f8316ad26af0f4288f5aaef92980f0f61630479a004fcb2ab.png" />
 </div>
 </div>
 <p>The declination/inclination can be plotted as colored them by site</p>
@@ -623,12 +634,12 @@ Wall time: 17.6 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/957281bc82379aaa6becc418f1aa073ac8ca61543ac7717457e734e3cfaf3675.png" src="../_images/957281bc82379aaa6becc418f1aa073ac8ca61543ac7717457e734e3cfaf3675.png" />
+<img alt="../_images/238ae45e6d7758e7754774d75d0381ce521aea5bdeaeb6d1afebb4a67021d0e9.png" src="../_images/238ae45e6d7758e7754774d75d0381ce521aea5bdeaeb6d1afebb4a67021d0e9.png" />
 </div>
 </div>
 </section>
 <section id="calculate-pole-position-and-calculate-angular-error">
-<h2>Calculate pole position and calculate angular error<a class="headerlink" href="#calculate-pole-position-and-calculate-angular-error" title="Permalink to this heading">#</a></h2>
+<h2>Calculate pole position and calculate angular error<a class="headerlink" href="#calculate-pole-position-and-calculate-angular-error" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean_pole</span> <span class="o">=</span> <span class="n">smp</span><span class="o">.</span><span class="n">estimate_pole</span><span class="p">(</span><span class="n">df_sample</span><span class="p">,</span> <span class="n">params0</span><span class="p">,</span> <span class="n">ignore_outliers</span><span class="o">=</span><span class="s2">&quot;True&quot;</span><span class="p">)</span>
@@ -639,15 +650,19 @@ Wall time: 17.6 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;pole_dec&#39;: 112.27111493549478, &#39;pole_inc&#39;: 87.17580406361836, &#39;S2_vgp&#39;: 256.9146243330398, &#39;total_samples&#39;: 48.0, &#39;samples_per_site&#39;: 5, &#39;alpha95&#39;: 9.814841392668617}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;pole_dec&#39;: np.float64(112.27111493549478), &#39;pole_inc&#39;: np.float64(87.17580406361836), &#39;S2_vgp&#39;: np.float64(256.9146243330398), &#39;total_samples&#39;: np.float64(48.0), &#39;samples_per_site&#39;: 5, &#39;alpha95&#39;: np.float64(9.814841392668617)}
 The angular error is:  2.8 degrees
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/work/PaleoSampling/PaleoSampling/smpsite/smpsite/estimate.py:119: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  df_site = df.groupby(&#39;sample_site&#39;).apply(lambda row : pd.Series(robust_fisher_mean(row.vgp_dec.values, row.vgp_inc.values)))
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="plot-the-pole-position">
-<h2>Plot the pole position<a class="headerlink" href="#plot-the-pole-position" title="Permalink to this heading">#</a></h2>
+<h2>Plot the pole position<a class="headerlink" href="#plot-the-pole-position" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">map_axis</span> <span class="o">=</span> <span class="n">ipmag</span><span class="o">.</span><span class="n">make_orthographic_map</span><span class="p">(</span><span class="n">central_longitude</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">central_latitude</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
@@ -656,89 +671,89 @@ The angular error is:  2.8 degrees
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:6195: DeprecationWarning: invalid escape sequence \d
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:6195: DeprecationWarning: invalid escape sequence \d
   pattern = re.compile(&#39;[4][-]\d&#39;)
-/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:6202: DeprecationWarning: invalid escape sequence \d
+/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:6202: DeprecationWarning: invalid escape sequence \d
   pattern = re.compile(&#39;[7][-]\d&#39;)
-/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:7886: DeprecationWarning: invalid escape sequence \h
+/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:7886: DeprecationWarning: invalid escape sequence \h
   sf.write(&#39;\hline\n&#39;)
-/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:7891: DeprecationWarning: invalid escape sequence \h
+/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:7891: DeprecationWarning: invalid escape sequence \h
   f.write(&#39;\hline\n&#39;)
-/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:7896: DeprecationWarning: invalid escape sequence \h
+/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:7896: DeprecationWarning: invalid escape sequence \h
   fI.write(&#39;\hline\n&#39;)
-/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:7902: DeprecationWarning: invalid escape sequence \h
+/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:7902: DeprecationWarning: invalid escape sequence \h
   cr.write(&#39;\hline\n&#39;)
-/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:7908: DeprecationWarning: invalid escape sequence \h
+/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:7908: DeprecationWarning: invalid escape sequence \h
   fsp.write(&#39;\hline\n&#39;)
-/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:7942: DeprecationWarning: invalid escape sequence \h
+/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:7942: DeprecationWarning: invalid escape sequence \h
   f.write(&#39;\hline\n&#39;)
-/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:7943: DeprecationWarning: invalid escape sequence \h
+/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:7943: DeprecationWarning: invalid escape sequence \h
   sf.write(&#39;\hline\n&#39;)
-/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:7944: DeprecationWarning: invalid escape sequence \h
+/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:7944: DeprecationWarning: invalid escape sequence \h
   fI.write(&#39;\hline\n&#39;)
-/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:7946: DeprecationWarning: invalid escape sequence \h
+/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:7946: DeprecationWarning: invalid escape sequence \h
   cr.write(&#39;\hline\n&#39;)
-/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:7948: DeprecationWarning: invalid escape sequence \h
+/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:7948: DeprecationWarning: invalid escape sequence \h
   fsp.write(&#39;\hline\n&#39;)
-/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:8060: DeprecationWarning: invalid escape sequence \h
+/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:8060: DeprecationWarning: invalid escape sequence \h
   f.write(&#39;\hline\n&#39;)
-/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:8061: DeprecationWarning: invalid escape sequence \h
+/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:8061: DeprecationWarning: invalid escape sequence \h
   sf.write(&#39;\hline\n&#39;)
-/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:8062: DeprecationWarning: invalid escape sequence \h
+/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:8062: DeprecationWarning: invalid escape sequence \h
   fI.write(&#39;\hline\n&#39;)
-/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:8063: DeprecationWarning: invalid escape sequence \e
+/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:8063: DeprecationWarning: invalid escape sequence \e
   f.write(&#39;\end{longtable}\n&#39;)
-/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:8064: DeprecationWarning: invalid escape sequence \e
+/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:8064: DeprecationWarning: invalid escape sequence \e
   sf.write(&#39;\end{longtable}\n&#39;)
-/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:8065: DeprecationWarning: invalid escape sequence \e
+/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:8065: DeprecationWarning: invalid escape sequence \e
   fI.write(&#39;\end{longtable}\n&#39;)
-/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:8066: DeprecationWarning: invalid escape sequence \e
+/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:8066: DeprecationWarning: invalid escape sequence \e
   f.write(&#39;\end{document}\n&#39;)
-/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:8067: DeprecationWarning: invalid escape sequence \e
+/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:8067: DeprecationWarning: invalid escape sequence \e
   sf.write(&#39;\end{document}\n&#39;)
-/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:8068: DeprecationWarning: invalid escape sequence \e
+/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:8068: DeprecationWarning: invalid escape sequence \e
   fI.write(&#39;\end{document}\n&#39;)
-/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:8070: DeprecationWarning: invalid escape sequence \h
+/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:8070: DeprecationWarning: invalid escape sequence \h
   fsp.write(&#39;\hline\n&#39;)
-/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:8071: DeprecationWarning: invalid escape sequence \e
+/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:8071: DeprecationWarning: invalid escape sequence \e
   fsp.write(&#39;\end{longtable}\n&#39;)
-/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:8072: DeprecationWarning: invalid escape sequence \e
+/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:8072: DeprecationWarning: invalid escape sequence \e
   fsp.write(&#39;\end{document}\n&#39;)
-/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:8074: DeprecationWarning: invalid escape sequence \h
+/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:8074: DeprecationWarning: invalid escape sequence \h
   cr.write(&#39;\hline\n&#39;)
-/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:8075: DeprecationWarning: invalid escape sequence \e
+/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:8075: DeprecationWarning: invalid escape sequence \e
   cr.write(&#39;\end{longtable}\n&#39;)
-/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:8076: DeprecationWarning: invalid escape sequence \e
+/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:8076: DeprecationWarning: invalid escape sequence \e
   cr.write(&#39;\end{document}\n&#39;)
-/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:11626: DeprecationWarning: invalid escape sequence \w
+/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:11626: DeprecationWarning: invalid escape sequence \w
   &#39;LP-*[\w]*-ARM&#39;)]
-/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:11633: DeprecationWarning: invalid escape sequence \s
+/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:11633: DeprecationWarning: invalid escape sequence \s
   cond = spec_df.method_codes.str.contains(&#39;(^|[\s\:])LT-PTRM&#39;)
-/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:12483: DeprecationWarning: invalid escape sequence \d
+/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:12483: DeprecationWarning: invalid escape sequence \d
   directions_out.write(&#39;\documentclass{article}\n&#39;)
-/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:12489: DeprecationWarning: invalid escape sequence \e
+/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:12489: DeprecationWarning: invalid escape sequence \e
   directions_out.write(&#39;\end{document}\n&#39;)
-/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:12504: DeprecationWarning: invalid escape sequence \d
+/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:12504: DeprecationWarning: invalid escape sequence \d
   intensities_out.write(&#39;\documentclass{article}\n&#39;)
-/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:12510: DeprecationWarning: invalid escape sequence \e
+/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:12510: DeprecationWarning: invalid escape sequence \e
   intensities_out.write(&#39;\end{document}\n&#39;)
-/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:12542: DeprecationWarning: invalid escape sequence \d
+/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:12542: DeprecationWarning: invalid escape sequence \d
   info_out.write(&#39;\documentclass{article}\n&#39;)
-/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:12548: DeprecationWarning: invalid escape sequence \e
+/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:12548: DeprecationWarning: invalid escape sequence \e
   info_out.write(&#39;\end{document}\n&#39;)
-/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:12605: DeprecationWarning: invalid escape sequence \d
+/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:12605: DeprecationWarning: invalid escape sequence \d
   info_out.write(&#39;\documentclass{article}\n&#39;)
-/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:12617: DeprecationWarning: invalid escape sequence \e
+/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:12617: DeprecationWarning: invalid escape sequence \e
   info_out.write(&#39;\end{landscape}\n&#39;)
-/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:12618: DeprecationWarning: invalid escape sequence \e
+/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:12618: DeprecationWarning: invalid escape sequence \e
   info_out.write(&#39;\end{document}\n&#39;)
-/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:12681: DeprecationWarning: invalid escape sequence \d
+/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:12681: DeprecationWarning: invalid escape sequence \d
   info_out.write(&#39;\documentclass{article}\n&#39;)
-/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:12689: DeprecationWarning: invalid escape sequence \e
+/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:12689: DeprecationWarning: invalid escape sequence \e
   info_out.write(&#39;\end{document}\n&#39;)
-/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:13658: DeprecationWarning: invalid escape sequence \c
+/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:13658: DeprecationWarning: invalid escape sequence \c
   plt.ylabel(&#39;$\chi$ ($\mu$SI)&#39;)
-/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:13678: DeprecationWarning: invalid escape sequence \c
+/opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:13678: DeprecationWarning: invalid escape sequence \c
   plt.ylabel(&#39;$\chi$ ($\mu$SI)&#39;)
 </pre></div>
 </div>
@@ -748,7 +763,7 @@ The angular error is:  2.8 degrees
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">map_axis</span> <span class="o">=</span> <span class="n">ipmag</span><span class="o">.</span><span class="n">make_orthographic_map</span><span class="p">(</span><span class="n">central_longitude</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">central_latitude</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">ipmag</span><span class="o">.</span><span class="n">plot_pole</span><span class="p">(</span><span class="n">map_axis</span><span class="p">,</span> <span class="n">mean_pole</span><span class="p">[</span><span class="s1">&#39;pole_dec&#39;</span><span class="p">],</span> <span class="n">mean_pole</span><span class="p">[</span><span class="s1">&#39;pole_inc&#39;</span><span class="p">],</span> <span class="n">mean_pole</span><span class="p">[</span><span class="s1">&#39;alpha95&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Mean Pole&#39;</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:1868,</span> in <span class="ni">make_orthographic_map</span><span class="nt">(central_longitude, central_latitude, figsize, add_land, land_color, land_edge_color, add_ocean, ocean_color, grid_lines, lat_grid, lon_grid)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/pmagpy/ipmag.py:1868,</span> in <span class="ni">make_orthographic_map</span><span class="nt">(central_longitude, central_latitude, figsize, add_land, land_color, land_edge_color, add_ocean, ocean_color, grid_lines, lat_grid, lon_grid)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1866</span>     <span class="k">return</span>
 <span class="g g-Whitespace">   </span><span class="mi">1867</span> <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
 <span class="ne">-&gt; </span><span class="mi">1868</span> <span class="n">map_projection</span> <span class="o">=</span> <span class="n">LowerThresholdOrthographic</span><span class="p">(</span>
@@ -756,7 +771,7 @@ The angular error is:  2.8 degrees
 <span class="g g-Whitespace">   </span><span class="mi">1870</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">map_projection</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1871</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_global</span><span class="p">()</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/site-packages/cartopy/crs.py:2069,</span> in <span class="ni">Orthographic.__init__</span><span class="nt">(self, central_longitude, central_latitude, globe)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.22/x64/lib/python3.9/site-packages/cartopy/crs.py:2069,</span> in <span class="ni">Orthographic.__init__</span><span class="nt">(self, central_longitude, central_latitude, globe)</span>
 <span class="g g-Whitespace">   </span><span class="mi">2067</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x_limits</span> <span class="o">=</span> <span class="n">mins</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">maxs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="g g-Whitespace">   </span><span class="mi">2068</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y_limits</span> <span class="o">=</span> <span class="n">mins</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">maxs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 <span class="ne">-&gt; </span><span class="mi">2069</span> <span class="bp">self</span><span class="o">.</span><span class="n">threshold</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_x_limits</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mf">0.02</span>
@@ -799,7 +814,7 @@ The angular error is:  2.8 degrees
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -828,6 +843,7 @@ The angular error is:  2.8 degrees
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -888,8 +904,8 @@ By Facundo Sapienza
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
